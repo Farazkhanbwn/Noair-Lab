@@ -1,0 +1,403 @@
+.editor-container {
+  /* margin: 20px auto 20px auto; */
+  overflow: hidden;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+  color: #000;
+  position: relative;
+  line-height: 20px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.editor-input {
+  min-height: 150px;
+  resize: none;
+  font-size: 15px;
+  caret-color: rgb(5, 5, 5);
+  position: relative;
+  tab-size: 1;
+  outline: 0;
+  padding: 15px 10px;
+  caret-color: #444;
+}
+
+.editor-placeholder {
+  color: #999;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  padding: 12px;
+  top: 0px;
+  font-size: 15px;
+  user-select: none;
+  display: inline-block;
+  pointer-events: none;
+}
+
+.editor-text-bold {
+  font-weight: bold;
+}
+
+.editor-text-italic {
+  font-style: italic;
+}
+
+.editor-text-underline {
+  text-decoration: underline;
+}
+
+.editor-text-strikethrough {
+  text-decoration: line-through;
+}
+
+.editor-text-underlineStrikethrough {
+  text-decoration: underline line-through;
+}
+
+.editor-text-code {
+  background-color: var(--light-blue);
+  padding: 1px 0.25rem;
+  font-family: Menlo, Consolas, Monaco, monospace;
+  font-size: 94%;
+}
+
+.editor-link {
+  color: rgb(33, 111, 219);
+  text-decoration: none;
+}
+
+.dropdown {
+  z-index: 5;
+  display: block;
+  position: absolute;
+  box-shadow:
+    0 12px 28px 0 rgba(0, 0, 0, 0.2),
+    0 2px 4px 0 rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  min-width: 100px;
+  min-height: 40px;
+  background-color: #fff;
+}
+
+.dropdown .item {
+  margin: 0 8px 0 8px;
+  padding: 8px;
+  color: #050505;
+  cursor: pointer;
+  line-height: 16px;
+  font-size: 15px;
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+  flex-shrink: 0;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 0;
+  min-width: 268px;
+}
+
+.dropdown .item .active {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+}
+
+.dropdown .item:first-child {
+  margin-top: 8px;
+}
+
+.dropdown .item:last-child {
+  margin-bottom: 8px;
+}
+
+.dropdown .item:hover {
+  background-color: #eee;
+}
+
+.dropdown .item .text {
+  display: flex;
+  line-height: 20px;
+  flex-grow: 1;
+  width: 200px;
+}
+
+.dropdown .item .icon {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  user-select: none;
+  margin-right: 12px;
+  line-height: 16px;
+  background-size: contain;
+}
+
+.link-editor {
+  position: absolute;
+  z-index: 100;
+  top: -10000px;
+  left: -10000px;
+  margin-top: -6px;
+  max-width: 300px;
+  width: 100%;
+  opacity: 0;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  transition: opacity 0.5s;
+}
+
+.link-editor .link-input {
+  display: block;
+  box-sizing: border-box;
+  margin: 8px 12px;
+  padding: 8px 12px;
+  border-radius: 15px;
+  background-color: #eee;
+  font-size: 15px;
+  color: rgb(5, 5, 5);
+  border: 0;
+  outline: 0;
+  position: relative;
+  font-family: inherit;
+}
+
+.link-editor .link-input a {
+  color: rgb(33, 111, 219);
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 30px;
+  text-overflow: ellipsis;
+}
+
+.link-editor .link-input a:hover {
+  text-decoration: underline;
+}
+
+.link-editor .button {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+.link-editor .button.hovered {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-color: #eee;
+}
+
+.link-editor .button i,
+.actions i {
+  background-size: contain;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  vertical-align: -0.25em;
+}
+
+.editor-container ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.editor-container ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.editor-container li {
+  margin-bottom: 4px;
+}
+
+.toolbar-item {
+  padding: 16px;
+}
+
+.editor-quote {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 15px;
+  color: rgb(101, 103, 107);
+  border-left-color: rgb(206, 208, 212);
+  border-left-width: 4px;
+  border-left-style: solid;
+  padding-left: 16px;
+}
+.editor-list-ol {
+  padding: 0;
+  margin: 0;
+  margin-left: 8px;
+}
+
+.editor-list-ul {
+  padding: 0;
+  margin: 0;
+  margin-left: 8px;
+}
+
+.editor-listitem {
+  margin: 8px 32px 8px 32px;
+}
+
+.editor-readonly > .editor-shell > .editor-container {
+  background-color: #eee;
+}
+.editor-readonly .image-edit-button {
+  display: none !important;
+}
+
+.editor-readonly
+  > .editor-shell
+  > .editor-container
+  > .editor-scroller
+  > .editor
+  > .editor-input-2 {
+  background-color: #eee;
+  min-height: 150px;
+  overflow-y: visible;
+}
+/* 
+.image-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.image-dialog {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.dialog-row {
+  margin-bottom: 15px;
+}
+
+.dialog-row input[type='text'] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.dialog-buttons button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.dialog-buttons button:first-child {
+  background: #ddd;
+}
+
+.dialog-buttons button:last-child {
+  background: #0066cc;
+  color: white;
+}
+
+.dialog-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.image-container.left {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+
+.image-container.right {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+
+.image-container.center {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.image-container.full {
+  display: block;
+  margin: 1em 0;
+  width: 100%;
+}
+
+.ImageNode__contentEditable {
+  min-height: 20px;
+  border: 0px;
+  resize: none;
+  cursor: text;
+  caret-color: rgb(5, 5, 5);
+  display: block;
+  position: relative;
+  outline: 0px;
+  padding: 10px;
+  user-select: text;
+  font-size: 12px;
+  width: calc(100% - 20px);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ImageNode__placeholder {
+  font-size: 12px;
+  color: #888;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 10px;
+  left: 10px;
+  user-select: none;
+  white-space: nowrap;
+  display: inline-block;
+  pointer-events: none;
+}
+
+.image-control-wrapper--resizing {
+  touch-action: none;
+} */
+
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.text-container {
+  overflow: hidden; /* Ensures text doesn't overlap */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Aligns text properly */
+}

@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-color: #f9f9f9;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --radius: 22px;
+  --light-blue: #edf5ff;
+  --secondary-grey: #9a9a9a;
+  --stroke-grey: #bcbcbc;
+  --ghost-white: #f3f3f3;
+  --light-grey: #f9f9f9;
+}
+
+.dark {
+  --muted-foreground: 215 20.2% 65.1%;
+  /* ... other dark mode colors ... */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: white;
+  font-family: 'Arial', sans-serif;
+  color: black;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Work Sans', serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .heading-primary {
+    @apply text-2xl sm:text-3xl md:text-[32px];
+  }
+
+  .heading-medium {
+    @apply text-[20px];
+  }
+
+  /* Heading Secondary - slightly smaller size */
+  .heading-secondary {
+    @apply text-base;
+  }
+
+  /* Heading Tertiary - smaller font for tertiary headings */
+  .heading-tertiary {
+    @apply text-sm;
+  }
+
+  .section-heading {
+    @apply text-[12px];
+  }
+
+  .text-description {
+    @apply text-xs;
+  }
+
+  .left {
+    @apply rounded-bl-none;
+  }
+
+  .right {
+    @apply rounded-br-none;
+  }
+
+  .chat {
+    @apply relative;
+  }
+
+  .left::after {
+    content: '';
+    @apply w-6 h-6 absolute bottom-0 left-0;
+    transform: translateX(-100%);
+  }
+
+  .right::after {
+    content: '';
+    @apply w-6 h-6 absolute bottom-0 right-0;
+    transform: translateX(100%);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.row {
+  max-width: 90rem;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.column {
+  flex: 1;
+  max-width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+textarea {
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: white;
+}
+
+.toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  transition: opacity 0.5s ease;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* Custom Scrollbar */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  @apply bg-[#ccc] rounded-[4px] dark:bg-[#0a0a0a];
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  @apply bg-[#f1f1f1] dark:bg-[#1a1a1a];
+}
+
+/* Swiper button styles */
+/* .swiper {
+  --swiper-navigation-color: #fff !important;
+  --swiper-pagination-color: #fff !important;
+} */
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 0.5rem;
+  transform: scale(0.3);
+  font-weight: 900;
+  color: black;
+  background-color: #686464;
+  border-radius: 50%;
+  padding: 20px 40px !important;
+}
+
+/* .custom-nav-button {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px !important;
+  height: 30px !important;
+  background-color: rgba(192, 192, 192, 0.8);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.swiper-button-prev.custom-nav-button {
+  left: 10px;
+}
+
+.swiper-button-next.custom-nav-button {
+  right: 10px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: green;
+  font-size: 0.3rem;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  right: -40px;
+  color: #007f2d;
+} */
+
+/* Testing for Full Screen */
+
+.fullscreen-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #edf5ff;
+  z-index: 9999;
+}
