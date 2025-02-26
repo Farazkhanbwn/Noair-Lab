@@ -3,9 +3,10 @@ import PrimaryImage from '@/components/common/primary-image/primary-image';
 interface ImageGridProps {
   images: string[];
   maxVisible?: number;
+  onImageClick: () => void;
 }
 
-export default function ImageGrid({ images }: ImageGridProps) {
+export default function ImageGrid({ images, onImageClick }: ImageGridProps) {
   const maxVisible = 4;
   const visibleImages = images.slice(0, maxVisible);
   const remainingCount = Math.max(0, images.length - maxVisible);
@@ -21,6 +22,7 @@ export default function ImageGrid({ images }: ImageGridProps) {
               alt="Main image"
               width={500}
               height={600}
+              onClick={onImageClick}
               className={`object-cover cursor-pointer w-full h-full transition-transform duration-300`}
             />
           </div>
@@ -38,6 +40,7 @@ export default function ImageGrid({ images }: ImageGridProps) {
                 alt="Secondary image"
                 width={500}
                 height={300}
+                onClick={onImageClick}
                 className={`object-cover cursor-pointer w-full h-full transition-transform duration-300`}
               />
             </div>
@@ -56,11 +59,15 @@ export default function ImageGrid({ images }: ImageGridProps) {
                     alt={`Grid image ${index + 3}`}
                     width={250}
                     height={300}
+                    onClick={onImageClick}
                     className={`object-cover cursor-pointer w-full h-full transition-transform duration-300`}
                   />
                   {/* Show remaining count on last visible image */}
                   {index === 1 && remainingCount > 0 && (
-                    <div className="absolute cursor-pointer inset-0 bg-black/60 flex items-center justify-center text-center text-description sm:heading-secondary">
+                    <div
+                      onClick={onImageClick}
+                      className="absolute cursor-pointer inset-0 bg-black/60 flex items-center justify-center text-center text-description sm:heading-secondary"
+                    >
                       <span className="text-pure-white text-description sm:heading-secondary font-semibold">
                         +{remainingCount} images
                       </span>

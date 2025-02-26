@@ -103,7 +103,8 @@ const PostPdfViewer: FC<PostPdfViewerProps> = ({
     <div
       ref={contentRef}
       onMouseMove={handleMouseMove}
-      className={`w-full bg-pure-white max-w-[600px] h-full scrollbar-thin mx-auto ${isFullscreen ? 'overflow-hidden' : 'overflow-y-auto'} pr-[10px] ${className}`}
+      // className={`w-full bg-pure-white max-w-[600px] min-h-[100vh] h-full scrollbar-thin mx-auto pr-[10px] ${className}`}
+      className={`w-full bg-pure-white max-w-[600px] h-full scrollbar-thin mx-auto $ pr-[10px] ${className}`}
     >
       <div
         className={`absolute top-0 left-0  py-2 px-3 z-[10] bg-pure-black right-0 text-pure-white transform
@@ -150,10 +151,10 @@ transition-all duration-500 ease-in-out shadow-sm shadow-pure-black flex-between
               <div key={index} className="">
                 <Page
                   pageNumber={index + 1}
-                  width={600}
-                  height={500}
+                  // width={600}
+                  // height={500}
                   // max-h-[500px]
-                  className="!object-contain flex-center w-full min-h-[200px] max-w-[100px] h-full"
+                  className="!object-contain flex-center w-full !mx-0 md:!mx-auto max-w-[100px] h-full"
                 />
               </div>
             ))}

@@ -4,6 +4,7 @@ import PrimaryImage from '@/components/common/primary-image/primary-image';
 interface SearchBarProps {
   className?: string;
   imageSrc?: string;
+  inputClassName?: string;
   inputStyles?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }

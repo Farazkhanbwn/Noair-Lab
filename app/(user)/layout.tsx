@@ -6,7 +6,10 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <main className="flex flex-col min-h-screen ">
       <Header />
-      <div className="flex mt-[74px] flex-grow bg-light-grey row">
+      <div
+        id="main-container"
+        className="flex mt-[74px] flex-grow bg-light-grey row"
+      >
         {children}
       </div>
       <Footer />

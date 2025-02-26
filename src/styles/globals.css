@@ -262,3 +262,37 @@ input[type='number'] {
   background-color: #edf5ff;
   z-index: 9999;
 }
+
+.custom-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  /* gap: 1.25rem !important; */
+}
+
+.custom-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #e2e2e2;
+  opacity: 1;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background: #0029fa;
+}
+
+.custom-prev-button,
+.custom-next-button {
+  font-size: 24px;
+  color: #0029fa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.custom-prev-button:hover,
+.custom-next-button:hover {
+  color: #0029fa;
+}

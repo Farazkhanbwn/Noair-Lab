@@ -21,10 +21,10 @@ function Header() {
       active: pathname.startsWith('/feed'),
     },
     {
-      name: 'Research',
+      name: 'Insights',
       icon: <ResearchIcon />,
-      path: '/research',
-      active: pathname.startsWith('/research'),
+      path: '/insights',
+      active: pathname.startsWith('/insights'),
     },
     {
       name: 'Message',

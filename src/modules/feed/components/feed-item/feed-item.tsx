@@ -17,8 +17,8 @@ import ArticlePostItem from './components/article-post-item/article-post-item';
 import PostMedia from './components/post-media/post-media';
 
 const images = [
-  '/images/climates.png',
-  '/images/climates.png',
+  '/images/post-background.png',
+  '/images/post-background.png',
   '/images/suggested-card-bg.png',
   '/images/climates.png',
   '/images/climates.png',
@@ -207,6 +207,7 @@ const FeedItem: FC = () => {
           likes={6}
           mediaPost={
             <PostMedia
+              onImageClick={() => console.log('video is clicked')}
               mediaType={'video'}
               media={'/videos/natural-beauty.mp4'}
             />
@@ -328,6 +329,7 @@ const FeedItem: FC = () => {
 
       <PostDetailedModal
         open={isPostDetailModal}
+        images={images}
         onCloseModal={() => setIsPostDetailModal(false)}
       />
 

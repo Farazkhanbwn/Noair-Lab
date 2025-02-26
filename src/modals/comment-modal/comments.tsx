@@ -22,7 +22,6 @@ const CommentModal: FC<CommentModalProps> = ({ isOpen, onClose, title }) => {
       onClose={onClose}
       styles={modalStyles}
       showCloseIcon={false}
-      allowBackgroundScroll={false}
     >
       <div className="p-3 bg-pure-white text-pure-black">
         <ModalHeader title={title} onClose={onClose} className="mb-2" />

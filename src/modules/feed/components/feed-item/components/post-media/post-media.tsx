@@ -8,7 +8,7 @@ import PostPdfViewer from '../post-pdf-viewer/post-pdf-viewer';
 interface PostMediaProps {
   mediaType?: FeedPostMedia;
   media?: string[] | string;
-  onImageClick?: () => void;
+  onImageClick: () => void;
   pdfName?: string;
 }
 
@@ -23,7 +23,7 @@ const PostMedia: FC<PostMediaProps> = ({
   const mediaRenderers: Record<FeedPostMedia, JSX.Element | null> = {
     image:
       Array.isArray(media) && media.length > 1 ? (
-        <ImageGrid images={media} maxVisible={4} />
+        <ImageGrid onImageClick={onImageClick} images={media} maxVisible={4} />
       ) : (
         <PrimaryImage
           width={600}

@@ -19,7 +19,7 @@ const PostImageDisplay: React.FC<PostImageDisplayProps> = ({
         width={600}
         height={500}
         alt={`Slide ${index + 1}`}
-        className="!object-contain w-full max-h-[250px] md:max-h-[500px] min-h-[200px] h-full"
+        className="!object-contain w-full max-h-[250px] md:max-h-[500px] min-h-[300px] h-full"
       />
     </div>
   ));

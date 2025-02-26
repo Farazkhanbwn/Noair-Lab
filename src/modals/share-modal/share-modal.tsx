@@ -37,7 +37,6 @@ const ShareModal: FC<ShareModalProps> = ({ isOpen, onClose }) => {
       onClose={onClose}
       styles={modalStyles}
       showCloseIcon={false}
-      allowBackgroundScroll={false}
     >
       <div className="p-5 bg-pure-white text-pure-black">
         {[...Array(10)].map((_, i) => (

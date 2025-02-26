@@ -29,7 +29,6 @@ const LikesModal: FC<LikeModalProps> = ({ title, isOpen, onClose }) => {
       onClose={onClose}
       styles={modalStyles}
       showCloseIcon={false}
-      allowBackgroundScroll={false}
     >
       <div className="bg-pure-white text-pure-black py-2 px-3">
         <ModalHeader title={title} onClose={onClose} className="p-2" />

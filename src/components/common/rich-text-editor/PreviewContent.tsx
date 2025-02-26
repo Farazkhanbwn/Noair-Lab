@@ -1,8 +1,9 @@
 'use client';
+import React, { memo } from 'react';
 import RichTextEditor from '@/components/common/rich-text-editor/RichTextEditor';
 import { SerializedEditorState } from 'lexical';
 
-function PreviewHTML({
+const PreviewHTML = memo(function PreviewHTML({
   jsonContent,
 }: {
   jsonContent: SerializedEditorState | null;
@@ -24,6 +25,7 @@ function PreviewHTML({
       />
     </div>
   );
-}
+});
 
+// Prevents unnecessary re-renders by checking if jsonContent has changed
 export default PreviewHTML;
