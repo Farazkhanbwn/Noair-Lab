@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 module.exports = {
   reactStrictMode: true,
-
+  experimental: {},
   webpack: config => {
     config.resolve.alias.canvas = false;
     // Grab the existing rule that handles SVG imports
