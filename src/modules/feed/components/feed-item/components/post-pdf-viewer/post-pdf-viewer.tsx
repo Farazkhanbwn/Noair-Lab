@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import 'react-pdf/dist/Page/TextLayer.css';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
 import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import SwiperSlider from '@/components/common/swiper-slider/swiper-slider';
@@ -6,7 +8,6 @@ import { PdfViewerControls } from '@/modals/feed/pdf-preview-modal/pdf-viewer-co
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
-
 pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
 
 const options = {
