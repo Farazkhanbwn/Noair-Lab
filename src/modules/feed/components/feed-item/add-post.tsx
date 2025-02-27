@@ -58,7 +58,6 @@ const AddPost: FC<AddPostProps> = ({ onSelectItem, classNames }) => {
           }
         />
       </div>
-      <div className="mb-4 flex items-center gap-2 bg-pure-white"></div>
     </div>
   );
 };
