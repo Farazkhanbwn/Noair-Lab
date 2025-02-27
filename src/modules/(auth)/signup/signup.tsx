@@ -99,7 +99,7 @@ const CreateAccount = () => {
         description="Welcome to NOAIR LAB! Your account has been created successfully."
         onSubmit={() => {
           setIsSignupSuccessModal(false);
-          router.push('/login');
+          router.push('/pricing');
         }}
       />
     </>

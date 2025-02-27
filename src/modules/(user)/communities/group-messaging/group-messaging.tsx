@@ -18,7 +18,7 @@ const CommunityGroupMessagingPage = () => {
   const [messages, setMessages] = useState<Message[]>([]);
 
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
-  const [isChatOpen, setIsChatopen] = useState(true);
+  const [isChatOpen, setIsChatopen] = useState(false);
   const [messageInput, setMessageInput] = useState('');
 
   useEffect(() => {

@@ -47,10 +47,15 @@ function Header() {
   ];
 
   return (
-    <header className="w-[100vw] fixed top-0 left-0 right-0 z-[1000] bg-pure-white p-4 pb-2 shadow-md h-[74px]">
+    <header className="w-[100vw] fixed top-0 left-0 right-0 z-[50]  bg-pure-white p-4 pb-2 shadow-md h-[74px]">
       <div className="row flex items-center justify-between gap-2">
         <h1 className="heading-primary font-bold text-pure-black">NOAIR</h1>
-        <div className="flex items-center bg-transparent md:bg-light-grey  rounded-[20px] px-0 py-0.5 md:px-4 text-black">
+        <div
+          onClick={() => {
+            router.push('/search');
+          }}
+          className="flex items-center bg-transparent md:bg-light-grey  rounded-[20px] px-0 py-0.5 md:px-4 text-black"
+        >
           <img className="w-5 h-5" src="/search.svg" alt="search icon" />
           <input
             type="text"

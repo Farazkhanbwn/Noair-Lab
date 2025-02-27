@@ -60,7 +60,6 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
           {/* Left side - Image */}
           <PostImageDisplay
             images={images}
-            // className="bg-[#1b1f23] flex-1 max-h-[500px] w-[100%] md:max-w-[600px] h-full"
             className="bg-[#1b1f23] flex-1 max-h-[500px] max-w-[100%] md:max-w-[50%] h-full"
           />
 

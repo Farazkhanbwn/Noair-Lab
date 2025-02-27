@@ -1,15 +1,18 @@
+import Link from '@/components/common/custom-link/custom-link';
 import type React from 'react';
 import { FC, PropsWithChildren } from 'react';
 
 interface DiscussionSectionProps extends PropsWithChildren {
   title: string;
   count: number;
+  link: string;
 }
 
 const DiscussionSection: FC<DiscussionSectionProps> = ({
   title,
   count,
   children,
+  link,
 }) => {
   return (
     <div className="space-y-4">
@@ -19,7 +22,9 @@ const DiscussionSection: FC<DiscussionSectionProps> = ({
         </h2>
       </div>
       <hr className="!my-0" />
-      <div className="space-y-2">{children}</div>
+      <Link href={link} className="space-y-2 text-pure-black !no-underline">
+        {children}
+      </Link>
     </div>
   );
 };

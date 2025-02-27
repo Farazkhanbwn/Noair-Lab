@@ -9,6 +9,7 @@ const CommunityMediaModal: FC<CommunityMediaModalProps> = ({
   isOpen,
   onClose,
   onNextButton,
+  onBackButton,
 }) => {
   const [icon, setIcon] = useState<File | null>(null);
   const [banner, setBanner] = useState<File | null>(null);
@@ -29,7 +30,7 @@ const CommunityMediaModal: FC<CommunityMediaModalProps> = ({
       onClose={onClose}
       title="Empower Your Community"
       onNext={onNextButton}
-      onBack={() => console.log('back button clicked')}
+      onBack={onBackButton}
     >
       <ProgressSteps
         steps={4}

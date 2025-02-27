@@ -162,7 +162,10 @@ export function FloatingLinkEditor({ editor }) {
   );
 
   return (
-    <div ref={editorRef} className="link-editor translate-x-36 min-w-[400px]">
+    <div
+      ref={editorRef}
+      className="link-editor !z-[1000] translate-x-36 min-w-[400px]"
+    >
       {isEditMode ? (
         <div className="flex items-center relative pr-2 ">
           <input

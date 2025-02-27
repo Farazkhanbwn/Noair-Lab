@@ -1,14 +1,32 @@
-import CustomButton from '@/components/common/custom-button/custom-button';
-import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import PrimaryImage from '@/components/common/primary-image/primary-image';
 import React, { FC } from 'react';
+import { FileText, ScrollText } from 'lucide-react';
+import { ContentTypeDropdown, ContentTypeItem } from './content-type-dropdown';
 
 interface AddPostProps {
-  onCreatePost: () => void;
+  onSelectItem: (value: string) => void;
   classNames?: string;
 }
 
-const AddPost: FC<AddPostProps> = ({ onCreatePost, classNames }) => {
+const contentTypes: ContentTypeItem[] = [
+  {
+    icon: FileText,
+    label: 'Post',
+    value: 'post',
+  },
+  {
+    icon: ScrollText,
+    label: 'Scientific Document',
+    value: 'scientific-document',
+  },
+];
+
+const AddPost: FC<AddPostProps> = ({ onSelectItem, classNames }) => {
+  const handleSelect = (value: string) => {
+    onSelectItem(value);
+    console.log(`Selected: ${value}`);
+  };
+
   return (
     <div className={`bg-white rounded-[20px] ${classNames}`}>
       <h3 className="heading-secondary p-5 pb-3 border-b border-stroke-grey text-black font-semibold">
@@ -28,17 +46,19 @@ const AddPost: FC<AddPostProps> = ({ onCreatePost, classNames }) => {
           placeholder="Write your update here..."
           className="w-full text-black m-0 text-sm border-none focus:outline-none flex-2 focus:ring-0"
         />
-        <CustomButton
-          styleType={CustomButtonTypes.TERTIARY}
-          onClick={onCreatePost}
-        >
-          <img
-            src="/file_upload.svg"
-            alt="Upload"
-            className="max-w-[16px] h-[16px] ml-auto"
-          />
-        </CustomButton>
+        <ContentTypeDropdown
+          items={contentTypes}
+          onSelect={handleSelect}
+          triggerButton={
+            <img
+              src="/file_upload.svg"
+              alt="Upload"
+              className="max-w-[16px] h-[16px] ml-auto"
+            />
+          }
+        />
       </div>
+      <div className="mb-4 flex items-center gap-2 bg-pure-white"></div>
     </div>
   );
 };

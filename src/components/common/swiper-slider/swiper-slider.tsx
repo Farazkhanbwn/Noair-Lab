@@ -28,11 +28,12 @@ const SwiperSlider: FC<SwiperSliderProps> = ({
       <Swiper
         navigation
         pagination
+        slidesPerView={'auto'}
         modules={[Navigation, Pagination]}
         onSlideChange={(swiper: SwiperType) => {
           onSlideChange?.(swiper.activeIndex, swiper); // Pass activeIndex + full Swiper instance
         }}
-        className={'h-full'}
+        className={'!h-full !w-full !select-none'}
         {...swiperOptions}
       >
         {slides.map((slide, index) => (

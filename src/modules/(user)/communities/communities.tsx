@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import CommunityAccessModal from '@/modals/communities/community-access/community-access';
 import CommunityMediaModal from '@/modals/communities/community-media/community-media';

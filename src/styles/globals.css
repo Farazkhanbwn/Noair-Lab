@@ -296,3 +296,20 @@ input[type='number'] {
 .custom-next-button:hover {
   color: #0029fa;
 }
+
+.scroll-container {
+  overflow-y: auto; /* Enable vertical scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.react-pdf__Page__canvas {
+  max-width: fit-content !important;
+  max-height: fit-content !important;
+  width: 100% !important;
+}

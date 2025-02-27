@@ -4,6 +4,7 @@ export interface CreateCommunityModalProps {
   isOpen: boolean;
   onClose: () => void;
   onNextButton?: () => void;
+  onBackButton?: () => void;
 }
 
 export interface CommunityFormData {
@@ -15,22 +16,26 @@ export interface CommunityMediaModalProps {
   isOpen: boolean;
   onClose: () => void;
   onNextButton?: () => void;
+  onBackButton?: () => void;
 }
 
 export interface TopicSelectionModalProps {
   isOpen: boolean;
   onClose: () => void;
   onNextButton?: () => void;
+  onBackButton?: () => void;
 }
 
 export interface CommunityAccessModalProps {
   isOpen: boolean;
   onClose: () => void;
   onNextButton?: () => void;
+  onBackButton?: () => void;
 }
 
 export interface CommunitySuccessModalProps {
   isOpen: boolean;
   onClose: () => void;
   onViewCommunity: () => void;
+  onBackButton?: () => void;
 }

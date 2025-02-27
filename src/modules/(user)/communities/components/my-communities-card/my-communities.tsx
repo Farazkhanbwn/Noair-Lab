@@ -38,7 +38,7 @@ const MyCommunities: React.FC<MyCommunitiesProps> = ({
           {MY_COMMUNITIES.map(community => (
             <Link
               className="w-full !no-underline text-black"
-              href={`/communities/${community.id}?community=${community.name}`}
+              href={`/communities/joined-communities`}
               key={community.id}
             >
               <div

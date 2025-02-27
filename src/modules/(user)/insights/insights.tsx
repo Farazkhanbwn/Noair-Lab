@@ -1,20 +1,20 @@
 'use client';
 import { useState } from 'react';
 import NewsSection from './news-section/NewSection';
-import useScrollingHidden from '@/hooks/useScrollingHidden';
-import useMaxWidth from '@/hooks/useMaxWidth';
 import InsightsCatgories from './news-section/InsightsCatgories';
 import { insightsCategories, insightsData } from '@/utils/constants/insights';
+import { SwiperSliderBreakPoints } from '@/types';
 
-function InsightsPage() {
-  useScrollingHidden();
-  useMaxWidth('main-container');
+type InsightsPageProps = {
+  breakpoints?: SwiperSliderBreakPoints;
+};
 
+function InsightsPage({ breakpoints }: InsightsPageProps) {
   const [activeTab, setActiveTab] = useState(insightsCategories[0].name);
 
   return (
-    <div className="w-full flex flex-col h-screen overflow-y-auto min-h-0 p-3 md:p-7">
-      <div className="w-full justify-between md:justify-around flex row">
+    <div className="w-full flex-1 flex flex-col h-screen scroll-container overflow-y-auto min-h-0 p-3 md:p-7">
+      <div className="w-full justify-between md:justify-around flex row ">
         <InsightsCatgories
           categories={insightsCategories}
           setActiveTab={setActiveTab}
@@ -22,7 +22,7 @@ function InsightsPage() {
         />
       </div>
 
-      <div className="flex flex-col mt-5 mb-5">
+      <div className="flex flex-col mt-5 mb-10 md:mb-20">
         {insightsData?.[activeTab]?.map(insightItem => {
           return (
             <NewsSection
@@ -31,6 +31,7 @@ function InsightsPage() {
               news={insightItem?.items}
               slideId={insightItem.id}
               activeTab={`${insightItem.id}`}
+              breakpoints={breakpoints}
             />
           );
         })}

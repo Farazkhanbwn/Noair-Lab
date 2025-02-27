@@ -11,7 +11,7 @@ interface MessageListProps {
 export const MessageList = ({ messages }: MessageListProps) => {
   let lastMessageDateLabel: string | null = null;
   return (
-    <div className="flex flex-col gap-4 overflow-y-auto p-4 space-y-4">
+    <div className="flex flex-col gap-4 overflow-y-auto px-4 pt-4  space-y-4">
       {messages.map(message => {
         const currentDateLabel = new Date(message.timestamp)
           .toISOString()
@@ -34,7 +34,7 @@ export const MessageList = ({ messages }: MessageListProps) => {
             ) : null}
             <div
               key={message.id}
-              className={`flex ${message.isMe ? 'items-end' : 'items-start'} flex-col`}
+              className={`flex pb-4 ${message.isMe ? 'items-end' : 'items-start'} flex-col`}
             >
               <div
                 className={`flex items-end space-x-5 max-w-[70%] ${message.isMe ? 'flex-row-reverse space-x-reverse' : ''}`}

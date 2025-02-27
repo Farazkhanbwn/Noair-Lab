@@ -199,7 +199,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-1.png',
         },
         {
           id: '2',
@@ -219,7 +219,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-2.png',
         },
         {
           id: '4',
@@ -229,7 +229,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-3.png',
         },
         {
           id: '5',
@@ -249,7 +249,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-3.png',
         },
         {
           id: '3',
@@ -259,7 +259,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-2.png',
         },
         {
           id: '4',
@@ -269,7 +269,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-1.png',
         },
         {
           viewAllLink: true,
@@ -300,7 +300,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
           id: '3',
@@ -310,7 +310,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: null,
+          imageUrl: '/images/item-news-section-cover-img-5.png',
         },
 
         {
@@ -321,7 +321,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-12.png',
         },
         {
           viewAllLink: true,
@@ -342,7 +342,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-4.png',
         },
         {
           id: '2',
@@ -352,7 +352,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: null,
+          imageUrl: '/images/item-news-section-cover-img-6.png',
         },
         {
           id: '3',
@@ -362,7 +362,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-7.png',
         },
         {
           id: '4',
@@ -372,7 +372,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
           id: '5',
@@ -382,7 +382,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: null,
         },
       ],
     },
@@ -398,7 +398,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-9.png',
         },
         {
           id: '2',
@@ -418,7 +418,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-10.png',
         },
         {
           id: '4',
@@ -428,7 +428,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-11.png',
         },
         {
           id: '5',
@@ -438,7 +438,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-4.png',
         },
       ],
     },
@@ -456,7 +456,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-1.png',
         },
         {
           id: '2',
@@ -466,7 +466,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: null,
         },
         {
           id: '3',
@@ -476,7 +476,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-2.png',
         },
         {
           id: '4',
@@ -486,12 +486,52 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-3.png',
+        },
+        {
+          id: '5',
+          title: 'Ethiopian runners took the top four news.',
+          description:
+            'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
+
+          date: '03 June 2025',
+          newsId: 'News98',
+          imageUrl: null,
+        },
+        {
+          id: '6',
+          title: 'Ethiopian runners took the top four news.',
+          description:
+            'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
+
+          date: '03 June 2025',
+          newsId: 'News98',
+          imageUrl: '/images/item-news-section-cover-img-3.png',
+        },
+        {
+          id: '3',
+          title: 'Ethiopian runners took the top four news.',
+          description:
+            'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
+
+          date: '03 June 2025',
+          newsId: 'News98',
+          imageUrl: '/images/item-news-section-cover-img-2.png',
+        },
+        {
+          id: '4',
+          title: 'Ethiopian runners took the top four news.',
+          description:
+            'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
+
+          date: '03 June 2025',
+          newsId: 'News98',
+          imageUrl: '/images/item-news-section-cover-img-1.png',
         },
         {
           viewAllLink: true,
-          viewAllTitle: 'View All Engineering News',
-          viewAllURL: '/insights/engineering-news',
+          viewAllTitle: 'View All Scientific News',
+          viewAllURL: '/insights/scientific-news',
         },
       ],
     },
@@ -507,7 +547,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: null,
         },
         {
           id: '2',
@@ -517,7 +557,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
           id: '3',
@@ -527,18 +567,9 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-5.png',
         },
-        {
-          id: '4',
-          title: 'Ethiopian runners took the top four news.',
-          description:
-            'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
 
-          date: '03 June 2025',
-          newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
-        },
         {
           id: '5',
           title: 'Ethiopian runners took the top four news.',
@@ -547,7 +578,12 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-12.png',
+        },
+        {
+          viewAllLink: true,
+          viewAllTitle: 'View All Scientific Insights',
+          viewAllURL: '/insights/scientific-insights',
         },
       ],
     },
@@ -563,7 +599,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-4.png',
         },
         {
           id: '2',
@@ -573,7 +609,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-6.png',
         },
         {
           id: '3',
@@ -583,7 +619,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-7.png',
         },
         {
           id: '4',
@@ -593,7 +629,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
           id: '5',
@@ -603,7 +639,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: null,
         },
       ],
     },
@@ -619,7 +655,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-9.png',
         },
         {
           id: '2',
@@ -629,7 +665,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: null,
         },
         {
           id: '3',
@@ -639,7 +675,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-10.png',
         },
         {
           id: '4',
@@ -649,7 +685,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-11.png',
         },
         {
           id: '5',
@@ -659,11 +695,12 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-4.png',
         },
       ],
     },
   ],
+
   ['Laws & Regulations']: [
     {
       id: 'law-and-regulation-news-id',
@@ -677,7 +714,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-1.png',
         },
         {
           id: '2',
@@ -687,7 +724,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: null,
         },
         {
           id: '3',
@@ -697,7 +734,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-2.png',
         },
         {
           id: '4',
@@ -707,12 +744,52 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-3.png',
+        },
+        {
+          id: '5',
+          title: 'Ethiopian runners took the top four news.',
+          description:
+            'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
+
+          date: '03 June 2025',
+          newsId: 'News98',
+          imageUrl: null,
+        },
+        {
+          id: '6',
+          title: 'Ethiopian runners took the top four news.',
+          description:
+            'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
+
+          date: '03 June 2025',
+          newsId: 'News98',
+          imageUrl: '/images/item-news-section-cover-img-3.png',
+        },
+        {
+          id: '3',
+          title: 'Ethiopian runners took the top four news.',
+          description:
+            'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
+
+          date: '03 June 2025',
+          newsId: 'News98',
+          imageUrl: '/images/item-news-section-cover-img-2.png',
+        },
+        {
+          id: '4',
+          title: 'Ethiopian runners took the top four news.',
+          description:
+            'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
+
+          date: '03 June 2025',
+          newsId: 'News98',
+          imageUrl: '/images/item-news-section-cover-img-1.png',
         },
         {
           viewAllLink: true,
-          viewAllTitle: 'View All Laws & Regulations News',
-          viewAllURL: '/insights/laws-and-regulation-news',
+          viewAllTitle: 'View All Scientific News',
+          viewAllURL: '/insights/scientific-news',
         },
       ],
     },
@@ -728,7 +805,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: null,
         },
         {
           id: '2',
@@ -738,7 +815,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
           id: '3',
@@ -748,18 +825,9 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-5.png',
         },
-        {
-          id: '4',
-          title: 'Ethiopian runners took the top four news.',
-          description:
-            'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
 
-          date: '03 June 2025',
-          newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
-        },
         {
           id: '5',
           title: 'Ethiopian runners took the top four news.',
@@ -768,7 +836,12 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-12.png',
+        },
+        {
+          viewAllLink: true,
+          viewAllTitle: 'View All Scientific Insights',
+          viewAllURL: '/insights/scientific-insights',
         },
       ],
     },
@@ -784,7 +857,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-4.png',
         },
         {
           id: '2',
@@ -794,7 +867,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-6.png',
         },
         {
           id: '3',
@@ -804,7 +877,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-7.png',
         },
         {
           id: '4',
@@ -814,7 +887,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
           id: '5',
@@ -824,7 +897,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: null,
         },
       ],
     },
@@ -840,7 +913,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-9.png',
         },
         {
           id: '2',
@@ -850,7 +923,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: null,
         },
         {
           id: '3',
@@ -860,7 +933,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-10.png',
         },
         {
           id: '4',
@@ -870,7 +943,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-11.png',
         },
         {
           id: '5',
@@ -880,7 +953,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
 
           date: '03 June 2025',
           newsId: 'News98',
-          imageUrl: '/images/item-news-section-cover-img.png',
+          imageUrl: '/images/item-news-section-cover-img-4.png',
         },
       ],
     },

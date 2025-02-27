@@ -14,6 +14,7 @@ const CommunityAccessModal: FC<CommunityAccessModalProps> = ({
   isOpen,
   onClose,
   onNextButton,
+  onBackButton,
 }) => {
   const [selectedAccess, setSelectedAccess] = useState<AccessLevel>('public');
   const [isEnabled, setIsEnabled] = useState(false);
@@ -30,7 +31,7 @@ const CommunityAccessModal: FC<CommunityAccessModalProps> = ({
       onClose={onClose}
       title="Who Can Join Your Community?"
       onNext={onNextButton}
-      onBack={() => console.log('back button clicked')}
+      onBack={onBackButton}
     >
       {/* Progress Steps */}
       <ProgressSteps

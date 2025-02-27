@@ -9,35 +9,33 @@ import { CustomButtonTypes } from '@/components/common/custom-button/custom-butt
 import SearchBar from './search-bar';
 import Comment from '@/components/dashboard/components/comment/comment';
 import CreatePostModal from '@/modals/feed/create-post-modal/create-post-modal';
-import ScientificDocumentModal from '@/modals/feed/scientific-document/scientific-document';
 import PostDetailedModal from '@/modals/feed/post-detailed-modal/post-detailed-modal';
 import VideoPreviewModal from '@/modals/feed/video-preview-modal/video-preview-modal';
-import PdfPreviewModal from '@/modals/feed/pdf-preview-modal/pdf-preview-modal';
 import ArticlePostItem from './components/article-post-item/article-post-item';
 import PostMedia from './components/post-media/post-media';
+import ScientificDocumentModal from '@/modals/feed/scientific-document/scientific-document';
 
 const images = [
   '/images/post-background.png',
   '/images/post-background.png',
   '/images/suggested-card-bg.png',
-  '/images/climates.png',
-  '/images/climates.png',
-  '/images/climates.png',
+  '/images/profile-background.png',
+  '/images/profile-background.png',
+  '/images/profile-background.png',
 ];
 const FeedItem: FC = () => {
-  const [isCreatePostModal, setIsCreatePostModal] = useState(false);
+  const [isImagePreviewModal, setIsImagePreview] = useState(false);
+  const [postType, setPostType] = useState<string | null>(null);
   const [likeModal, setLikeModal] = useState(false);
   const [shareModal, setShareModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
-  const [isScientificModal, setIsScientificModal] = useState(false);
   const [isPostDetailModal, setIsPostDetailModal] = useState(false);
   const [isVideoPreview, setIsVideoPreview] = useState(false);
-  const [isPdfPreview, setIsPdfPreview] = useState(false);
 
   return (
     <div className="w-full text-black flex flex-col gap-5">
       {/* New Post */}
-      <AddPost onCreatePost={() => setIsCreatePostModal(true)} />
+      <AddPost onSelectItem={(value: string) => setPostType(value)} />
 
       {/* Feed Post Without Image*/}
       <div className="bg-pure-white rounded-[20px]">
@@ -54,7 +52,7 @@ const FeedItem: FC = () => {
           mutual={2}
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => setIsScientificModal(true)}
+          onOpenSharesModal={() => console.log('share button clicked')}
         />
 
         <SearchBar />
@@ -79,7 +77,7 @@ const FeedItem: FC = () => {
         />
 
         <CustomButton
-          onClick={() => setIsPdfPreview(true)}
+          onClick={() => console.log('More comments clicked')}
           styleType={CustomButtonTypes.TERTIARY}
           className="text-description font-medium text-primary-color underline p-6"
         >
@@ -99,7 +97,7 @@ const FeedItem: FC = () => {
             <PostMedia
               mediaType={'image'}
               media={['/images/post-background.png']}
-              onImageClick={() => setIsPostDetailModal(true)}
+              onImageClick={() => setIsImagePreview(true)}
             />
           }
           comments={4}
@@ -109,7 +107,7 @@ const FeedItem: FC = () => {
           mutual={2}
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => setIsScientificModal(true)}
+          onOpenSharesModal={() => console.log('share button clicked')}
         />
 
         <SearchBar />
@@ -134,7 +132,7 @@ const FeedItem: FC = () => {
         />
 
         <CustomButton
-          onClick={() => setIsPdfPreview(true)}
+          onClick={() => console.log('more comments clicked')}
           styleType={CustomButtonTypes.TERTIARY}
           className="text-description font-medium text-primary-color underline p-6"
         >
@@ -164,7 +162,7 @@ const FeedItem: FC = () => {
           mutual={2}
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => setIsScientificModal(true)}
+          onOpenSharesModal={() => console.log('share button clicked')}
         />
 
         <SearchBar />
@@ -189,7 +187,7 @@ const FeedItem: FC = () => {
         />
 
         <CustomButton
-          onClick={() => setIsPdfPreview(true)}
+          onClick={() => console.log('more comments clicked')}
           styleType={CustomButtonTypes.TERTIARY}
           className="text-description font-medium text-primary-color underline p-6"
         >
@@ -219,7 +217,7 @@ const FeedItem: FC = () => {
           mutual={2}
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => setIsScientificModal(true)}
+          onOpenSharesModal={() => console.log('share button clicked')}
         />
 
         <SearchBar />
@@ -244,7 +242,7 @@ const FeedItem: FC = () => {
         />
 
         <CustomButton
-          onClick={() => setIsPdfPreview(true)}
+          onClick={() => console.log('more comments clicked')}
           styleType={CustomButtonTypes.TERTIARY}
           className="text-description font-medium text-primary-color underline p-6"
         >
@@ -264,7 +262,7 @@ const FeedItem: FC = () => {
             <PostMedia
               mediaType={'pdf'}
               media={'/docs/software-engineering.pdf'}
-              onImageClick={() => setIsPdfPreview(true)}
+              onImageClick={() => console.log('more comments clicked')}
             />
           }
           comments={4}
@@ -274,7 +272,7 @@ const FeedItem: FC = () => {
           mutual={2}
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => setIsScientificModal(true)}
+          onOpenSharesModal={() => console.log('share button clicked')}
         />
 
         <SearchBar />
@@ -292,21 +290,21 @@ const FeedItem: FC = () => {
           onImageClick={() => setIsPostDetailModal(true)}
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => setIsScientificModal(true)}
+          onOpenSharesModal={() => console.log('share button clicked')}
         />
         <SearchBar inputStyles={'bg-[#f9f9f9]'} />
       </div>
 
       {/* Modals */}
       <CreatePostModal
-        isOpen={isCreatePostModal}
-        onClose={() => setIsCreatePostModal(false)}
+        isOpen={postType === 'post'}
+        onClose={() => setPostType(null)}
       />
 
       {/* Scientific Document Modal */}
       <ScientificDocumentModal
-        isOpen={isScientificModal}
-        onClose={() => setIsScientificModal(false)}
+        isOpen={postType === 'scientific-document'}
+        onClose={() => setPostType(null)}
       />
 
       <LikesModal
@@ -333,6 +331,12 @@ const FeedItem: FC = () => {
         onCloseModal={() => setIsPostDetailModal(false)}
       />
 
+      <PostDetailedModal
+        open={isImagePreviewModal}
+        images={['/images/post-background.png']}
+        onCloseModal={() => setIsImagePreview(false)}
+      />
+
       <VideoPreviewModal
         open={isVideoPreview}
         onCloseModal={() => setIsVideoPreview(false)}
@@ -340,10 +344,10 @@ const FeedItem: FC = () => {
         className="w-full h-full"
       />
 
-      <PdfPreviewModal
+      {/* <PdfPreviewModal
         open={isPdfPreview}
         onCloseModal={() => setIsPdfPreview(false)}
-      />
+      /> */}
     </div>
   );
 };

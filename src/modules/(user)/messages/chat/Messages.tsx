@@ -7,20 +7,33 @@ import { Contact, Message } from '../types/message.type';
 import { ContactList } from './ContactList';
 import { MessageList } from './MessageList';
 import { MessageInput } from './MessageInput';
+import { useRouter } from 'next/navigation';
 
 export default function MessagesUI() {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [selectedContact, setSelectedContact] = useState<Contact | null>({
+    id: 1,
+    name: 'Clinton Willms',
+    lastMessage: 'Lorem ipsum dolor.',
+    avatar:
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+
+    time: '4:52 PM',
+  });
   const [messageInput, setMessageInput] = useState('');
   const [isChatOpen, setIsChatopen] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
+  const router = useRouter();
   useEffect(() => {
     // Fetch contacts and initial messages
     // You would replace this with your API calls
     fetchContacts().then(setContacts);
-  }, []);
+    setIsChatopen(true);
+    // Fetch messages for selected contact
+    fetchMessages(selectedContact?.id as number).then(setMessages);
+  }, [selectedContact]);
 
   const handleContactSelect = (contact: Contact) => {
     setSelectedContact(contact);
@@ -66,6 +79,7 @@ export default function MessagesUI() {
             onContactSelect={handleContactSelect}
             onViewProfile={contact => {
               console.log({ contact });
+              router.push('/profile');
               /* Handle view profile */
             }}
             onDeleteChat={contact => {

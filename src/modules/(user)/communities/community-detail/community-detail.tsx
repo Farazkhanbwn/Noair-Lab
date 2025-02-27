@@ -28,6 +28,18 @@ import DeleteModal from '@/components/common/delete-modal';
 import CreateDiscussion from '../components/create-discussion';
 import EditCommunityProfile from '../components/edit-community-info/edit-community-profile';
 import CreateCommunityModal from '@/modals/communities/create-community/create-community';
+import CommunityMediaModal from '@/modals/communities/community-media/community-media';
+import TopicSelectionModal from '@/modals/communities/topic-selection/topic-selection';
+import CommunityAccessModal from '@/modals/communities/community-access/community-access';
+import CommunitySuccessModal from '@/modals/communities/community-success/community-success';
+
+type CommunityModalType =
+  | 'create'
+  | 'media'
+  | 'topic'
+  | 'access'
+  | 'success'
+  | null;
 
 const CommunityDetailPage = () => {
   const searchParams = useSearchParams();
@@ -35,7 +47,8 @@ const CommunityDetailPage = () => {
   const communityName = searchParams.get('community') ?? 'Climate Laws';
   const [isEditCommunityProfileInfo, setIsEditCommunityProfileInfo] =
     useState(false);
-  const [isCreateCommunityModal, setIsCreateCommunity] = useState(false);
+  const [isCommunityModal, setCommunityModal] =
+    useState<CommunityModalType>(null);
 
   const [isCreateDiscussionModal, setIsCreateDiscussionModal] = useState(false);
 
@@ -53,15 +66,15 @@ const CommunityDetailPage = () => {
   return (
     <>
       <div className="p-4 flex flex-col md:flex-row gap-4 w-full">
-        <aside className="w-full md:max-w-72 flex flex-row md:flex-col gap-4">
+        <aside className="w-full md:max-w-72 flex flex-col sm:flex-row md:flex-col gap-4">
           <MyCommunities
             title="Your Communities"
             classNames="rounded-md w-full md:max-w-72"
             selectedCommunity={communityName}
-            onCreateCommunity={() => setIsCreateCommunity(true)}
+            onCreateCommunity={() => setCommunityModal('create')}
           />
           <CommunityMessages
-            classNames="hidden sm:block w-full md:max-w-72"
+            classNames=" w-full md:max-w-72"
             isChatOpen={false}
             onhandleCommunitySelect={contact => {
               console.log('Community Selected');
@@ -253,6 +266,7 @@ const CommunityDetailPage = () => {
           {/* Discussions */}
           <div className="bg-pure-white rounded-md px-4">
             <DiscussionSection
+              link="/communities/discussion"
               title="Pinned Discussions"
               count={SAMPLE_DISCUSSIONS.pinned.length}
             >
@@ -262,6 +276,7 @@ const CommunityDetailPage = () => {
             </DiscussionSection>
 
             <DiscussionSection
+              link="/communities/discussion"
               title="Other Discussions"
               count={SAMPLE_DISCUSSIONS.other.length}
             >
@@ -326,9 +341,36 @@ const CommunityDetailPage = () => {
       />
 
       <CreateCommunityModal
-        isOpen={isCreateCommunityModal}
-        onClose={() => setIsCreateCommunity(false)}
-        onNextButton={() => console.log('Next button Click')}
+        isOpen={isCommunityModal === 'create'}
+        onClose={() => setCommunityModal(null)}
+        onNextButton={() => setCommunityModal('media')}
+      />
+
+      <CommunityMediaModal
+        isOpen={isCommunityModal === 'media'}
+        onClose={() => setCommunityModal(null)}
+        onNextButton={() => setCommunityModal('topic')}
+        onBackButton={() => setCommunityModal('create')}
+      />
+
+      <TopicSelectionModal
+        isOpen={isCommunityModal === 'topic'}
+        onClose={() => setCommunityModal(null)}
+        onNextButton={() => setCommunityModal('access')}
+        onBackButton={() => setCommunityModal('media')}
+      />
+
+      <CommunityAccessModal
+        isOpen={isCommunityModal === 'access'}
+        onClose={() => setCommunityModal(null)}
+        onNextButton={() => setCommunityModal('success')}
+        onBackButton={() => setCommunityModal('topic')}
+      />
+
+      <CommunitySuccessModal
+        isOpen={isCommunityModal === 'success'}
+        onClose={() => setCommunityModal(null)}
+        onViewCommunity={() => console.log('View Community')}
       />
     </>
   );

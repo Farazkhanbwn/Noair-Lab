@@ -46,7 +46,7 @@ export function SearchSidebar({ activeFilter }: SearchSidebarProps) {
   ];
 
   return (
-    <div className="w-full md:w-64 h-auto max-h-max py-6 bg-white rounded-3xl">
+    <div className="w-full lg:w-72 h-auto max-h-max py-6 bg-white rounded-3xl">
       <h2 className="text-base font-semibold mb-4 px-6">Search Results</h2>
       <div className="border-b mb-3" />
       <div className="space-y-1 px-6">

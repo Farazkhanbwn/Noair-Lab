@@ -22,7 +22,7 @@ function InsightsCatgories({
           key={`category-${index}`}
           onClick={() => setActiveTab(category?.name)}
           className={cn(
-            'md:w-1/5 px-0 md:px-6 py-2 font-medium text-sm md:text-xl',
+            'md:w-1/5 px-0 md:px-6 py-2 font-medium text-sm md:text-lg xl:text-xl',
             activeTab === category?.name
               ? 'border-b-2 border-black text-black'
               : 'text-primary-grey'

@@ -11,6 +11,8 @@ import CommunityModalLayout from '../community.layout';
 const TopicSelectionModal: FC<TopicSelectionModalProps> = ({
   isOpen,
   onClose,
+  onNextButton,
+  onBackButton,
 }) => {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -37,8 +39,8 @@ const TopicSelectionModal: FC<TopicSelectionModalProps> = ({
       onClose={onClose}
       title="Let’s Add Some Topics!"
       description="Choose any 3 topics that best represent your community."
-      onNext={() => console.log('next button clicked')}
-      onBack={() => console.log('back button clicked')}
+      onNext={onNextButton}
+      onBack={onBackButton}
     >
       <ProgressSteps
         steps={4}

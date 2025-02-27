@@ -1,5 +1,5 @@
 import { SVGProps } from 'react';
-
+import { Swiper } from 'swiper/react';
 export interface User {
   id: string;
   email: string;
@@ -79,3 +79,8 @@ export enum PostType {
   Video = 'video',
   File = 'file',
 }
+
+export type SwiperSliderBreakPoints = {
+  [width: number]: Parameters<typeof Swiper>[0];
+  [ratio: string]: Parameters<typeof Swiper>[0];
+};

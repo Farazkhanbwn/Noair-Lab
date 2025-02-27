@@ -19,7 +19,7 @@ export const FollowButton = () => {
 
 export function PersonCard({ person }: PersonCardProps) {
   return (
-    <div className="flex flex-col md:flex md:flex-row md:items-center items-start justify-between gap-2">
+    <div className="flex xs:flex xs:flex-row xs:items-center items-start justify-between gap-2">
       <div className="flex items-center gap-3">
         <Avatar className="h-12 w-12">
           <AvatarImage src={person.avatar} alt={person.name} />

@@ -13,6 +13,7 @@ import { Check } from 'lucide-react';
 import Footer from '@/components/layout/Footer';
 import AuthHeader from '@/components/layout/auth-header';
 import ConfirmationModal from '@/components/common/signup-login-success-modal';
+import { useRouter } from 'next/navigation';
 
 const pricingData: PricingTier[] = [
   {
@@ -60,10 +61,11 @@ export default function PricingPage() {
   const [period, setPeriod] = useState<BillingPeriod>('Month');
   const [userType, setUserType] = useState<UserType>('student');
   const [isConfimrationModal, setIsConfimrationModal] = useState(false);
+  const router = useRouter();
 
   return (
     <>
-      <div className="w-full relative overflow-auto min-h-screen mx-auto mb-32">
+      <div className="w-full  mx-auto mb-32">
         <AuthHeader />
         <div
           className={`h-[876px] min-h-[40%] max-h-[50%] items-center bg-black absolute  w-full flex bg-right-bottom md:bg-[position:right] bg-[length:10rem] sm:bg-[length:20rem] md:bg-[length:30rem] lg:bg-[length:40rem]  mx-auto}`}
@@ -132,7 +134,7 @@ export default function PricingPage() {
             </div>
 
             {/* Pricing Cards */}
-            <div className="flex flex-col items-center w-full xs:grid xs:grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-20 md:gap-24 lg:gap-32 mx-auto row mt-28 sm:mt-20 px-0 md:px-12">
+            <div className="flex flex-col items-center mb-32 w-full xs:grid xs:grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-20 md:gap-24 lg:gap-32 mx-auto row mt-28 sm:mt-20 px-0 md:px-12">
               {pricingData.map(tier => {
                 const price =
                   period === 'Month' ? tier.price.monthly : tier.price.yearly;
@@ -208,6 +210,7 @@ export default function PricingPage() {
         btnText="Start Exploring"
         onSubmit={() => {
           setIsConfimrationModal(false);
+          router.push('/login');
         }}
       />
     </>

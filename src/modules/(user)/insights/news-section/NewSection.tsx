@@ -11,12 +11,14 @@ import { NewsCard } from './NewsCard';
 import { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import { SwiperSliderBreakPoints } from '@/types';
 
 type SectionProps = {
   title: string;
   news: NewsItem[];
   slideId?: string;
   activeTab: string;
+  breakpoints?: SwiperSliderBreakPoints;
 };
 
 export default function NewsSection({
@@ -24,6 +26,13 @@ export default function NewsSection({
   news,
   slideId,
   activeTab,
+  breakpoints = {
+    200: { slidesPerView: 1 },
+    525: { slidesPerView: 2 },
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 },
+    1280: { slidesPerView: 4 },
+  },
 }: SectionProps) {
   const swiperRef = useRef<SwiperType | null>(null);
 
@@ -58,13 +67,7 @@ export default function NewsSection({
             prevEl: `.custom-prev-button-${slideId}`,
             nextEl: `.custom-next-button-${slideId}`,
           }}
-          breakpoints={{
-            200: { slidesPerView: 1 },
-            525: { slidesPerView: 2 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 4 },
-          }}
+          breakpoints={breakpoints}
           className="w-full h-[300px]"
           onSwiper={(swiper: SwiperType) => {
             swiperRef.current = swiper;

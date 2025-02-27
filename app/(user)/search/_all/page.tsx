@@ -44,7 +44,7 @@ const posts: Post[] = [
 
 export default function SearchPage() {
   return (
-    <div className="flex h-auto">
+    <div className="flex flex-1 h-auto">
       <main className="flex w-full flex-col gap-5 justify-center">
         <div className="w-full lg:w-3/4 xl:w-1/2 py-6 px-5 bg-white rounded-md">
           <h2 className="text-xl font-semibold mb-5">People</h2>

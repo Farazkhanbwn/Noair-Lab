@@ -12,6 +12,7 @@ import CommunityModalLayout from '../community.layout';
 const CreateCommunityModal: FC<CreateCommunityModalProps> = ({
   isOpen,
   onClose,
+  onBackButton,
   onNextButton,
 }) => {
   const methods = useForm<CommunityFormData>();
@@ -28,6 +29,7 @@ const CreateCommunityModal: FC<CreateCommunityModalProps> = ({
       title="Tell us about your community"
       description="A name and description help people understand what your community is all about."
       onNext={onNextButton}
+      onBack={onBackButton}
     >
       <FormProvider {...methods}>
         <ProgressSteps

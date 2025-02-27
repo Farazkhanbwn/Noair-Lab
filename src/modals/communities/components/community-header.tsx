@@ -17,9 +17,7 @@ const CommunityModalHeader: FC<CommunityModalHeaderProps> = ({
   classNames,
 }) => {
   return (
-    <div
-      className={`flex items-center justify-between p-3 sm:p-5 pb-0 ${classNames}`}
-    >
+    <div className={`flex items-center justify-between p-3 pb-0 ${classNames}`}>
       <div>
         {title && <h2 className="heading-medium font-bold">{title}</h2>}
         {description && <p className="text-description">{description}</p>}
