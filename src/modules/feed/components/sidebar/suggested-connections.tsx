@@ -19,7 +19,7 @@ const SuggestedConnections = () => {
       </div>
 
       <div className="flex-center py-3">
-        <Link href="#" className="text-black text-sm">
+        <Link href="/suggested-users" className="text-black text-sm">
           SEE ALL
         </Link>
       </div>

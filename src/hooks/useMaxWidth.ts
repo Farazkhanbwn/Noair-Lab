@@ -11,6 +11,7 @@ const useMaxWidth = (id: string) => {
       // Apply new styles
       element.style.maxWidth = '100%';
       element.style.marginLeft = '0px';
+      element.style.marginTop = '0px';
 
       return () => {
         // Restore previous styles on unmount

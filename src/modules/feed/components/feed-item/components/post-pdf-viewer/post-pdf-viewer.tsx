@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
 import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import SwiperSlider from '@/components/common/swiper-slider/swiper-slider';
@@ -8,6 +8,7 @@ import { PdfViewerControls } from '@/modals/feed/pdf-preview-modal/pdf-viewer-co
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
+
 pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
 
 const options = {
@@ -104,7 +105,7 @@ const PostPdfViewer: FC<PostPdfViewerProps> = ({
       ref={contentRef}
       onMouseMove={handleMouseMove}
       // className={`w-full bg-pure-white max-w-[600px] min-h-[100vh] h-full scrollbar-thin mx-auto pr-[10px] ${className}`}
-      className={`w-full bg-pure-white max-w-[600px] h-full scrollbar-thin pr-[10px] ${className}`}
+      className={`w-full bg-pure-white max-w-[600px] flex-center h-full scrollbar-thin pr-[10px] ${className}`}
     >
       <div
         className={`absolute top-0 left-0  py-2 px-3 z-[10] bg-pure-black right-0 text-pure-white transform

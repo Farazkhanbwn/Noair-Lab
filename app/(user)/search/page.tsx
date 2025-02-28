@@ -16,6 +16,7 @@ const ALL_PAGES: { [key: string]: JSX.Element } = {
   community: <SuggestedCommunities />,
   insights: (
     <InsightsPage
+      className="overflow-hidden"
       breakpoints={{
         200: { slidesPerView: 1 },
         525: { slidesPerView: 2 },

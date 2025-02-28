@@ -6,16 +6,22 @@ import AuthForm from '@/components/AuthForm';
 import AuthLayout from '@/components/AuthLayout';
 import FormInput from '@/components/common/form-input';
 import CustomButton from '@/components/common/custom-button/custom-button';
+import { useRouter } from 'next/navigation';
 
 type ForgotPasswordForm = {
   email: string;
 };
 
 const ForgotPasswordPage = () => {
+  const router = useRouter();
   const methods = useForm<ForgotPasswordForm>();
 
   const onSubmit = (data: ForgotPasswordForm) => {
     console.log(data);
+  };
+
+  const handleClick = () => {
+    router.push('/verify-code');
   };
 
   return (
@@ -37,7 +43,9 @@ const ForgotPasswordPage = () => {
               placeholder="user@gmail.com"
               className="max-w-[320px]"
             />
-            <CustomButton type="submit">Submit</CustomButton>
+            <CustomButton onClick={handleClick} type="submit">
+              Submit
+            </CustomButton>
           </form>
         </FormProvider>
       </AuthForm>

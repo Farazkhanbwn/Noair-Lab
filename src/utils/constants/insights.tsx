@@ -530,7 +530,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
         },
         {
           viewAllLink: true,
-          viewAllTitle: 'View All Scientific News',
+          viewAllTitle: 'View All Engineering News',
           viewAllURL: '/insights/scientific-news',
         },
       ],
@@ -788,7 +788,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
         },
         {
           viewAllLink: true,
-          viewAllTitle: 'View All Scientific News',
+          viewAllTitle: 'View All Law & Regulation News',
           viewAllURL: '/insights/scientific-news',
         },
       ],

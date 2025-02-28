@@ -171,7 +171,7 @@ const AddVideoPost: FC<AddVideoPostProps> = ({ onUpload, className }) => {
         <p className="text-sm text-red-500 mt-2">{error}</p>
       </div>
 
-      <p className="text-xs text-gray-500 mt-4">
+      <p className="text-description mt-4">
         Supported Formats: MP4, MOV | Max Length: 15 mins | Resolution: 1280×720
         (Min) – 1920×1080 (Max)
       </p>

@@ -301,6 +301,11 @@ const FeedItem: FC = () => {
         onClose={() => setPostType(null)}
       />
 
+      <CreatePostModal
+        isOpen={postType === 'newsInsights'}
+        onClose={() => setPostType(null)}
+      />
+
       {/* Scientific Document Modal */}
       <ScientificDocumentModal
         isOpen={postType === 'scientific-document'}

@@ -7,13 +7,14 @@ import { SwiperSliderBreakPoints } from '@/types';
 
 type InsightsPageProps = {
   breakpoints?: SwiperSliderBreakPoints;
+  className?: string;
 };
 
-function InsightsPage({ breakpoints }: InsightsPageProps) {
+function InsightsPage({ breakpoints, className }: InsightsPageProps) {
   const [activeTab, setActiveTab] = useState(insightsCategories[0].name);
 
   return (
-    <div className="w-full flex-1 flex flex-col h-screen scroll-container overflow-y-auto min-h-0 p-3 md:p-7">
+    <div className={`w-full flex-1 flex flex-col p-3 md:p-7 ${className}`}>
       <div className="w-full justify-between md:justify-around flex row ">
         <InsightsCatgories
           categories={insightsCategories}

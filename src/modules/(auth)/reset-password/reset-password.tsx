@@ -7,16 +7,19 @@ import AuthLayout from '@/components/AuthLayout';
 import AuthForm from '@/components/AuthForm';
 import FormInput from '@/components/common/form-input';
 import CustomButton from '@/components/common/custom-button/custom-button';
+import { useRouter } from 'next/navigation';
 
 type ResetForm = {
   password: string;
   confirmPassword: string;
 };
 const ResetPasswordPage = () => {
+  const router = useRouter();
   const methods = useForm<ResetForm>();
 
   const onSubmit = (data: ResetForm) => {
     console.log(data);
+    router.push('/login');
   };
 
   return (

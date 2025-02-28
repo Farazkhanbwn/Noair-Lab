@@ -44,7 +44,7 @@ const defaultTheme: SelectTheme = {
     bg: 'bg-dark-grey',
     text: 'text-pure-white',
     border: 'border-stroke-grey',
-    hover: 'hover:bg-gray-700',
+    hover: 'hover:bg-dark-grey',
     focus: 'focus:border-primary-color',
   },
   content: {
@@ -54,7 +54,7 @@ const defaultTheme: SelectTheme = {
     className: 'z-[1000]',
   },
   item: {
-    hover: 'hover:bg-gray-700/50',
+    hover: 'hover:!bg-secondary-grey-500',
     focus: 'focus:bg-gray-700/50',
     text: 'text-stroke-grey focus:text-pure-white',
   },

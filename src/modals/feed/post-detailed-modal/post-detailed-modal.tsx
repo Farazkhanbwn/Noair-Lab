@@ -13,6 +13,7 @@ import CrossIcon from '@/components/icons/cross-icon';
 import CheckIcon from '@/components/icons/user/feed/check-icon';
 import PostImageDisplay from './components/post-image-display';
 import SwiperSlider from '@/components/common/swiper-slider/swiper-slider';
+import useWindowDimensions from '@/hooks/use-window-dimenstion';
 
 interface PostDetailedModalProps extends DialogProps {
   classNames?: string;
@@ -31,13 +32,16 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
   initialShares = 25,
   images = ['/images/post-background.png', '/images/post-background.png'],
 }) => {
+  const { width, height } = useWindowDimensions();
   const [likes, setLikes] = useState(initialLikes);
   const [comments, setComments] = useState(initialComments);
   const [shares, setShares] = useState(initialShares);
+  const dynamicHeight = height ? height - 150 : 500;
+  const sideBarHeight = dynamicHeight - 100;
 
   const modalStyles = {
     modal: {
-      maxHeight: '500px',
+      maxHeight: `${dynamicHeight}px`,
       height: '100%',
       borderRadius: '1rem',
       maxWidth: '1200px',
@@ -56,11 +60,13 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
       showCloseIcon={false}
     >
       <div className={`bg-pure-white row h-full w-full ${classNames}`}>
-        <div className="flex flex-col md:flex-row h-full max-h-[500px]">
+        <div
+          className={`flex flex-col md:flex-row h-full max-h-[${dynamicHeight}px]`}
+        >
           {/* Left side - Image */}
           <PostImageDisplay
             images={images}
-            className="bg-[#1b1f23] flex-1 max-h-[500px] max-w-[100%] md:max-w-[50%] h-full"
+            className={`bg-[#1b1f23] !flex-1 max-h-[${dynamicHeight}px] max-w-[100%] md:max-w-[50%] h-full`}
           />
 
           {/* Right side - Content */}
@@ -93,7 +99,9 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
               </div>
             </div>
 
-            <div className="flex-1 max-h-[150px] md:max-h-[500px] h-full overflow-y-scroll">
+            <div
+              className={`flex-1 bg-pure-white md:max-h-[${dynamicHeight}px] h-full overflow-y-scroll`}
+            >
               <div className="space-y-2 heading-tertiary">
                 {/* Post content */}
                 <div className="px-4">
@@ -170,6 +178,28 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
                   </div>
 
                   <SearchBar className="px-0 py-3" />
+
+                  {/* Comments */}
+                  <Comment
+                    name="Elmer Erdman"
+                    role="Medical Researcher"
+                    comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
+                    time="1h"
+                    className="px-0 py-2"
+                    followers={1200}
+                    mutual={2}
+                  />
+
+                  {/* Comments */}
+                  <Comment
+                    name="Elmer Erdman"
+                    role="Medical Researcher"
+                    comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
+                    time="1h"
+                    className="px-0 py-2"
+                    followers={1200}
+                    mutual={2}
+                  />
 
                   {/* Comments */}
                   <Comment

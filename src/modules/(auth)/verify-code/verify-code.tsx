@@ -7,6 +7,7 @@ import AuthLayout from '@/components/AuthLayout';
 import AuthForm from '@/components/AuthForm';
 import FormInput from '@/components/common/form-input';
 import CustomButton from '@/components/common/custom-button/custom-button';
+import { useRouter } from 'next/navigation';
 
 type VerifyForm = {
   digit0: string;
@@ -18,11 +19,13 @@ type VerifyForm = {
 };
 
 const VerifyCodePage = () => {
+  const router = useRouter();
   const [error] = useState('');
   const methods = useForm<VerifyForm>();
 
   const handleSubmit = async (data: VerifyForm) => {
     console.log('🚀 ~ handleSubmit ~ data:', data);
+    router.push('/reset-password');
   };
 
   return (
@@ -33,6 +36,7 @@ const VerifyCodePage = () => {
         description="Please enter the code below to verify your account."
         helperText="Didn’t receive the code?"
         linkLabel="Resend Code."
+        link="/verify-code"
         showHelperTextAfterChildren={true}
       >
         <FormProvider {...methods}>

@@ -1,6 +1,4 @@
 'use client';
-import useMaxWidth from '@/hooks/useMaxWidth';
-import useScrollingHidden from '@/hooks/useScrollingHidden';
 import { insightsData, previewRichContent } from '@/utils/constants/insights';
 import Link from 'next/link';
 import { NewsCard } from '../news-section/NewsCard';
@@ -14,24 +12,24 @@ import CommentModal from '@/modals/comment-modal/comments';
 import { useState } from 'react';
 
 function DetailedView() {
-  useScrollingHidden();
-  useMaxWidth('main-container');
+  // useScrollingHidden();
+  // useMaxWidth('main-container');
 
   const [likeModal, setLikeModal] = useState(false);
   const [shareModal, setShareModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
   return (
     <>
-      <div className="w-full flex  bg-white flex-col h-screen overflow-y-auto min-h-0 p-1 xs:p-3 md:p-7">
-        <section className="relative row py-7 mb-20">
-          <div className="flex justify-between w-full mb-5">
+      <div className="w-full flex flex-col min-h-0 p-1 xs:p-3 md:p-7">
+        <section className="relative py-7 mb-20">
+          <div className="flex justify-between w-full px-5 mb-5">
             <h2 className="text-2xl md:text-[2rem] font-bold">
               {insightsData?.['Science']?.[0].section}
             </h2>
           </div>
 
           <div className="w-full flex flex-col lg:flex-row gap-24 justify-between">
-            <div className="rounded-2xl xs:rounded-xl flex-1  bg-light-grey ">
+            <div className="rounded-2xl xs:rounded-xl flex-1 bg-light-grey ">
               <div className="gap-3 flex flex-col ">
                 <h2 className="text-[1.75rem] font-bold px-5 pt-5 pb-2">
                   {insightsData?.['Science']?.[0].items?.[0]?.title}
@@ -89,7 +87,7 @@ function DetailedView() {
                     className="group relative h-[233px] overflow-hidden rounded-sm border-none shadow-md w-full transition-all duration-300"
                   >
                     <Link href={`/insights/detailed-view/${insightItem.id}`}>
-                      <NewsCard item={insightItem} />
+                      <NewsCard item={insightItem} clampDescription />
                     </Link>
                   </div>
                 ))}

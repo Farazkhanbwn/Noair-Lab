@@ -5,9 +5,10 @@ import Image from 'next/image';
 
 interface NewsCardProps {
   item: NewsItem;
+  clampDescription?: boolean;
 }
 
-export function NewsCard({ item }: NewsCardProps) {
+export function NewsCard({ item, clampDescription }: NewsCardProps) {
   return (
     <>
       {item.imageUrl ? (
@@ -46,7 +47,11 @@ export function NewsCard({ item }: NewsCardProps) {
             <h3 className="text-base font-semibold text-charcol w-4/5">
               {item.title}
             </h3>
-            <p className="text-sm text-black  mt-3">{item.description}</p>
+            <p
+              className={`text-sm text-black  mt-3 ${clampDescription ? 'line-clamp-4' : ''}`}
+            >
+              {item.description}
+            </p>
           </div>
         </div>
       )}

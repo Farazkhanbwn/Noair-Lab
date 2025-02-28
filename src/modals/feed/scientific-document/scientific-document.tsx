@@ -25,7 +25,10 @@ const ScientificDocumentModal: FC<ScientificDocumentModal> = ({
   return (
     <ScientificDocumentModalLayout
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={() => {
+        onClose();
+        setSelectedType(PostType.Text);
+      }}
       title={HeadingText[selectedType]}
       selectedType={selectedType}
       handleSelectType={setSelectedType}

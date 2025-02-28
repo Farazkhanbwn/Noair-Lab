@@ -65,10 +65,10 @@ export default function PricingPage() {
 
   return (
     <>
-      <div className="w-full  mx-auto mb-32">
+      <div className="w-full mx-auto mb-32">
         <AuthHeader />
         <div
-          className={`h-[876px] min-h-[40%] max-h-[50%] items-center bg-black absolute  w-full flex bg-right-bottom md:bg-[position:right] bg-[length:10rem] sm:bg-[length:20rem] md:bg-[length:30rem] lg:bg-[length:40rem]  mx-auto}`}
+          className={`min-h-[70%] 2xl:min-h-[50%] max-h-[50%] items-center bg-black absolute  w-full flex bg-right-bottom md:bg-[position:right] bg-[length:10rem] sm:bg-[length:20rem] md:bg-[length:30rem] lg:bg-[length:40rem]  mx-auto}`}
           style={{
             backgroundImage: 'url(/images/earth-bg.png)',
             backgroundRepeat: 'no-repeat',

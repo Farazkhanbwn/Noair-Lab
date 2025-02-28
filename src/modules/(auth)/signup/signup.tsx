@@ -75,9 +75,9 @@ const CreateAccount = () => {
 
               <div className="flex items-center ml-1">
                 <CustomCheckbox />
-                <p className="w-full text-description text-pure-white ml-4">
+                {/* <p className="w-full text-description text-pure-white ml-4">
                   I agree to the Terms and conditions.
-                </p>
+                </p> */}
               </div>
 
               <CustomButton

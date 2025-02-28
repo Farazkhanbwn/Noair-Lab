@@ -9,9 +9,12 @@ import { Avatar } from '@/components/ui/avatar';
 import useScrollingHidden from '@/hooks/useScrollingHidden';
 import { useSearchParams } from 'next/navigation';
 import { COMMUNITY_CONTACTS } from '../communities.contants';
+import useMaxWidth from '@/hooks/useMaxWidth';
 
 const CommunityGroupMessagingPage = () => {
   useScrollingHidden();
+  useMaxWidth('main-container');
+
   const searchParams = useSearchParams();
   const communityId = searchParams.get('community');
 
@@ -59,10 +62,11 @@ const CommunityGroupMessagingPage = () => {
   };
 
   return (
-    <div className="flex w-full h-screen gap-4">
+    <div className="flex w-full h-screen gap-4 row mt-[74px]">
       <CommunityMessages
         onhandleCommunitySelect={handleContactSelect}
         isChatOpen={isChatOpen}
+        classNames="mt-5 md:w-1/3 lg:w-3/12"
       />
       <div
         className={`${

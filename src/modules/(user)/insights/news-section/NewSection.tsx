@@ -37,7 +37,7 @@ export default function NewsSection({
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="w-3/4 relative row">
+    <section className="w-full relative">
       <div className="flex justify-between w-full mb-5">
         <h2 className="text-lg md:text-[1.75rem] font-bold">{title}</h2>
 
@@ -91,7 +91,7 @@ export default function NewsSection({
                   <div className="flex  h-full flex-col justify-center items-center bg-gray-100 px-4 pt-5 pb-6">
                     <Link
                       href={`/insights/${activeTab.toLowerCase()}`}
-                      className="text-black underline text-sm"
+                      className="text-black font-normal underline text-sm"
                     >
                       {newsItem.viewAllTitle}
                     </Link>

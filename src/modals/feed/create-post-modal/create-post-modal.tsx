@@ -22,7 +22,10 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
   return (
     <CreatePostModalLayout
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={() => {
+        onClose();
+        setSelectedType(PostType.Text);
+      }}
       title={HeadingText[selectedType]}
       selectedType={selectedType}
       handleSelectType={setSelectedType}

@@ -64,7 +64,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ hideHistory }) => {
           </div>
           <hr className="border-t-2 border-light-grey" />
           <div className="flex-center uppercase py-3">
-            <Link href="#" className="text-black text-sm">
+            <Link href="/profile" className="text-black text-sm">
               View Profile
             </Link>
           </div>

@@ -82,7 +82,7 @@ const LoginPage = () => {
         description="Welcome back! You've successfully logged in."
         onSubmit={() => {
           setIsLoginSuccessModal(false);
-          router.push('/feed');
+          router.push('/suggested-users');
         }}
       />
     </>

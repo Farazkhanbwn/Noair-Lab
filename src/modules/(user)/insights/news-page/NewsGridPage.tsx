@@ -1,7 +1,5 @@
 'use client';
 import { useCallback, useState } from 'react';
-import useScrollingHidden from '@/hooks/useScrollingHidden';
-import useMaxWidth from '@/hooks/useMaxWidth';
 import { insightsCategories, insightsData } from '@/utils/constants/insights';
 import InsightsCatgories from '../news-section/InsightsCatgories';
 import { usePathname } from 'next/navigation';
@@ -34,8 +32,8 @@ export function getSectionTitleFromSlug(
 }
 
 function NewsGridPage() {
-  useScrollingHidden();
-  useMaxWidth('main-container');
+  // useScrollingHidden();
+  // useMaxWidth('main-container');
   const pathname = usePathname();
   const slug = pathname.split('/').pop(); // Get "engineer-news"
 
@@ -70,7 +68,7 @@ function NewsGridPage() {
   );
 
   return (
-    <div className="w-full flex flex-col h-screen overflow-y-auto min-h-0 p-3 md:p-7">
+    <div className="w-full flex flex-col min-h-0 p-3 md:p-7">
       <div className="w-full justify-between md:justify-around flex row">
         <InsightsCatgories
           categories={insightsCategories}

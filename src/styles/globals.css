@@ -12,6 +12,7 @@
   --stroke-grey: #bcbcbc;
   --ghost-white: #f3f3f3;
   --light-grey: #f9f9f9;
+  --charcol: #262626;
 }
 
 .dark {
@@ -312,4 +313,16 @@ input[type='number'] {
   max-width: fit-content !important;
   max-height: fit-content !important;
   width: 100% !important;
+}
+
+.editor-shell strong {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.editor-shell p,
+span {
+  font-size: 16px;
+  color: var(--charcol);
+  font-weight: 400;
 }

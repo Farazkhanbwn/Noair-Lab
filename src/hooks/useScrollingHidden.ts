@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 function useScrollingHidden() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window === 'undefined') return; // Prevent issues in SSR
     const originalOverflow = document.body.style.overflow; // Store existing style
 

@@ -65,7 +65,7 @@ export default function MessagesUI() {
 
   return (
     <>
-      <div className="flex w-full h-screen bg-light-grey">
+      <div className="flex w-full h-screen mt-[74px] bg-light-grey row">
         <div
           className={`w-full md:w-1/3 lg:w-3/12 shadow-md bg-white border-r ${
             isChatOpen ? 'hidden md:flex' : 'flex'
