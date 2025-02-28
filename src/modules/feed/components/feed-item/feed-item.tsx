@@ -14,6 +14,7 @@ import VideoPreviewModal from '@/modals/feed/video-preview-modal/video-preview-m
 import ArticlePostItem from './components/article-post-item/article-post-item';
 import PostMedia from './components/post-media/post-media';
 import ScientificDocumentModal from '@/modals/feed/scientific-document/scientific-document';
+import NewsInsightModal from '@/modals/feed/news-insights/news-insights';
 
 const images = [
   '/images/post-background.png',
@@ -348,6 +349,11 @@ const FeedItem: FC = () => {
         videoSrc="/videos/natural-beauty.mp4"
         className="w-full h-full"
       />
+
+      {/* <NewsInsightModal
+        open={commentModal}
+        onCloseModal={() => setCommentModal(false)}
+      /> */}
 
       {/* <PdfPreviewModal
         open={isPdfPreview}

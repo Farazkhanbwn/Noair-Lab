@@ -65,7 +65,7 @@ export default function MessagesUI() {
 
   return (
     <>
-      <div className="flex w-full h-screen mt-[74px] bg-light-grey row">
+      <div className={`flex w-full h-[calc(100vh-150px)] max bg-light-grey`}>
         <div
           className={`w-full md:w-1/3 lg:w-3/12 shadow-md bg-white border-r ${
             isChatOpen ? 'hidden md:flex' : 'flex'
@@ -93,7 +93,7 @@ export default function MessagesUI() {
         <div
           className={`${
             isChatOpen ? 'flex' : 'hidden md:flex'
-          } justify-between flex-col flex-1 w-8/12 m-5 bg-white rounded-2xl`}
+          } justify-between flex-col h-full w-8/12 m-5 bg-white rounded-2xl`}
         >
           {selectedContact ? (
             <>

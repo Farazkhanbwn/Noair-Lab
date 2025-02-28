@@ -23,7 +23,7 @@ export const MessageInput = ({
 }: MessageInputProps) => {
   console.log({ onEmojiSelect, onFileUpload });
   return (
-    <div className="px-4 pb-4 w-full flex-none justify-center mb-16">
+    <div className="px-4 pb-4 w-full flex-none justify-center">
       <div className="flex w-full justify-center space-x-5">
         <div className="w-full xs:flex xs:flex-col lg:w-2/3 xl:w-1/2 px-4 pt-3 border border-stroke-grey justify-between rounded-3xl lg:flex lg:flex-row lg:items-center relative">
           <div className="flex w-full">

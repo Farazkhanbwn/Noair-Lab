@@ -5,8 +5,7 @@ import useScrollingHidden from '@/hooks/useScrollingHidden';
 import useMaxWidth from '@/hooks/useMaxWidth';
 
 export default function MessagesPage() {
-  useScrollingHidden();
-  useMaxWidth('main-container');
+  // useScrollingHidden();
 
   return <MessagesUI />;
 }

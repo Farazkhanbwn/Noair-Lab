@@ -11,7 +11,7 @@ interface MessageListProps {
 export const MessageList = ({ messages }: MessageListProps) => {
   let lastMessageDateLabel: string | null = null;
   return (
-    <div className="flex flex-col gap-4 overflow-y-auto px-4 pt-4  space-y-4">
+    <div className="flex flex-col overflow-y-scroll h-full gap-4 px-4 pt-4  space-y-4">
       {messages.map(message => {
         const currentDateLabel = new Date(message.timestamp)
           .toISOString()
