@@ -48,6 +48,7 @@ export interface ProfilePostProps {
   name: string;
   role: string;
   time: string;
+  isPinned: boolean;
   content: string;
   image?: string;
   likes: number;

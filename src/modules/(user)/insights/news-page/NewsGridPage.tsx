@@ -2,11 +2,13 @@
 import { useCallback, useState } from 'react';
 import { insightsCategories, insightsData } from '@/utils/constants/insights';
 import InsightsCatgories from '../news-section/InsightsCatgories';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { InsightsDatatem } from '../news-section/news.types';
 import { NewsCard } from '../news-section/NewsCard';
 import RelatedNews from './RelatedNews';
 import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const validSections = ['news', 'insights', 'acamedic-publicaiton', 'patents'];
 export function getSectionTitleFromSlug(
@@ -35,6 +37,7 @@ function NewsGridPage() {
   // useScrollingHidden();
   // useMaxWidth('main-container');
   const pathname = usePathname();
+  const router = useRouter();
   const slug = pathname.split('/').pop(); // Get "engineer-news"
 
   const { sectionTitle, foundedSection } = getSectionTitleFromSlug(
@@ -69,6 +72,15 @@ function NewsGridPage() {
 
   return (
     <div className="w-full flex flex-col min-h-0 p-3 md:p-7">
+      <div>
+        <Button
+          onClick={() => router.back()}
+          className="flex items-center px-2 py-2 text-sm font-medium rounded-sm bg-ghost-white hover:bg-secondary-grey transition"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back
+        </Button>
+      </div>
       <div className="w-full justify-between md:justify-around flex row">
         <InsightsCatgories
           categories={insightsCategories}

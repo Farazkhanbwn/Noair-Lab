@@ -20,7 +20,7 @@ const TrendingInsights: FC<TrendingInsightsProps> = ({ className }) => {
         {insights.map(insight => (
           <div key={insight.id} className="flex items-start gap-3 px-3">
             <PrimaryImage
-              src={'/images/chicago-uni.png'}
+              src={insight.imageURL}
               alt="insights"
               width={40}
               height={40}
@@ -31,9 +31,11 @@ const TrendingInsights: FC<TrendingInsightsProps> = ({ className }) => {
                 <h3 className="heading-tertiary font-medium">
                   {insight.title}
                 </h3>
-                <div className="flex items-center gap-1 text-description text-secondary-grey">
-                  <span>{insight.views}</span>
-                  <span>Views</span>
+                <div className="flex items-center text-xs gap-1 text-description text-secondary-grey">
+                  <span className="text-xs text-secondary-grey">
+                    {insight.views}
+                  </span>
+                  <span className="text-xs text-secondary-grey">Views</span>
                 </div>
               </div>
               <p className="text-description text-dark-grey">

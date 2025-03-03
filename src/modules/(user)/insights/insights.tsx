@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import NewsSection from './news-section/NewSection';
 import InsightsCatgories from './news-section/InsightsCatgories';
 import { insightsCategories, insightsData } from '@/utils/constants/insights';
@@ -11,11 +12,23 @@ type InsightsPageProps = {
 };
 
 function InsightsPage({ breakpoints, className }: InsightsPageProps) {
-  const [activeTab, setActiveTab] = useState(insightsCategories[0].name);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Get active tab from URL or use default
+  const defaultTab = insightsCategories[0].name;
+  const initialTab = searchParams.get('tab') || defaultTab;
+  const [activeTab, setActiveTab] = useState(initialTab);
+
+  useEffect(() => {
+    const currentParams = new URLSearchParams(window.location.search);
+    currentParams.set('tab', activeTab);
+    router.replace(`?${currentParams.toString()}`, { scroll: false });
+  }, [activeTab, router]);
 
   return (
     <div className={`w-full flex-1 flex flex-col p-3 md:p-7 ${className}`}>
-      <div className="w-full justify-between md:justify-around flex row ">
+      <div className="w-full justify-between md:justify-around flex row">
         <InsightsCatgories
           categories={insightsCategories}
           setActiveTab={setActiveTab}
@@ -24,18 +37,16 @@ function InsightsPage({ breakpoints, className }: InsightsPageProps) {
       </div>
 
       <div className="flex flex-col mt-5 mb-10 md:mb-20">
-        {insightsData?.[activeTab]?.map(insightItem => {
-          return (
-            <NewsSection
-              key={insightItem.id}
-              title={`${insightItem.section}`}
-              news={insightItem?.items}
-              slideId={insightItem.id}
-              activeTab={`${insightItem.id}`}
-              breakpoints={breakpoints}
-            />
-          );
-        })}
+        {insightsData?.[activeTab]?.map(insightItem => (
+          <NewsSection
+            key={insightItem.id}
+            title={insightItem.section}
+            news={insightItem?.items}
+            slideId={insightItem.id}
+            activeTab={`${insightItem.id}`}
+            breakpoints={breakpoints}
+          />
+        ))}
       </div>
     </div>
   );

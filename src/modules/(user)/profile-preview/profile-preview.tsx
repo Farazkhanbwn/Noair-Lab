@@ -27,7 +27,7 @@ const secondaryButtonClasses =
 
 const ProfilePreviewPage = () => {
   return (
-    <section className="max-w-4xl px-0 sm:px-4 mx-auto bg-light-grey rounded-lg overflow-hidden mt-[5.2rem] md:mt-[5.8rem]">
+    <section className="max-w-4xl px-0 sm:px-4 mx-auto bg-light-grey rounded-lg overflow-hidden mt-[1rem] md:mt-[1.2rem]">
       <ProfileBanner bannerUrl={'/images/profile-background.png'}>
         <div className="flex flex-col px-4">
           {/* profile with buttons */}

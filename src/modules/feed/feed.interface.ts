@@ -15,6 +15,7 @@ export interface ForumItemProps {
   name: string;
   desc: string;
   views: string;
+  imageURL?: string;
 }
 
 export interface FeedPostProps {

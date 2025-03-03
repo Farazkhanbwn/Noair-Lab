@@ -60,7 +60,10 @@ const JoinedCommunities: FC<JoinedCommunitiesProps> = ({
       </div>
       <hr className="border-t-2 mt-3 border-light-grey" />
       <div className="px-4 py-2 text-center">
-        <Link href="#" className="heading-tertiary text-pure-black">
+        <Link
+          href="/communities/joined-communities"
+          className="heading-tertiary text-pure-black"
+        >
           SEE ALL
         </Link>
       </div>

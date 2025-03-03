@@ -64,6 +64,7 @@ export function ContentTypeDropdown({
               className="cursor-pointer"
               onClick={() => handleSelect(item.value)}
             >
+              {/* <item.icon /> */}
               <span>{item.label}</span>
             </DropdownMenuItem>
           );

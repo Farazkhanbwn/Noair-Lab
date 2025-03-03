@@ -10,7 +10,7 @@ const SuggestedConnections = () => {
       classNames="text-pure-black bg-pure-white rounded-[20px]"
     >
       <div className="flex flex-col gap-2 mt-1">
-        {Array.from({ length: 4 }).map((_, index) => (
+        {Array.from({ length: 2 }).map((_, index) => (
           <React.Fragment key={index}>
             <ConnectionItem />
             <hr className="border-light-grey" />

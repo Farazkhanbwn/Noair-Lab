@@ -2,10 +2,14 @@ import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import Comment from '@/components/dashboard/components/comment/comment';
 import SearchBar from '@/modules/feed/components/feed-item/search-bar';
-import React from 'react';
+import React, { FC } from 'react';
 import ProfilePost from './post-item';
 
-const UserPost = () => {
+interface UserPostProps {
+  isPinned: boolean;
+}
+
+const UserPost: FC<UserPostProps> = ({ isPinned }) => {
   return (
     <div className="bg-pure-white rounded-[20px]">
       <ProfilePost
@@ -19,6 +23,7 @@ const UserPost = () => {
         shares={2}
         userImage="/images/feed-profile.png"
         followers={1.2}
+        isPinned={isPinned}
         mutual={2}
         onOpenLikesModal={() => ''}
         onOpenCommentsModal={() => ''}

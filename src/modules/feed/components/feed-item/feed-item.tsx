@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import AddPost from './add-post';
 import FeedPost from './feed-post';
 import CommentModal from '@/modals/comment-modal/comments';
@@ -14,7 +14,6 @@ import VideoPreviewModal from '@/modals/feed/video-preview-modal/video-preview-m
 import ArticlePostItem from './components/article-post-item/article-post-item';
 import PostMedia from './components/post-media/post-media';
 import ScientificDocumentModal from '@/modals/feed/scientific-document/scientific-document';
-import NewsInsightModal from '@/modals/feed/news-insights/news-insights';
 
 const images = [
   '/images/post-background.png',
@@ -60,8 +59,8 @@ const FeedItem: FC = () => {
 
         {/* Comments */}
         <Comment
-          name="Elmer Erdman"
-          role="Medical Researcher"
+          name="Elmer Erdman, PhD"
+          role="Research Faculty at Duke University"
           comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
           time="1h"
           followers={1200}
@@ -69,7 +68,7 @@ const FeedItem: FC = () => {
         />
 
         <Comment
-          name="Elmer Erdman"
+          name="Elmer Erdman, PhD"
           role="Medical Researcher"
           comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
           time="1h"

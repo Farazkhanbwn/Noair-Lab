@@ -11,7 +11,7 @@ import CommunityStats from '../components/community-stats';
 import UserApprovalCard from '../components/user-approval-card';
 import DiscussionSection from '../components/discussion-section';
 import DiscussionCard from '../components/discussion-card';
-import { SAMPLE_DISCUSSIONS } from '../communities.contants';
+import { MY_COMMUNITIES, SAMPLE_DISCUSSIONS } from '../communities.contants';
 import MyCommunities from '../components/my-communities-card/my-communities';
 import CommunityMessages from '../group-messaging/components/community-messages';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -66,15 +66,16 @@ const CommunityDetailPage = () => {
   return (
     <>
       <div className="p-4 flex flex-col md:flex-row gap-4 w-full">
-        <aside className="w-full md:max-w-72 flex flex-col sm:flex-row md:flex-col gap-4">
+        <aside className="w-full md:max-w-[280px] lg:max-w-[330px] flex flex-col sm:flex-row md:flex-col gap-4">
           <MyCommunities
             title="Your Communities"
-            classNames="rounded-md w-full md:max-w-72"
+            communities={MY_COMMUNITIES}
+            classNames="rounded-md w-full"
             selectedCommunity={communityName}
             onCreateCommunity={() => setCommunityModal('create')}
           />
           <CommunityMessages
-            classNames=" w-full md:max-w-72"
+            classNames=" w-full"
             isChatOpen={false}
             onhandleCommunitySelect={contact => {
               console.log('Community Selected');

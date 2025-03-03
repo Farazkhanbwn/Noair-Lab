@@ -1,3 +1,4 @@
+import { CommunityItem } from './communities.types';
 import { ICommunityCard } from './joined-communties/types/joined-community.type';
 
 export const COMMUNITY_DEMO_MESSAGES = [
@@ -58,7 +59,7 @@ export const COMMUNITY_CONTACTS = [
   },
 ];
 
-export const MY_COMMUNITIES = [
+export const MY_COMMUNITIES: CommunityItem[] = [
   {
     id: 1,
     name: 'Climate Laws',
@@ -81,7 +82,82 @@ export const MY_COMMUNITIES = [
   },
 ];
 
+export const MY_COMMUNITIES_ITEMS: CommunityItem[] = [
+  {
+    id: 1,
+    name: 'Climate Laws',
+    members: '1.2k members',
+    imageUrl:
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/communities.PNG-SBpKKPRdDBUAKPO7hmBYn118fmE2Os.png',
+  },
+  {
+    id: 2,
+    name: 'Biomimicry',
+    members: '1.2k members',
+    imageUrl:
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/communities.PNG-SBpKKPRdDBUAKPO7hmBYn118fmE2Os.png',
+  },
+  {
+    id: 3,
+    name: 'Waste-to-Energy',
+    members: '1.2k members',
+    imageUrl: '/images/trending-insights.png',
+  },
+
+  // {
+  //   id: 4,
+  //   name: 'Waste-to-Energy',
+  //   members: '1.2k members',
+  //   imageUrl: '/images/trending-insights.png',
+  // },
+];
+
 export const SAMPLE_DISCUSSIONS = {
+  pinned: [
+    {
+      id: 1,
+      title:
+        'Lorem ipsum dolor sit amet consectetur. Egestas a vel eros a augue ultricies ac.',
+      author: {
+        name: 'John Doe',
+        avatar: '/placeholder.svg?height=32&width=32',
+      },
+      updatedAt: new Date('2025-02-05'),
+      tags: ['research', 'authority'],
+      preview:
+        'Lorem ipsum dolor sit amet consectetur. Ut elit congue nulla facilisis tristie magna. Sit non purus lorem nec. At massa et.',
+    },
+    {
+      id: 2,
+      title:
+        'Lorem ipsum dolor sit amet consectetur. Egestas a vel eros a augue ultricies ac.',
+      author: {
+        name: 'John Doe',
+        avatar: '/placeholder.svg?height=32&width=32',
+      },
+      updatedAt: new Date('2025-02-05'),
+      tags: ['research', 'authority'],
+      imageUrl: '/images/ending-day.png',
+    },
+  ],
+  other: [
+    {
+      id: 3,
+      title:
+        'Lorem ipsum dolor sit amet consectetur. Egestas a vel eros a augue ultricies ac.',
+      author: {
+        name: 'John Doe',
+        avatar: '/placeholder.svg?height=32&width=32',
+      },
+      updatedAt: new Date('2025-02-05'),
+      tags: ['research', 'authority'],
+      preview:
+        'Lorem ipsum dolor sit amet consectetur. Ut elit congue nulla facilisis tristie magna. Sit non purus lorem nec. At massa et.',
+    },
+  ],
+};
+
+export const INTERESTING_DISCUSSIONS = {
   pinned: [
     {
       id: 1,

@@ -2,11 +2,11 @@ import { FC } from 'react';
 import PrimaryImage from '@/components/common/primary-image/primary-image';
 import { ForumItemProps } from '../../feed.interface';
 
-const ForumItem: FC<ForumItemProps> = ({ name, desc, views }) => (
+const ForumItem: FC<ForumItemProps> = ({ name, desc, views, imageURL }) => (
   <div className="p-3">
     <div className="flex gap-x-3">
       <PrimaryImage
-        src="/images/trending-insights.png"
+        src={imageURL || ''}
         alt="Connection"
         width={40}
         height={40}

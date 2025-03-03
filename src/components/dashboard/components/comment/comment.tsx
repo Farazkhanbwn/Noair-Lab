@@ -18,7 +18,7 @@ const Comment: FC<CommentProps> = ({
     <PrimaryImage
       width={32}
       height={32}
-      src="/Ellipse 24.svg"
+      src="/images/comment-profile-image.png"
       alt={name}
       className="rounded-full w-[32px] h-[32px]"
     />
@@ -26,12 +26,14 @@ const Comment: FC<CommentProps> = ({
       <h4 className="font-medium text-black heading-tertiary">{name}</h4>
       <p className="text-description text-secondary-grey">{role}</p>
       <div className="flex items-center text-description my-0.5 text-secondary-grey">
-        <span className="pr-2 border-r border-stroke-grey">
+        <span className="pr-2 text-secondary-grey text-xs border-r border-stroke-grey">
           {mutual} Mutual
         </span>
-        <span className="pl-2">{formatNumber(followers)} Followers</span>
+        <span className="pl-2 text-secondary-grey text-xs">
+          {formatNumber(followers)} Followers
+        </span>
       </div>
-      <p className="text-description">{comment}</p>
+      <p className="text-description text-xs text-dark-grey">{comment}</p>
       <div className="text-description font-medium text-secondary-grey mt-1 flex items-center gap-x-2">
         {time}
         <div className="flex items-center gap-x-1">

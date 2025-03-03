@@ -5,7 +5,7 @@ export const profileData = {
     specialization: 'Specialization in Climate Science',
     currentEmployment: 'Current Employment in Northern University',
     stats: [
-      { count: '05', label: 'Cosign', index: 0 },
+      { count: '05', label: 'Followers', index: 0 },
       { count: 12, label: 'Publications', index: 0 },
       { count: '02', label: 'Citations', index: 0 },
       { count: '02', label: 'Patents', index: 0 },

@@ -6,6 +6,7 @@ import { ProfilePostProps } from '../../../../modules/(user)/profile/profile.typ
 import CustomDropdown from './custom-dropdown';
 
 const ProfilePost: FC<ProfilePostProps> = ({
+  isPinned,
   name,
   role,
   content,
@@ -31,8 +32,16 @@ const ProfilePost: FC<ProfilePostProps> = ({
           followers={`${followers}k`}
           classNames="mb-4"
         />
-
-        <CustomDropdown />
+        {isPinned ? (
+          <CustomButton
+            styleType={CustomButtonTypes.SECONDARY}
+            className="heading-tertiary font-semibold rounded-[20px] px-3.5 py-1"
+          >
+            Follow
+          </CustomButton>
+        ) : (
+          <CustomDropdown />
+        )}
       </div>
       <p className="heading-tertiary">{content}</p>
     </div>

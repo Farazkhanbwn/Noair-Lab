@@ -11,6 +11,7 @@ import DiscussionPost from './components/discussion-post';
 import AnswerCard from './components/answer-card';
 import TextEditor from '@/components/common/text-editor/text-editor';
 import CreateCommunityModal from '@/modals/communities/create-community/create-community';
+import { MY_COMMUNITIES } from '../communities.contants';
 
 const DiscussionDetailPage = () => {
   const [editorContent, setEditorContent] = useState('');
@@ -21,6 +22,7 @@ const DiscussionDetailPage = () => {
       <aside className="w-full md:max-w-[330px] flex flex-row md:flex-col gap-4">
         <MyCommunities
           title="Your Communities"
+          communities={MY_COMMUNITIES}
           classNames="rounded-md w-full"
           selectedCommunity={''}
           onCreateCommunity={() => setIsCreateCommunity(true)}
