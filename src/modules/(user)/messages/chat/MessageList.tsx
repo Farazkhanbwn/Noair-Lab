@@ -26,8 +26,8 @@ export const MessageList = ({ messages }: MessageListProps) => {
           <React.Fragment key={message.id}>
             {showDateLabel ? (
               <div className="relative flex items-center justify-center my-6">
-                <div className="absolute w-3/4 h-[2px] border border-[#B0B0B0]"></div>
-                <div className="relative px-7 py-2 border border-[#B0B0B0] bg-[#FAFAFA] text-black text-[10px] rounded-[20px]">
+                <div className="absolute w-3/4 h-[2px] border border-gray-silver"></div>
+                <div className="relative px-7 py-2 border border-gray-silver bg-[#FAFAFA] text-black text-[10px] rounded-[20px]">
                   {moment(message.timestamp).format('DD MMM, Y')}
                 </div>
               </div>
@@ -50,11 +50,13 @@ export const MessageList = ({ messages }: MessageListProps) => {
                   <div
                     className={`rounded-2xl border flex flex-col gap-1 px-5 py-2 ${
                       message.isMe
-                        ? 'right border-[#0029FA] bg-blue-100 text-blue-900'
-                        : 'left border-[#B0B0B0] bg-gray-100'
+                        ? 'right border-primary bg-light-blue text-black'
+                        : 'left border-gray-silver bg-off-white'
                     }`}
                   >
-                    <p className="font-semibold">{message.sender.name}</p>
+                    <p className="font-semibold text-base">
+                      {message.sender.name}
+                    </p>
                     <p className="text-sm">{message.content}</p>
                     <p className="text-[0.625rem] text-right mt-2 mb-1">
                       {moment(message.timestamp).format('hh:mm A')}

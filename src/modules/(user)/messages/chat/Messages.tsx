@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 
 import { Avatar } from '@/components/ui/avatar';
-import { ArrowLeft, MoreHorizontal } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import DeleteModal from '@/components/common/delete-modal';
 import { Contact, Message } from '../types/message.type';
 import { ContactList } from './ContactList';
 import { MessageList } from './MessageList';
 import { MessageInput } from './MessageInput';
 import { useRouter } from 'next/navigation';
+import { ChatActions } from './ChatActions';
 
 export default function MessagesUI() {
   const [contacts, setContacts] = useState<Contact[]>([]);
@@ -65,11 +66,13 @@ export default function MessagesUI() {
 
   return (
     <>
-      <div className={`flex w-full h-[calc(100vh-150px)] max bg-light-grey`}>
+      <div
+        className={`flex relative w-full h-[calc(100vh-150px)] bg-light-grey`}
+      >
         <div
-          className={`w-full md:w-1/3 lg:w-3/12 shadow-md bg-white border-r ${
+          className={`justify-between flex-col h-full w-full md:w-1/3 lg:w-3/12 shadow-md bg-white border-r ${
             isChatOpen ? 'hidden md:flex' : 'flex'
-          } flex flex-col`}
+          } `}
         >
           <div className="p-4">
             <h1 className="text-3xl font-bold">Messages</h1>
@@ -87,13 +90,14 @@ export default function MessagesUI() {
 
               setIsDeleteModalOpen(true);
             }}
+            selectedContact={selectedContact}
           />
         </div>
 
         <div
           className={`${
             isChatOpen ? 'flex' : 'hidden md:flex'
-          } justify-between flex-col h-full w-8/12 m-5 bg-white rounded-2xl`}
+          } justify-between  flex-col h-full w-full md:w-8/12 mx-5 mt-5 bg-white rounded-2xl`}
         >
           {selectedContact ? (
             <>
@@ -113,7 +117,7 @@ export default function MessagesUI() {
                     {selectedContact.name}
                   </h2>
                 </div>
-                <MoreHorizontal className="h-6 w-6 cursor-pointer" />
+                <ChatActions onViewProfile={() => {}} onDelete={() => {}} />
               </div>
 
               <MessageList messages={messages} />
@@ -187,7 +191,7 @@ async function fetchContacts(): Promise<Contact[]> {
       time: '4:52 PM',
     },
     {
-      id: 1,
+      id: 5,
       name: 'Clinton Willms',
       lastMessage: 'Lorem ipsum dolor.',
       avatar:
@@ -195,7 +199,7 @@ async function fetchContacts(): Promise<Contact[]> {
       time: '4:52 PM',
     },
     {
-      id: 2,
+      id: 6,
       name: 'Timothy Ruecker',
       lastMessage: 'Lorem ipsum dolor.',
       avatar:
@@ -203,7 +207,7 @@ async function fetchContacts(): Promise<Contact[]> {
       time: '4:52 PM',
     },
     {
-      id: 1,
+      id: 7,
       name: 'Clinton Willms',
       lastMessage: 'Lorem ipsum dolor.',
       avatar:
@@ -211,7 +215,7 @@ async function fetchContacts(): Promise<Contact[]> {
       time: '4:52 PM',
     },
     {
-      id: 2,
+      id: 8,
       name: 'Timothy Ruecker',
       lastMessage: 'Lorem ipsum dolor.',
       avatar:
@@ -219,7 +223,7 @@ async function fetchContacts(): Promise<Contact[]> {
       time: '4:52 PM',
     },
     {
-      id: 1,
+      id: 9,
       name: 'Clinton Willms',
       lastMessage: 'Lorem ipsum dolor.',
       avatar:
@@ -227,7 +231,7 @@ async function fetchContacts(): Promise<Contact[]> {
       time: '4:52 PM',
     },
     {
-      id: 2,
+      id: 10,
       name: 'Timothy Ruecker',
       lastMessage: 'Lorem ipsum dolor.',
       avatar:
@@ -235,7 +239,7 @@ async function fetchContacts(): Promise<Contact[]> {
       time: '4:52 PM',
     },
     {
-      id: 3,
+      id: 11,
       name: 'Clinton Willms',
       lastMessage: 'Lorem ipsum dolor.',
       avatar:
@@ -244,7 +248,7 @@ async function fetchContacts(): Promise<Contact[]> {
       isUnRead: true,
     },
     {
-      id: 4,
+      id: 12,
       name: 'Timothy Ruecker',
       lastMessage: 'Lorem ipsum dolor.',
       avatar:

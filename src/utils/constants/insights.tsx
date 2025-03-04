@@ -192,7 +192,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       section: 'Science News',
       items: [
         {
-          id: '1',
+          id: 'S1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -202,7 +202,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-1.png',
         },
         {
-          id: '2',
+          id: 'S2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -212,7 +212,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '3',
+          id: 'S3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -222,7 +222,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-2.png',
         },
         {
-          id: '4',
+          id: 'S4',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -283,7 +283,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       section: 'Science Insights',
       items: [
         {
-          id: '1',
+          id: 'S1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -293,7 +293,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '2',
+          id: 'S2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -303,7 +303,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
-          id: '3',
+          id: 'S3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -314,7 +314,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
         },
 
         {
-          id: '5',
+          id: 'S5',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -335,7 +335,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       section: 'Science Academic Publications',
       items: [
         {
-          id: '1',
+          id: 'S1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -345,7 +345,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-4.png',
         },
         {
-          id: '2',
+          id: 'S2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -355,7 +355,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-6.png',
         },
         {
-          id: '3',
+          id: 'S3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -365,7 +365,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-7.png',
         },
         {
-          id: '4',
+          id: 'S4',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -375,7 +375,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
-          id: '5',
+          id: 'S5',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -384,6 +384,11 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           newsId: 'News98',
           imageUrl: null,
         },
+        {
+          viewAllLink: true,
+          viewAllTitle: 'View All Science Academic Publications',
+          viewAllURL: '/insights/scientific-academic-publication',
+        },
       ],
     },
     {
@@ -391,7 +396,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       section: 'Science Patents',
       items: [
         {
-          id: '1',
+          id: 'S1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -401,7 +406,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-9.png',
         },
         {
-          id: '2',
+          id: 'S2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -411,7 +416,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '3',
+          id: 'S3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -421,7 +426,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-10.png',
         },
         {
-          id: '4',
+          id: 'S4',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -431,7 +436,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-11.png',
         },
         {
-          id: '5',
+          id: 'S5',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -439,6 +444,11 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           date: '03 June 2025',
           newsId: 'News98',
           imageUrl: '/images/item-news-section-cover-img-4.png',
+        },
+        {
+          viewAllLink: true,
+          viewAllTitle: 'View All Science Patents',
+          viewAllURL: '/academic-publications/academic-publication',
         },
       ],
     },
@@ -449,7 +459,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       section: 'Engineering News',
       items: [
         {
-          id: '1',
+          id: 'E1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -459,7 +469,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-1.png',
         },
         {
-          id: '2',
+          id: 'E2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -469,7 +479,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '3',
+          id: 'E3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -479,7 +489,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-2.png',
         },
         {
-          id: '4',
+          id: 'E4',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -489,7 +499,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-3.png',
         },
         {
-          id: '5',
+          id: 'E5',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -499,7 +509,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '6',
+          id: 'E6',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -509,7 +519,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-3.png',
         },
         {
-          id: '3',
+          id: 'E7',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -519,7 +529,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-2.png',
         },
         {
-          id: '4',
+          id: 'E8',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -540,7 +550,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       section: 'Engineering Insights',
       items: [
         {
-          id: '1',
+          id: 'I1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -550,7 +560,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '2',
+          id: 'I2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -560,7 +570,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
-          id: '3',
+          id: 'I3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -571,7 +581,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
         },
 
         {
-          id: '5',
+          id: 'I5',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -588,11 +598,11 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       ],
     },
     {
-      id: 'engineering-academic-publicaitons-id',
+      id: 'engineering-academic-publication-id',
       section: 'Engineering Academic Publications',
       items: [
         {
-          id: '1',
+          id: 'E1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -602,7 +612,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-4.png',
         },
         {
-          id: '2',
+          id: 'E2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -612,7 +622,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-6.png',
         },
         {
-          id: '3',
+          id: 'E3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -622,7 +632,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-7.png',
         },
         {
-          id: '4',
+          id: 'E4',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -632,7 +642,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
-          id: '5',
+          id: 'E5',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -641,6 +651,11 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           newsId: 'News98',
           imageUrl: null,
         },
+        {
+          viewAllLink: true,
+          viewAllTitle: 'View All Engineering Academic Publications',
+          viewAllURL: '/insights/engineering-academic-publication',
+        },
       ],
     },
     {
@@ -648,7 +663,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       section: 'Engineering Patents',
       items: [
         {
-          id: '1',
+          id: 'E1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -658,7 +673,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-9.png',
         },
         {
-          id: '2',
+          id: 'E2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -668,7 +683,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '3',
+          id: 'E3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -678,7 +693,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-10.png',
         },
         {
-          id: '4',
+          id: 'E4',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -688,7 +703,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-11.png',
         },
         {
-          id: '5',
+          id: 'E5',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -696,6 +711,11 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           date: '03 June 2025',
           newsId: 'News98',
           imageUrl: '/images/item-news-section-cover-img-4.png',
+        },
+        {
+          viewAllLink: true,
+          viewAllTitle: 'View All Engineering Patents',
+          viewAllURL: '/insights/engineering-patent',
         },
       ],
     },
@@ -707,7 +727,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       section: 'Laws & Regulations News',
       items: [
         {
-          id: '1',
+          id: 'L1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -717,7 +737,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-1.png',
         },
         {
-          id: '2',
+          id: 'L2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -727,7 +747,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '3',
+          id: 'L3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -737,7 +757,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-2.png',
         },
         {
-          id: '4',
+          id: 'L4',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -747,7 +767,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-3.png',
         },
         {
-          id: '5',
+          id: 'L5',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -757,7 +777,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '6',
+          id: 'L6',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -767,7 +787,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-3.png',
         },
         {
-          id: '3',
+          id: 'L7',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -777,7 +797,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-2.png',
         },
         {
-          id: '4',
+          id: 'L8',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -798,7 +818,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       section: 'Laws & Regulations Insights',
       items: [
         {
-          id: '1',
+          id: 'L1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -808,7 +828,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '2',
+          id: 'L2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -818,7 +838,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-8.png',
         },
         {
-          id: '3',
+          id: 'L3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -829,7 +849,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
         },
 
         {
-          id: '5',
+          id: 'L5',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -846,11 +866,11 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       ],
     },
     {
-      id: 'law-and-regulation-acamedic-publicaiton-id',
+      id: 'law-and-regulation-academic-publication-id',
       section: 'Laws & Regulations Academic Publications',
       items: [
         {
-          id: '1',
+          id: 'L1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -860,7 +880,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-4.png',
         },
         {
-          id: '2',
+          id: 'L2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -870,7 +890,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-6.png',
         },
         {
-          id: '3',
+          id: 'L3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -880,7 +900,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-7.png',
         },
         {
-          id: '4',
+          id: 'L4',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -899,6 +919,11 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           newsId: 'News98',
           imageUrl: null,
         },
+        {
+          viewAllLink: true,
+          viewAllTitle: 'View All Laws & Regulations Academic Publications',
+          viewAllURL: '/insights/scientific-news',
+        },
       ],
     },
     {
@@ -906,7 +931,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
       section: 'Laws & Regulations Patents',
       items: [
         {
-          id: '1',
+          id: 'L1',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -916,7 +941,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-9.png',
         },
         {
-          id: '2',
+          id: 'L2',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -926,7 +951,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: null,
         },
         {
-          id: '3',
+          id: 'L3',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -936,7 +961,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-10.png',
         },
         {
-          id: '4',
+          id: 'L4',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -946,7 +971,7 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           imageUrl: '/images/item-news-section-cover-img-11.png',
         },
         {
-          id: '5',
+          id: 'L5',
           title: 'Ethiopian runners took the top four news.',
           description:
             'Lorem ipsum dolor sit amet consectetur. Sagittis massa sed eget faucibus tincidunt nunc cursus massa. Pharetra vitae bibendum elementum orci mauris phasellus euismod. Congue in nunc orci dui.',
@@ -954,6 +979,11 @@ export const insightsData: Record<string, InsightsDatatem[]> = {
           date: '03 June 2025',
           newsId: 'News98',
           imageUrl: '/images/item-news-section-cover-img-4.png',
+        },
+        {
+          viewAllLink: true,
+          viewAllTitle: 'View All Laws & Regulations Patents',
+          viewAllURL: '/insights/Laws-and-regulations-patent',
         },
       ],
     },

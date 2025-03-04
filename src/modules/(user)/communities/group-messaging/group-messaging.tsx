@@ -1,19 +1,17 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import CommunityMessages from './components/community-messages';
 import { MessageList } from '../../messages/chat/MessageList';
 import { Contact, Message } from '../../messages/types/message.type';
 import { ArrowLeft, MoreHorizontal } from 'lucide-react';
 import { MessageInput } from '../../messages/chat/MessageInput';
 import { Avatar } from '@/components/ui/avatar';
-import useScrollingHidden from '@/hooks/useScrollingHidden';
 import { useSearchParams } from 'next/navigation';
 import { COMMUNITY_CONTACTS } from '../communities.contants';
-import useMaxWidth from '@/hooks/useMaxWidth';
 
 const CommunityGroupMessagingPage = () => {
-  useScrollingHidden();
-  useMaxWidth('main-container');
+  // useScrollingHidden();
+  // useMaxWidth('main-container');
 
   const searchParams = useSearchParams();
   const communityId = searchParams.get('community');
@@ -62,7 +60,7 @@ const CommunityGroupMessagingPage = () => {
   };
 
   return (
-    <div className="flex w-full h-screen gap-4 row mt-[74px]">
+    <div className="flex w-full gap-4 h-[calc(100vh-140px)]">
       <CommunityMessages
         onhandleCommunitySelect={handleContactSelect}
         isChatOpen={isChatOpen}
@@ -71,7 +69,7 @@ const CommunityGroupMessagingPage = () => {
       <div
         className={`${
           isChatOpen ? 'flex' : 'hidden md:flex'
-        } justify-between flex-col flex-1 w-8/12 m-5 bg-white rounded-2xl`}
+        } justify-between flex-col flex-1 w-8/12 mx-5 mt-5 bg-white rounded-2xl`}
       >
         {selectedContact ? (
           <>

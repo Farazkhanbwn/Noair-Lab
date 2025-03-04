@@ -18,12 +18,10 @@ import GithubIcon from '@/components/icons/user/profile/github-icon';
 import WebsiteIcon from '@/components/icons/user/profile/website-icon';
 import LinkedinIcon from '@/components/icons/user/profile/linkedin-icon';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
-import { PlusIcon } from 'lucide-react';
+import MessageIcon from '@/components/icons/user/profile/message-icon';
 
 const buttonClasses =
   'w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-center bg-primary-color text-pure-white';
-const secondaryButtonClasses =
-  'w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-center';
 
 const ProfilePreviewPage = () => {
   return (
@@ -75,18 +73,25 @@ const ProfilePreviewPage = () => {
                   onClick={() => console.log('social button click')}
                   className={buttonClasses}
                 />
-                <SocialButton
-                  icon={<PlusIcon />}
-                  onClick={() => console.log('social button click')}
-                  className={secondaryButtonClasses}
-                  styleType={CustomButtonTypes.SECONDARY}
-                />
               </div>
             </div>
           </div>
         </div>
       </ProfileBanner>
-      <div className="grid !grid-cols-2 xs:!grid-cols-4 border-y border-gray-200 mt-6 text-pure-black py-4">
+
+      <div className="flex items-center gap-3 ml-4 mt-4">
+        <CustomButton className="text-white font-medium border !rounded-[10px] !px-5 !py-1">
+          + Follow
+        </CustomButton>
+        <CustomButton
+          styleType={CustomButtonTypes.SECONDARY}
+          className="flex-between group gap-1 font-semibold !rounded-[10px] !px-4 !py-1"
+        >
+          <MessageIcon width={14} height={14} />
+          Message
+        </CustomButton>
+      </div>
+      <div className="grid !grid-cols-2 xs:!grid-cols-4 border-y border-gray-200 mt-4 text-pure-black py-4">
         {profileData.info.stats.map((stat, index) => (
           <StatCard
             key={index}
@@ -100,12 +105,14 @@ const ProfilePreviewPage = () => {
       <div className="flex items-center flex-col md:flex-row mx-auto w-full py-6 gap-5">
         <ExperienceSection
           experiences={experiences}
+          isPreviewMode={true}
           onAdd={() => console.log('Add experience')}
           onEdit={() => console.log('Edit experiences')}
           classNames="flex-1 p-4 rounded-md shadow-lg"
         />
         <EducationSection
           education={education}
+          isPreviewMode={true}
           onAdd={() => console.log('Add education')}
           onEdit={() => console.log('Edit education')}
           classNames="flex-1 p-4 rounded-md shadow-lg"

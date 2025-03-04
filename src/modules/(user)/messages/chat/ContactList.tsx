@@ -1,12 +1,14 @@
 import { Avatar } from '@/components/ui/avatar';
 import { ChatActions } from './ChatActions';
 import { Contact } from '../types/message.type';
+import React from 'react';
 
 interface ContactListProps {
   contacts: Contact[];
   onContactSelect: (contact: Contact) => void;
   onViewProfile: (contact: Contact) => void;
   onDeleteChat: (contact: Contact) => void;
+  selectedContact: Contact | null;
 }
 
 export const ContactList = ({
@@ -14,13 +16,14 @@ export const ContactList = ({
   onContactSelect,
   onViewProfile,
   onDeleteChat,
+  selectedContact,
 }: ContactListProps) => {
   return (
     <div className="flex-1 overflow-y-auto min-h-0">
       {contacts.map(contact => (
         <div
           key={contact.id}
-          className="flex items-center justify-between p-4 hover:bg-light-blue cursor-pointer"
+          className={`flex items-center justify-between p-4 ${contact.id === selectedContact?.id ? 'bg-light-blue' : ''} hover:bg-light-blue cursor-pointer`}
           onClick={() => onContactSelect(contact)}
         >
           <div className="flex items-center space-x-3">

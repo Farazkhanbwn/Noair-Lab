@@ -24,17 +24,17 @@ export const MessageInput = ({
   console.log({ onEmojiSelect, onFileUpload });
   return (
     <div className="px-4 pb-4 w-full flex-none justify-center">
-      <div className="flex w-full justify-center space-x-5">
-        <div className="w-full xs:flex xs:flex-col lg:w-2/3 xl:w-1/2 px-4 pt-3 border border-stroke-grey justify-between rounded-3xl lg:flex lg:flex-row lg:items-center relative">
+      <div className="flex w-full justify-center   space-x-5">
+        <div className="w-full xs:flex xs:flex-col lg:w-2/3 xl:w-3/4 px-4 pt-3 border border-stroke-grey justify-between rounded-3xl lg:flex lg:flex-row lg:items-center relative">
           <div className="flex w-full">
             <Input
               value={value}
               onChange={e => onChange(e.target.value)}
               placeholder="Type your message here..."
-              className="max-w-1/2 border-none text-md shadow-none pl-1"
+              className="max-w-1/2 border-none text-md shadow-none px-0 pl-4"
             />
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pl-4 xl:pl-0">
             <div className="flex items-center space-x-5 mb-2">
               <button className="hover:bg-gray-100 rounded-full">
                 <EmojiIcon />

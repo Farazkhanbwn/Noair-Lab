@@ -17,7 +17,10 @@ function InsightsPage({ breakpoints, className }: InsightsPageProps) {
 
   // Get active tab from URL or use default
   const defaultTab = insightsCategories[0].name;
-  const initialTab = searchParams.get('tab') || defaultTab;
+  const initialTab =
+    sessionStorage?.getItem('activeTab') ||
+    searchParams.get('tab') ||
+    defaultTab;
   const [activeTab, setActiveTab] = useState(initialTab);
 
   useEffect(() => {
@@ -28,7 +31,7 @@ function InsightsPage({ breakpoints, className }: InsightsPageProps) {
 
   return (
     <div className={`w-full flex-1 flex flex-col p-3 md:p-7 ${className}`}>
-      <div className="w-full justify-between md:justify-around flex row">
+      <div className="w-full justify-between md:justify-around flex">
         <InsightsCatgories
           categories={insightsCategories}
           setActiveTab={setActiveTab}

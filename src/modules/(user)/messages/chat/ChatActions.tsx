@@ -16,7 +16,7 @@ export const ChatActions = ({ onViewProfile, onDelete }: ChatActionsProps) => {
     <div className="flex flex-col items-end gap-1 relative">
       <DropdownMenu>
         <DropdownMenuTrigger className="focus-visible:outline-none">
-          <MoreHorizontal className="h-5 w-6 text-black" />
+          <MoreHorizontal className="h-6 w-6 text-black" />
         </DropdownMenuTrigger>
         <DropdownMenuContent
           className="bg-white cursor-pointer p-3 flex flex-col gap-4 rounded-[10px] m-0"

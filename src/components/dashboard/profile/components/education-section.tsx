@@ -7,6 +7,7 @@ interface EducationSectionProps {
   onAdd?: () => void;
   onEdit?: () => void;
   classNames?: string;
+  isPreviewMode?: boolean;
 }
 
 export function EducationSection({
@@ -14,12 +15,18 @@ export function EducationSection({
   onAdd,
   onEdit,
   classNames,
+  isPreviewMode = false,
 }: EducationSectionProps) {
   return (
     <section
       className={`space-y-4 bg-pure-white w-full text-description ${classNames}`}
     >
-      <SectionHeader title="Education" onAdd={onAdd} onEdit={onEdit} />
+      <SectionHeader
+        isPreviewMode={isPreviewMode}
+        title="Education"
+        onAdd={onAdd}
+        onEdit={onEdit}
+      />
       <div className="space-y-4">
         {education.map((edu, index) => (
           <TimelineCard key={index} {...edu} subtitle={edu.degree} />

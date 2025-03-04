@@ -33,7 +33,11 @@ const LikesModal: FC<LikeModalProps> = ({ title, isOpen, onClose }) => {
       <div className="bg-pure-white text-pure-black py-2 px-3">
         <ModalHeader title={title} onClose={onClose} className="p-2" />
         <hr className="border-t opacity-30 my-[1px]" />
+
         <div className="flex flex-col gap-3 my-4 px-2">
+          <p className="mb-4 text-primary border-b-2 border-primary w-fit">
+            All 4
+          </p>
           {[...Array(4)].map((_, i) => (
             <div key={i} className="flex justify-between items-start">
               <UserCard

@@ -40,6 +40,7 @@ export interface EducationData extends TimelineItem {
 
 export interface SectionProps {
   title: string;
+  isPreviewMode: boolean;
   onAdd?: () => void;
   onEdit?: () => void;
 }

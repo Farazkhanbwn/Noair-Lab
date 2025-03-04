@@ -22,7 +22,7 @@ export function NewsCard({ item, clampDescription }: NewsCardProps) {
               alt="Cover Image"
             />
           </div>
-          <div className="absolute bottom-0 px-4 py-5 z-50 ">
+          <div className="absolute bottom-0 px-4 py-5 z-20 ">
             <p className="mb-1 text-sm text-charcol opacity-60">
               {item.newsId} - {item.date}
             </p>
@@ -39,7 +39,7 @@ export function NewsCard({ item, clampDescription }: NewsCardProps) {
           />
         </>
       ) : (
-        <div className="flex h-full flex-col justify-between bg-gray-100 px-4 pt-5 pb-6">
+        <div className="flex h-full flex-col justify-between bg-gradient-to-b  from-ghost-white/10 via-ghost-white/50 to-ghost-white px-4 pt-5 pb-6">
           <div>
             <p className="mb-1 text-sm text-charcol opacity-60">
               {item.newsId} - {item.date}

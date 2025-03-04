@@ -4,6 +4,7 @@ import { VerifyUserCardProps } from '../verify-user-type.interface';
 import CircleTickIcon from '@/components/icons/auth/circle-tick-icon';
 import Link from '@/components/common/custom-link/custom-link';
 import { CustomLinkTypes } from '@/components/common/custom-link/custom-link.types';
+import TooltipWrapper from '@/components/common/tooltip-wrapper/tooltip-wrapper';
 
 const WaitlistCard: FC<VerifyUserCardProps> = ({ isSelected, onSelect }) => {
   return (
@@ -26,7 +27,23 @@ const WaitlistCard: FC<VerifyUserCardProps> = ({ isSelected, onSelect }) => {
         <h2 className="text-white text-lg sm:text-xl font-semibold">
           Waitlist User
         </h2>
-        <Info className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
+        <TooltipWrapper
+          content={
+            <>
+              Only emails ending in
+              <Link
+                href="https://university.edu"
+                className="text-primary-color underline"
+              >
+                @university.edu
+              </Link>
+              &nbsp; are eligible for the Waitlist.
+            </>
+          }
+          className="max-w-[200px] px-2 py-6 text-center rounded-3xl !bg-[#373737]"
+        >
+          <Info className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 cursor-pointer" />
+        </TooltipWrapper>
       </div>
       <p className="text-gray-300 text-sm sm:text-base mb-4">
         Join our waitlist and be among the first to experience Noair Lab!

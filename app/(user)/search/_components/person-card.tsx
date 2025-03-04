@@ -10,7 +10,7 @@ export const FollowButton = () => {
   return (
     <Button
       variant="outline"
-      className="text-primary border-primary hover:text-primary text-base font-semibold"
+      className="text-primary border-primary hover:bg-primary hover:text-white text-base font-semibold"
     >
       Follow
     </Button>

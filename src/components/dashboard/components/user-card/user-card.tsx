@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import React, { FC } from 'react';
 import PrimaryImage from '@/components/common/primary-image/primary-image';
 import UsersIcon from '@/components/icons/user/feed/users-icon';
 import { UserCardProps } from './user-card.types';
 import PersonIcon from '@/components/icons/user/feed/person-icon';
-import moment from 'moment';
 
 const UserCard: FC<UserCardProps> = ({
   name,
@@ -14,9 +15,6 @@ const UserCard: FC<UserCardProps> = ({
   timeStamp,
   classNames,
 }) => {
-  const timeDifference = timeStamp
-    ? moment(timeStamp).fromNow()
-    : moment.utc().toNow();
   return (
     <div className={`flex items-start ${classNames}`}>
       <PrimaryImage
@@ -29,7 +27,10 @@ const UserCard: FC<UserCardProps> = ({
       <div>
         <h4 className="heading-secondary font-semibold text-black">{name}</h4>
         <p className="text-description mb-0.5">{role}</p>
-        <p className="text-description text-secondary-grey">{timeDifference}</p>
+        <p className="text-description text-secondary-grey">
+          {/* {moment(timeStamp).format('YYYY-MM-DD HH:mm:ss')} */}
+          {'12 minutes ago'}
+        </p>
         <div className="flex gap-1.5">
           <p className="text-description border-r border-stroke-grey pr-1 text-secondary-grey mt-1 flex items-center gap-1">
             <UsersIcon /> {mutual} Mutual

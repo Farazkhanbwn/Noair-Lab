@@ -45,6 +45,8 @@ module.exports = {
         'light-green': '#ebfae8',
         'pure-white': '#fff',
         'ring-color': '#000',
+        'gray-silver': '#B0B0B0',
+        'off-white': '#FAFAFA',
         charcol: '#262626',
 
         background: 'hsl(var(--background))',

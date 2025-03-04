@@ -1,15 +1,22 @@
+'use client';
+
 import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import Comment from '@/components/dashboard/components/comment/comment';
 import SearchBar from '@/modules/feed/components/feed-item/search-bar';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import ProfilePost from './post-item';
+import LikesModal from '@/modals/like-modal/user-likes';
+import CommentModal from '@/modals/comment-modal/comments';
 
 interface UserPostProps {
   isPinned: boolean;
 }
 
 const UserPost: FC<UserPostProps> = ({ isPinned }) => {
+  const [isLikeModal, setIsLikeModal] = useState(false);
+  const [isCommentModal, setIsCommentModal] = useState(false);
+
   return (
     <div className="bg-pure-white rounded-[20px]">
       <ProfilePost
@@ -25,8 +32,8 @@ const UserPost: FC<UserPostProps> = ({ isPinned }) => {
         followers={1.2}
         isPinned={isPinned}
         mutual={2}
-        onOpenLikesModal={() => ''}
-        onOpenCommentsModal={() => ''}
+        onOpenLikesModal={() => setIsLikeModal(true)}
+        onOpenCommentsModal={() => setIsCommentModal(true)}
         onOpenSharesModal={() => ''}
       />
 
@@ -57,6 +64,18 @@ const UserPost: FC<UserPostProps> = ({ isPinned }) => {
       >
         View more comments
       </CustomButton>
+
+      <LikesModal
+        isOpen={isLikeModal}
+        onClose={() => setIsLikeModal(false)}
+        title="Likes"
+      />
+
+      <CommentModal
+        isOpen={isCommentModal}
+        title="Comments"
+        onClose={() => setIsCommentModal(false)}
+      />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import Link from '@/components/common/custom-link/custom-link';
 
 const SuggestedUsersPage = () => {
   return (
-    <div className="max-w-[1240px] mx-auto p-4 mt-[3.3rem]">
+    <div className="max-w-[1240px] mx-auto p-4 mt-[4.7rem]">
       <div className="flex justify-between items-center mb-4">
         <div>
           <h1 className="heading-medium font-bold mb-2">

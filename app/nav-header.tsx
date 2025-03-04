@@ -12,7 +12,6 @@ import NotificationBellIcon from '@/assets/svgs/NotificationBellIcon';
 function Header() {
   const router = useRouter();
   const pathname = usePathname();
-  console.log({ pathname });
   const navigationItems = [
     {
       name: 'Feed',

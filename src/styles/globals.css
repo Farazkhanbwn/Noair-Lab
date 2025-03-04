@@ -321,7 +321,7 @@ input[type='number'] {
 }
 
 .editor-shell p,
-span {
+.editor-shell span {
   font-size: 16px;
   color: var(--charcol);
   font-weight: 400;
