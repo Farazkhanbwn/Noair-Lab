@@ -20,6 +20,9 @@ export interface SelectTheme {
   content?: { bg?: string; border?: string; className?: string };
   item?: { hover?: string; focus?: string; text?: string };
   addButton?: { bg?: string; text?: string; border?: string; hover?: string };
+  dropDownIcon?: {
+    color?: string;
+  };
 }
 
 export interface CustomSelectProps {

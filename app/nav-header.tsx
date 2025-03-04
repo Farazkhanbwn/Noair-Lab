@@ -106,7 +106,10 @@ function Header() {
           ))}
         </nav>
 
-        <Link href="/profile" className="hidden xs:flex items-center gap-3">
+        <Link
+          href="/profile"
+          className="hidden xs:flex items-center gap-3 mr-1"
+        >
           <PrimaryImage
             width={40}
             height={40}

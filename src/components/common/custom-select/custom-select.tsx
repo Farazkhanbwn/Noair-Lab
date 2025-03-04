@@ -64,6 +64,9 @@ const defaultTheme: SelectTheme = {
     border: 'border-stroke-grey',
     hover: '',
   },
+  dropDownIcon: {
+    color: 'pure-white',
+  },
 };
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -104,7 +107,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
           'rounded-lg overflow-y-auto',
           mergedTheme?.content?.bg,
           mergedTheme?.content?.border,
-          mergedTheme?.content?.className
+          mergedTheme?.content?.className,
+          `data-[state=open]:text-${mergedTheme?.dropDownIcon?.color}`
         )}
       >
         <SelectGroup>

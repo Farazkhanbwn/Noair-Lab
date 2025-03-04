@@ -17,7 +17,7 @@ const TrendingForum: FC<TrendingForumProps> = ({ list, className }) => {
 
       <hr className="border-t-2 border-light-grey" />
       <div className="flex-center uppercase py-3">
-        <Link href="#" className="text-black text-sm">
+        <Link href="/communities" className="text-black text-sm">
           SEE ALL
         </Link>
       </div>
