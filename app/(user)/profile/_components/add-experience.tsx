@@ -35,12 +35,7 @@ interface ExperienceFormData {
 function AddExperience({
   open,
   onCloseModal,
-}: {
-  open: boolean;
-  onCloseModal: () => void;
-}) {
-  const [isCurrentlyWoerking, setIsCurrentlyWorking] = useState(false);
-  const [formData, setFormData] = useState<ExperienceFormData>({
+  intialState = {
     title: '',
     specialization: '',
     organization: '',
@@ -50,7 +45,15 @@ function AddExperience({
     endMonth: '',
     endYear: '',
     currentlyWorking: false,
-  });
+  },
+}: {
+  open: boolean;
+  onCloseModal: () => void;
+  intialState?: ExperienceFormData;
+}) {
+  console.log({ intialState });
+  const [isCurrentlyWoerking, setIsCurrentlyWorking] = useState(false);
+  const [formData, setFormData] = useState<ExperienceFormData>(intialState);
 
   const handleSave = () => {
     onCloseModal();

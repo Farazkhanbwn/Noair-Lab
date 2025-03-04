@@ -53,7 +53,7 @@ export function ContentTypeDropdown({
         )}
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="bg-pure-white !rounded-sm"
+        className="bg-pure-white px-0 !rounded-sm max-h-96 overflow-y-auto"
         align={align}
         side={side}
       >
@@ -61,10 +61,9 @@ export function ContentTypeDropdown({
           return (
             <DropdownMenuItem
               key={item.value}
-              className="cursor-pointer"
+              className="cursor-pointer px-5 rounded-none focus:bg-light-grey focus:shadow-md"
               onClick={() => handleSelect(item.value)}
             >
-              {/* <item.icon /> */}
               <span>{item.label}</span>
             </DropdownMenuItem>
           );

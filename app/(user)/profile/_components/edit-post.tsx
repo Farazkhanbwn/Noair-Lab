@@ -82,7 +82,7 @@ function EditPost({
     return (
       <>
         <div className="flex flex-col w-full gap-4 py-4">
-          <PostCard key={posts[0].id} post={posts[0]} />
+          <PostCard key={posts[0].id} post={posts[0]} hideContentOnEditPost />
         </div>
 
         <div className="flex w-full justify-start gap-3 mt-4">

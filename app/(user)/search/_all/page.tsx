@@ -2,7 +2,6 @@ import { Person, Post } from '@/types';
 import { PersonCard } from '../_components/person-card';
 import { PostCard } from '../_components/post-card';
 import Link from 'next/link';
-import SuggestedCommunities from '@/modules/(user)/search/community/SuggestedCommunities';
 
 // This would typically come from an API
 const people: Person[] = [
@@ -71,7 +70,6 @@ export default function SearchPage() {
             </div>
           </section>
         </div>
-        <SuggestedCommunities />
       </main>
     </div>
   );

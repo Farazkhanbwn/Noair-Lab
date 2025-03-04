@@ -47,6 +47,9 @@ interface EditorProps {
   editorContainer?: {
     classNames?: string;
   };
+  editorScroller?: {
+    classNames?: string;
+  };
   editorInner?: {
     classNames?: string;
   };
@@ -75,6 +78,7 @@ export default function RichTextEditor({
   editorContainer,
   editorInner,
   placeholder,
+  editorScroller,
   onChange,
   maxLength,
   readOnly = false,
@@ -134,7 +138,7 @@ export default function RichTextEditor({
           <RichTextPlugin
             contentEditable={
               <div
-                className={`editor-scroller ${readOnly ? '!overflow-visible' : ''}`}
+                className={`editor-scroller ${editorScroller?.classNames} ${readOnly ? '!overflow-visible' : ''}`}
               >
                 <div className="editor">
                   <ContentEditable className="p-3" />

@@ -14,6 +14,8 @@ import VideoPreviewModal from '@/modals/feed/video-preview-modal/video-preview-m
 import ArticlePostItem from './components/article-post-item/article-post-item';
 import PostMedia from './components/post-media/post-media';
 import ScientificDocumentModal from '@/modals/feed/scientific-document/scientific-document';
+import NewsAndInsightsModal from '../../add-feed-post/NewsAndInsightsModal';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const images = [
   '/images/post-background.png',
@@ -31,11 +33,32 @@ const FeedItem: FC = () => {
   const [commentModal, setCommentModal] = useState(false);
   const [isPostDetailModal, setIsPostDetailModal] = useState(false);
   const [isVideoPreview, setIsVideoPreview] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const isOpenTopicsModal =
+    (postType && postType !== 'post') ||
+    searchParams.get('page') === 'add-topics' ||
+    false;
+
+  const isOpenPostModal =
+    (postType && postType === 'post') ||
+    searchParams.get('page') === 'add-post' ||
+    false;
 
   return (
     <div className="w-full text-black flex flex-col gap-5">
       {/* New Post */}
-      <AddPost onSelectItem={(value: string) => setPostType(value)} />
+      <AddPost
+        onSelectItem={(value: string) => {
+          setPostType(value);
+          // if (value !== 'post') {
+          //   const currentParams = new URLSearchParams(window.location.search);
+          //   currentParams.set('page', 'add-topics');
+          //   router.replace(`?${currentParams.toString()}`, { scroll: false });
+          // }
+        }}
+      />
 
       {/* Feed Post Without Image*/}
       <div className="bg-pure-white rounded-[20px]">
@@ -297,13 +320,28 @@ const FeedItem: FC = () => {
 
       {/* Modals */}
       <CreatePostModal
-        isOpen={postType === 'post'}
-        onClose={() => setPostType(null)}
+        isOpen={isOpenPostModal}
+        onClose={() => {
+          setPostType(null);
+          router.replace(`/feed`, { scroll: false });
+        }}
       />
 
       <CreatePostModal
         isOpen={postType === 'newsInsights'}
-        onClose={() => setPostType(null)}
+        onClose={() => {
+          setPostType(null);
+          router.replace(`/feed`, { scroll: false });
+        }}
+      />
+
+      <NewsAndInsightsModal
+        open={!isOpenPostModal && isOpenTopicsModal}
+        onCloseModal={() => {
+          setPostType(null);
+          router.replace(`/feed`, { scroll: false });
+        }}
+        postType={postType}
       />
 
       {/* Scientific Document Modal */}

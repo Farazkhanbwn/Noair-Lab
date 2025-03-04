@@ -130,7 +130,7 @@ const AddPost: FC<AddPostProps> = ({ onSelectItem, classNames }) => {
             <img
               src="/file_upload.svg"
               alt="Upload"
-              className="max-w-[16px] h-[16px] ml-auto"
+              className="max-w-[16px] h-[16px] ml-auto cursor-pointer"
             />
           }
         />

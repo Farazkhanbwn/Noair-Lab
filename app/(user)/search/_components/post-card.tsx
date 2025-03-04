@@ -12,9 +12,13 @@ import { useState } from 'react';
 
 interface PostCardProps {
   post: Post;
+  hideContentOnEditPost?: boolean;
 }
 
-export function PostCard({ post }: PostCardProps) {
+export function PostCard({
+  post,
+  hideContentOnEditPost = false,
+}: PostCardProps) {
   const [likeModal, setLikeModal] = useState(false);
   const [shareModal, setShareModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
@@ -46,12 +50,21 @@ export function PostCard({ post }: PostCardProps) {
               </div>
             </div>
           </div>
-          <FollowButton />
+          {!hideContentOnEditPost ? <FollowButton /> : null}
           {/* <Button variant="outline" className="text-blue-600 border-blue-600">
           Follow
         </Button> */}
         </div>
-        <p className="text-[0.675rem] mb-3 px-5">{post.content}</p>
+        {!hideContentOnEditPost ? (
+          <p className="text-[0.675rem] mb-3 px-5">{post.content}</p>
+        ) : (
+          <div
+            contentEditable
+            className="text-[0.675rem] mb-3 px-5 m-0 border-none bg-transparent outline-none w-full break-words"
+          >
+            {post.content}
+          </div>
+        )}
         {post.image && (
           <div className="relative h-[300px]  overflow-hidden mb-4">
             <Image
@@ -62,36 +75,46 @@ export function PostCard({ post }: PostCardProps) {
             />
           </div>
         )}
-        <div className="flex items-center px-5 mb-3 justify-between text-[0.675rem]">
-          <span className="cursor-pointer" onClick={() => setLikeModal(true)}>
-            {post.likes} Likes
-          </span>
-          <div className="flex items-center gap-4">
-            <span
-              className="cursor-pointer"
-              onClick={() => setCommentModal(true)}
-            >
-              {post.comments} Comments
-            </span>
-            <span className="cursor-pointer" onClick={() => setLikeModal(true)}>
-              {post.shares} Shares
-            </span>
-          </div>
-        </div>
-        <div className="border-t flex mt-3">
-          <button className="flex-1 flex items-center justify-center text-xs gap-2 p-3 hover:bg-gray-50">
-            <ThumbsUp className="h-5 w-5" />
-            Likes
-          </button>
-          <button className="flex-1 flex items-center justify-center gap-2 p-3 text-xs hover:bg-gray-50">
-            <MessageSquare className="h-5 w-5" />
-            Comments
-          </button>
-          <button className="flex-1 flex items-center justify-center gap-2 p-3 text-xs hover:bg-gray-50">
-            <Share className="h-5 w-5" />
-            Share
-          </button>
-        </div>
+        {!hideContentOnEditPost ? (
+          <>
+            <div className="flex items-center px-5 mb-3 justify-between text-[0.675rem]">
+              <span
+                className="cursor-pointer"
+                onClick={() => setLikeModal(true)}
+              >
+                {post.likes} Likes
+              </span>
+              <div className="flex items-center gap-4">
+                <span
+                  className="cursor-pointer"
+                  onClick={() => setCommentModal(true)}
+                >
+                  {post.comments} Comments
+                </span>
+                <span
+                  className="cursor-pointer"
+                  onClick={() => setLikeModal(true)}
+                >
+                  {post.shares} Shares
+                </span>
+              </div>
+            </div>
+            <div className="border-t flex mt-3">
+              <button className="flex-1 flex items-center justify-center text-xs gap-2 p-3 hover:bg-gray-50">
+                <ThumbsUp className="h-5 w-5" />
+                Likes
+              </button>
+              <button className="flex-1 flex items-center justify-center gap-2 p-3 text-xs hover:bg-gray-50">
+                <MessageSquare className="h-5 w-5" />
+                Comments
+              </button>
+              <button className="flex-1 flex items-center justify-center gap-2 p-3 text-xs hover:bg-gray-50">
+                <Share className="h-5 w-5" />
+                Share
+              </button>
+            </div>
+          </>
+        ) : null}
       </div>
       <LikesModal
         isOpen={likeModal}

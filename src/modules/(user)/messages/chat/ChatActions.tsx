@@ -23,7 +23,7 @@ export const ChatActions = ({ onViewProfile, onDelete }: ChatActionsProps) => {
           align="end"
         >
           <DropdownMenuItem
-            className="flex cursor-pointer items-center text-sm gap-2 p-0"
+            className="flex cursor-pointer items-center text-sm gap-2 p-0 "
             onClick={onViewProfile}
           >
             <Eye className="h-4 w-4" /> View Profile

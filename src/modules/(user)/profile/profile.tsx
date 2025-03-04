@@ -135,14 +135,14 @@ const ProfilePage = () => {
         <div className="flex items-center flex-col md:flex-row mx-auto w-full py-6 gap-5">
           <ExperienceSection
             experiences={experiences}
-            onAdd={() => console.log('Add experience')}
-            onEdit={() => console.log('Edit experiences')}
+            onAdd={() => setIsExperienceModal(true)}
+            onEdit={() => setIsExperienceModal(true)}
             classNames="flex-1 p-4 rounded-md shadow-lg"
           />
           <EducationSection
             education={education}
-            onAdd={() => console.log('Add education')}
-            onEdit={() => console.log('Edit education')}
+            onAdd={() => setisEducationModal(true)}
+            onEdit={() => setisEducationModal(true)}
             classNames="flex-1 p-4 rounded-md shadow-lg"
           />
         </div>
