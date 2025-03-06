@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import { useForm, FormProvider } from 'react-hook-form';
-
 import AuthForm from '@/components/AuthForm';
 import AuthLayout from '@/components/AuthLayout';
 import FormInput from '@/components/common/form-input';
@@ -92,6 +91,7 @@ const CreateAccount = () => {
           </FormProvider>
         </AuthForm>
       </AuthLayout>
+
       <ConfirmationModal
         open={isSignupSuccessModal}
         onCloseModal={() => setIsSignupSuccessModal(false)}

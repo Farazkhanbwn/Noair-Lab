@@ -6,16 +6,19 @@ import Link from '@/components/common/custom-link/custom-link';
 const SuggestedUsersPage = () => {
   return (
     <div className="max-w-[1240px] mx-auto p-4 mt-[4.7rem]">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between mb-4">
         <div>
-          <h1 className="heading-medium font-bold mb-2">
+          <h1 className="heading-secondary sm:heading-medium font-bold mb-2">
             Meet Your Campus Community
           </h1>
           <p className="text-description">
             Find friends and classmates within your campus
           </p>
         </div>
-        <Link href="/feed" className="text-blue-600 hover:text-blue-700">
+        <Link
+          href="/feed"
+          className="text-blue-600 hover:text-blue-700 text-center text-description xs:heading-secondary"
+        >
           Skip This Step
         </Link>
       </div>
@@ -27,8 +30,10 @@ const SuggestedUsersPage = () => {
       </div>
 
       <div className="mt-6 mb-4">
-        <h2 className="heading-medium font-bold">Connect Beyond Your Campus</h2>
-        <p className="text-description mt-1">
+        <h2 className="heading-secondary sm:heading-medium font-bold mb-2">
+          Connect Beyond Your Campus
+        </h2>
+        <p className="text-description">
           Expand your network with students from diverse universities
         </p>
       </div>
