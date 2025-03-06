@@ -9,8 +9,9 @@ const AuthHeader: FC<AuthHeaderProps> = ({ classNames }) => {
   return (
     <header className={`bg-white px-4 pt-2 ${classNames}`}>
       {/* Left Section - Logo */}
-      <Link href={'/'} className="flex items-center pb-3 row">
-        <NavLogo />
+
+      <Link href={'/'} className="flex items-center h-16 max-h-20">
+        <NavLogo className="w-20 md:w-28 h-24 md:h-28" />
       </Link>
     </header>
   );

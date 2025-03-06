@@ -69,8 +69,8 @@ function Header() {
   return (
     <header className="w-[100vw] fixed top-0 left-0 right-0 z-[50]  bg-pure-white p-2 md:p-4 pb-2 shadow-md h-[74px]">
       <div className="row flex items-center md:items-start justify-between gap-2">
-        <Link href={'/feed'}>
-          <NavLogo />
+        <Link href={'/feed'} className="flex items-center h-12 max-h-20">
+          <NavLogo className="w-20 md:w-28 h-24 md:h-28" />
         </Link>
         <nav className="flex items-center lg:items-start gap-2 sm:gap-4 md:gap-2 lg:gap-6">
           <div
