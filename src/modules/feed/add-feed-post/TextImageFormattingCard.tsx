@@ -36,7 +36,7 @@ function TextImageFormattingCard() {
             }}
             editorInner={{
               classNames:
-                'bg-light-grey w-full min-h-[175px]   border-t relative   border-stroke-grey',
+                'bg-light-grey w-full min-h-[175px]  border-t relative   border-stroke-grey',
             }}
             editorContainer={{
               classNames: 'w-full !m-0 ',

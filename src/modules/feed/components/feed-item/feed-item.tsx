@@ -16,6 +16,7 @@ import PostMedia from './components/post-media/post-media';
 import ScientificDocumentModal from '@/modals/feed/scientific-document/scientific-document';
 import NewsAndInsightsModal from '../../add-feed-post/NewsAndInsightsModal';
 import { useRouter, useSearchParams } from 'next/navigation';
+import ChooseCategoryModal from '../../add-feed-post/ChooseCategoryModal';
 
 const images = [
   '/images/post-background.png',
@@ -32,6 +33,7 @@ const FeedItem: FC = () => {
   const [shareModal, setShareModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
   const [isPostDetailModal, setIsPostDetailModal] = useState(false);
+  const [isOpenCategoryModal, setIsOpenCategoryModal] = useState(false);
   const [isVideoPreview, setIsVideoPreview] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -50,13 +52,8 @@ const FeedItem: FC = () => {
     <div className="w-full text-black flex flex-col gap-5">
       {/* New Post */}
       <AddPost
-        onSelectItem={(value: string) => {
-          setPostType(value);
-          // if (value !== 'post') {
-          //   const currentParams = new URLSearchParams(window.location.search);
-          //   currentParams.set('page', 'add-topics');
-          //   router.replace(`?${currentParams.toString()}`, { scroll: false });
-          // }
+        onSelectItem={() => {
+          setIsOpenCategoryModal(true);
         }}
       />
 
@@ -64,7 +61,7 @@ const FeedItem: FC = () => {
       <div className="bg-pure-white rounded-[20px]">
         <FeedPost
           name="Wilma Ullrich"
-          role="Research Assistant at Northern University"
+          role="Research Assistant at University of Chicago"
           time={'2025-02-18T05:30:00Z'}
           content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus. Ac cras justo elementum tincidunt congue vitae massa volutpat lorem 😊😊. "
           likes={6}
@@ -83,7 +80,7 @@ const FeedItem: FC = () => {
         {/* Comments */}
         <Comment
           name="Elmer Erdman, PhD"
-          role="Research Faculty at Duke University"
+          role="Research Faculty at Harvard University"
           comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
           time="1h"
           followers={1200}
@@ -92,7 +89,7 @@ const FeedItem: FC = () => {
 
         <Comment
           name="Elmer Erdman, PhD"
-          role="Medical Researcher"
+          role="Research Faculty at Harvard University"
           comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
           time="1h"
           followers={1200}
@@ -112,7 +109,7 @@ const FeedItem: FC = () => {
       <div className="bg-pure-white rounded-[20px]">
         <FeedPost
           name="Wilma Ullrich"
-          role="Research Assistant at Northern University"
+          role="Research Assistant at University of Chicago"
           time={'2025-02-18T05:30:00Z'}
           content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
           likes={6}
@@ -137,8 +134,8 @@ const FeedItem: FC = () => {
 
         {/* Comments */}
         <Comment
-          name="Elmer Erdman"
-          role="Medical Researcher"
+          name="Elmer Erdman, PhD"
+          role="Research Faculty at Harvard University"
           comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
           time="1h"
           followers={1200}
@@ -146,8 +143,8 @@ const FeedItem: FC = () => {
         />
 
         <Comment
-          name="Elmer Erdman"
-          role="Medical Researcher"
+          name="Elmer Erdman, PhD"
+          role="Research Faculty at Harvard University"
           comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
           time="1h"
           followers={1200}
@@ -167,7 +164,7 @@ const FeedItem: FC = () => {
       <div className="bg-pure-white rounded-[20px]">
         <FeedPost
           name="Wilma Ullrich"
-          role="Research Assistant at Northern University"
+          role="Research Assistant at University of Chicago"
           time={'2025-02-18T05:30:00Z'}
           content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
           likes={6}
@@ -192,8 +189,8 @@ const FeedItem: FC = () => {
 
         {/* Comments */}
         <Comment
-          name="Elmer Erdman"
-          role="Medical Researcher"
+          name="Elmer Erdman, PhD"
+          role="Research Faculty at Harvard University"
           comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
           time="1h"
           followers={1200}
@@ -201,8 +198,8 @@ const FeedItem: FC = () => {
         />
 
         <Comment
-          name="Elmer Erdman"
-          role="Medical Researcher"
+          name="Elmer Erdman, PhD"
+          role="Research Faculty at Harvard University"
           comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
           time="1h"
           followers={1200}
@@ -222,7 +219,7 @@ const FeedItem: FC = () => {
       <div className="bg-pure-white rounded-[20px]">
         <FeedPost
           name="Wilma Ullrich"
-          role="Research Assistant at Northern University"
+          role="Research Assistant at University of Chicago"
           time={'2025-02-18T05:30:00Z'}
           content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
           likes={6}
@@ -247,8 +244,8 @@ const FeedItem: FC = () => {
 
         {/* Comments */}
         <Comment
-          name="Elmer Erdman"
-          role="Medical Researcher"
+          name="Elmer Erdman, PhD"
+          role="Research Faculty at Harvard University"
           comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
           time="1h"
           followers={1200}
@@ -256,8 +253,8 @@ const FeedItem: FC = () => {
         />
 
         <Comment
-          name="Elmer Erdman"
-          role="Medical Researcher"
+          name="Elmer Erdman, PhD"
+          role="Research Faculty at Harvard University"
           comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
           time="1h"
           followers={1200}
@@ -277,7 +274,7 @@ const FeedItem: FC = () => {
       <div className="bg-pure-white rounded-[20px]">
         <FeedPost
           name="Wilma Ullrich"
-          role="Research Assistant at Northern University"
+          role="Research Assistant at University of Chicago"
           time={'2025-02-18T05:30:00Z'}
           content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
           likes={6}
@@ -318,6 +315,21 @@ const FeedItem: FC = () => {
         <SearchBar inputStyles={'bg-[#f9f9f9]'} />
       </div>
 
+      <ChooseCategoryModal
+        open={isOpenCategoryModal}
+        onCloseModal={() => setIsOpenCategoryModal(false)}
+        postType={postType}
+        onNext={(post: string | null) => {
+          setPostType(post);
+          setIsOpenCategoryModal(false);
+          if (post !== 'post') {
+            const currentParams = new URLSearchParams(window.location.search);
+            currentParams.set('page', 'add-topics');
+            router.replace(`?${currentParams.toString()}`, { scroll: false });
+          }
+        }}
+      />
+
       {/* Modals */}
       <CreatePostModal
         isOpen={isOpenPostModal}
@@ -336,9 +348,13 @@ const FeedItem: FC = () => {
       />
 
       <NewsAndInsightsModal
-        open={!isOpenPostModal && isOpenTopicsModal}
+        open={!isOpenPostModal && isOpenTopicsModal && !isOpenCategoryModal}
         onCloseModal={() => {
           setPostType(null);
+          router.replace(`/feed`, { scroll: false });
+        }}
+        onBack={() => {
+          setIsOpenCategoryModal(true);
           router.replace(`/feed`, { scroll: false });
         }}
         postType={postType}

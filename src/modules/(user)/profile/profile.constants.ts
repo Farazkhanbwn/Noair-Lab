@@ -3,7 +3,7 @@ export const profileData = {
     name: 'Lewis Morissette',
     profession: 'Environmental Scientist',
     specialization: 'Specialization in Climate Science',
-    currentEmployment: 'Current Employment in Northern University',
+    currentEmployment: 'Current Employment in Columbia University',
     stats: [
       { count: '05', label: 'Followers', index: 0 },
       { count: 12, label: 'Publications', index: 0 },

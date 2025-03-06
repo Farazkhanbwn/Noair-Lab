@@ -8,6 +8,7 @@ import InsightIcon from '@/assets/svgs/InsightIcon';
 import MessageIcon from '@/assets/svgs/MessageIcon';
 import GroupIcon from '@/assets/svgs/GroupIcon';
 import NotificationBellIcon from '@/assets/svgs/NotificationBellIcon';
+import NavLogo from '@/components/common/logo/NavLogo';
 
 function Header() {
   const router = useRouter();
@@ -69,19 +70,19 @@ function Header() {
     <header className="w-[100vw] fixed top-0 left-0 right-0 z-[50]  bg-pure-white p-2 md:p-4 pb-2 shadow-md h-[74px]">
       <div className="row flex items-center md:items-start justify-between gap-2">
         <Link href={'/feed'}>
-          <img className="w-24 md:w-32 h-14" src="/app-logo.png" alt="logo" />
+          <NavLogo />
         </Link>
-        <nav className="flex items-center md:items-start gap-2 sm:gap-4 md:gap-2 lg:gap-6">
+        <nav className="flex items-center lg:items-start gap-2 sm:gap-4 md:gap-2 lg:gap-6">
           <div
             onClick={() => {
               router.push('/search');
             }}
-            className="flex items-center bg-transparent md:bg-light-grey  rounded-[20px] px-0 py-0.5 md:px-4 text-black"
+            className="flex items-center bg-transparent lg:bg-light-grey  rounded-[20px] px-0 py-0.5 lg:px-4 text-black"
           >
             <img className="w-5 h-5" src="/search.svg" alt="search icon" />
             <input
               type="text"
-              className="m-0 border-none bg-transparent outline-none text-sm pl-4 hidden md:block"
+              className="m-0 border-none bg-transparent outline-none text-sm pl-4 hidden lg:block"
               placeholder="Search"
             />
           </div>

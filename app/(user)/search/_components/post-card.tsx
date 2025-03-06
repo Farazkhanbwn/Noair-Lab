@@ -25,10 +25,12 @@ export function PostCard({
   return (
     <>
       <div className="rounded-md py-6 bg-white overflow-hidden">
-        {post.id === '1' ? (
+        {!hideContentOnEditPost && post.id === '1' ? (
           <h2 className="text-xl font-semibold mb-3 px-5">Post</h2>
         ) : null}
-        <div className="flex items-start justify-between mb-4 px-5">
+        <div
+          className={`flex items-start justify-between mb-4 ${!hideContentOnEditPost ? 'px-5' : 'px-0'}`}
+        >
           <div className="flex items-start gap-3">
             <Avatar className="h-10 w-10">
               <AvatarImage src={post.author.avatar} alt={post.author.name} />
@@ -39,15 +41,17 @@ export function PostCard({
               <p className="text-xs">
                 {post.author.title} at {post.author.organization}
               </p>
-              <div className="flex flex-col  gap-1 text-[0.675rem] text-secondary-grey">
-                <span>{post.timeAgo}</span>
-                {post.mutualFollowers && (
-                  <div className="flex items-center gap-1">
-                    <CommunityIcon className="fill-secondary-grey" />
-                    <span>{post.mutualFollowers} Mutual Followers</span>
-                  </div>
-                )}
-              </div>
+              {!hideContentOnEditPost ? (
+                <div className="flex flex-col  gap-1 text-[0.675rem] text-secondary-grey">
+                  <span>{post.timeAgo}</span>
+                  {post.mutualFollowers && (
+                    <div className="flex items-center gap-1">
+                      <CommunityIcon className="fill-secondary-grey" />
+                      <span>{post.mutualFollowers} Mutual Followers</span>
+                    </div>
+                  )}
+                </div>
+              ) : null}
             </div>
           </div>
           {!hideContentOnEditPost ? <FollowButton /> : null}
@@ -60,7 +64,7 @@ export function PostCard({
         ) : (
           <div
             contentEditable
-            className="text-[0.675rem] mb-3 px-5 m-0 border-none bg-transparent outline-none w-full break-words"
+            className="text-[0.675rem] mb-3 px-0 m-0 border-none bg-transparent outline-none w-full break-words"
           >
             {post.content}
           </div>

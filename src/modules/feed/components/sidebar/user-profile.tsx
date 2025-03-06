@@ -59,7 +59,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ hideHistory }) => {
               <span>
                 <img src="/employment.svg" alt="briefcase icon" />
               </span>
-              Current Employment in Northern University
+              Current Employment in Columbia University
             </div>
           </div>
           <hr className="border-t-2 border-light-grey" />

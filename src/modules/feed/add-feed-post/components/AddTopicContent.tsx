@@ -10,8 +10,13 @@ import React, { useState } from 'react';
 
 export interface AddTopicContentProps extends DialogProps {
   handleNext: () => void;
+  onBack: () => void;
 }
-function AddTopicContent({ handleNext, onCloseModal }: AddTopicContentProps) {
+function AddTopicContent({
+  handleNext,
+  // onCloseModal,
+  onBack,
+}: AddTopicContentProps) {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -79,7 +84,7 @@ function AddTopicContent({ handleNext, onCloseModal }: AddTopicContentProps) {
         <Button
           variant="outline"
           onClick={() => {
-            onCloseModal();
+            onBack();
           }}
           className="py-5 px-7 bg-light-grey border-none hover:bg-light-grey hover:text-secondary-grey text-secondary-grey font-semibold"
         >

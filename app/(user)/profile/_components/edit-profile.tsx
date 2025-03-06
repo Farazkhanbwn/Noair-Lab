@@ -106,7 +106,7 @@ function EditProfile({
               Current Employment
             </label>
             <Input
-              placeholder="Northern University"
+              placeholder="Columbia University"
               className="w-full bg-light-grey focus:border focus:border-input"
             />
           </div>

@@ -18,7 +18,7 @@ function InsightsPage({ breakpoints, className }: InsightsPageProps) {
   // Get active tab from URL or use default
   const defaultTab = insightsCategories[0].name;
   const initialTab =
-    sessionStorage?.getItem('activeTab') ||
+    (sessionStorage && sessionStorage?.getItem('activeTab')) ||
     searchParams.get('tab') ||
     defaultTab;
   const [activeTab, setActiveTab] = useState(initialTab);

@@ -1,102 +1,13 @@
 import PrimaryImage from '@/components/common/primary-image/primary-image';
-import React, { FC } from 'react';
-import { BookText, FileText, Newspaper, ScrollText } from 'lucide-react';
-import { ContentTypeDropdown, ContentTypeItem } from './content-type-dropdown';
+import { FC } from 'react';
+import { ContentTypeDropdown } from './content-type-dropdown';
+import { Button } from '@/components/ui/button';
+import { contentTypes } from '@/utils/constants/feed';
 
 interface AddPostProps {
   onSelectItem: (value: string) => void;
   classNames?: string;
 }
-
-// const contentTypes: ContentTypeItem[] = [
-//   {
-//     icon: FileText,
-//     label: 'Post',
-//     value: 'post',
-//   },
-//   {
-//     icon: ScrollText,
-//     label: 'Scientific Document',
-//     value: 'scientific-document',
-//   },
-// ];
-
-const contentTypes: ContentTypeItem[] = [
-  { icon: FileText, label: 'Post', value: 'post' },
-  {
-    icon: ScrollText,
-    label: 'Scientific Insights',
-    value: 'scientific-insights',
-  },
-  {
-    icon: ScrollText,
-    label: 'Engineering Insights',
-    value: 'engineering-insights',
-  },
-  {
-    icon: ScrollText,
-    label: 'Laws & Regulations Insights',
-    value: 'laws-regulations-insights',
-  },
-  { icon: ScrollText, label: 'Other Insights', value: 'other-insights' },
-  {
-    icon: Newspaper,
-    label: 'Scientific News Article',
-    value: 'scientific-news-article',
-  },
-  {
-    icon: Newspaper,
-    label: 'Engineering News Article',
-    value: 'engineering-news-article',
-  },
-  {
-    icon: Newspaper,
-    label: 'Laws & Regulations News Article',
-    value: 'laws-regulations-news-article',
-  },
-  { icon: Newspaper, label: 'Other News Article', value: 'other-news-article' },
-  {
-    icon: BookText,
-    label: 'Scientific Academic Journal or Publication',
-    value: 'scientific-academic-journal',
-  },
-  {
-    icon: BookText,
-    label: 'Engineering Academic Journal or Publication',
-    value: 'engineering-academic-journal',
-  },
-  {
-    icon: BookText,
-    label: 'Other Academic Journal or Publication',
-    value: 'other-academic-journal',
-  },
-  {
-    icon: ScrollText,
-    label: 'Scientific Documents',
-    value: 'scientific-documents',
-  },
-  {
-    icon: ScrollText,
-    label: 'Engineering Documents',
-    value: 'engineering-documents',
-  },
-  {
-    icon: ScrollText,
-    label: 'Engineering Patent Documents',
-    value: 'engineering-patent-documents',
-  },
-  {
-    icon: ScrollText,
-    label: 'Scientific Patent Documents',
-    value: 'scientific-patent-documents',
-  },
-  {
-    icon: ScrollText,
-    label: 'Other Patent Documents',
-    value: 'other-patent-documents',
-  },
-  { icon: ScrollText, label: 'Other Documents', value: 'other-documents' },
-];
 
 const AddPost: FC<AddPostProps> = ({ onSelectItem, classNames }) => {
   const handleSelect = (value: string) => {
@@ -127,11 +38,14 @@ const AddPost: FC<AddPostProps> = ({ onSelectItem, classNames }) => {
           items={contentTypes}
           onSelect={handleSelect}
           triggerButton={
-            <img
-              src="/file_upload.svg"
-              alt="Upload"
-              className="max-w-[16px] h-[16px] ml-auto cursor-pointer"
-            />
+            // <img
+            //   src="/file_upload.svg"
+            //   alt="Upload"
+            //   // className="max-w-[16px] h-[16px] ml-auto cursor-pointer"
+            // />
+            <Button size={'sm'} className="text-white text-sm w-auto">
+              Create Update
+            </Button>
           }
         />
       </div>

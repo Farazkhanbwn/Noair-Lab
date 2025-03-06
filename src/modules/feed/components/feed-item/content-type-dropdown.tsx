@@ -12,7 +12,7 @@ import {
 import { Button } from '@/components/ui/button';
 
 export type ContentTypeItem = {
-  icon: LucideIcon;
+  icon: LucideIcon | null;
   label: string;
   value: string;
 };

@@ -21,7 +21,7 @@ const UserPost: FC<UserPostProps> = ({ isPinned }) => {
     <div className="bg-pure-white rounded-[20px]">
       <ProfilePost
         name="Wilma Ullrich"
-        role="Research Assistant at Northern University"
+        role="Research Assistant at University of Chicago"
         time="12 minutes ago"
         content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
         image="/images/post-background.png"
@@ -41,8 +41,8 @@ const UserPost: FC<UserPostProps> = ({ isPinned }) => {
 
       {/* Comments */}
       <Comment
-        name="Elmer Erdman"
-        role="Medical Researcher"
+        name="Elmer Erdman, PhD"
+        role="Research Faculty at Harvard University"
         comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
         time="1h"
         followers={1200}
@@ -50,8 +50,8 @@ const UserPost: FC<UserPostProps> = ({ isPinned }) => {
       />
 
       <Comment
-        name="Elmer Erdman"
-        role="Medical Researcher"
+        name="Elmer Erdman, PhD"
+        role="Research Faculty at Harvard University"
         comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
         time="1h"
         followers={1200}

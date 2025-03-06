@@ -9,6 +9,7 @@ interface CustomModalProps {
   onClose: () => void;
   dialogHeaderContent: JSX.Element;
   dialogBodyContent: JSX.Element;
+  bodyClassName?: string;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export function CustomModal({
   dialogHeaderContent,
   dialogBodyContent,
   className,
+  bodyClassName = '',
 }: CustomModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -28,7 +30,12 @@ export function CustomModal({
         )}
       >
         <DialogHeader>{dialogHeaderContent}</DialogHeader>
-        <div className="flex-1 overflow-y-auto max-h-screen pr-4">
+        <div
+          className={cn(
+            'flex-1 overflow-y-auto max-h-screen pr-4',
+            bodyClassName
+          )}
+        >
           {dialogBodyContent}
         </div>
         {/* {dialogBodyContent} */}

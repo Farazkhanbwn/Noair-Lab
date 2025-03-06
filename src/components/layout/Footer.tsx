@@ -11,7 +11,7 @@ const Footer: FC<FooterProps> = ({ classNames }) => {
     >
       <div className="row flex flex-col md:flex-row items-center justify-between w-full gap-4">
         <p className="text-center md:text-left">
-          © 2008-2024 ResearchGate GmbH. All rights reserved.
+          © 2008-2025 Noair Lab. All rights reserved.
         </p>
         <ul className="flex items-center gap-4 md:gap-6 text-center">
           <li className="hover:underline cursor-pointer">Terms</li>

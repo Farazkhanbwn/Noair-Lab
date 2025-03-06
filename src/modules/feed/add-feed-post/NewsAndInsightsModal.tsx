@@ -3,13 +3,14 @@ import { CustomModal } from '@/components/common/custom-modal';
 import { Button } from '@/components/ui/button';
 import { DialogProps } from '@/types';
 import { DialogTitle } from '@radix-ui/react-dialog';
-import { X } from 'lucide-react';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import AddTopicContent from './components/AddTopicContent';
 import { useRouter } from 'next/navigation';
+import CrossIcon from '@/components/icons/cross-icon';
 
 interface NewsAndInsightsModalProps extends DialogProps {
   postType: string | null;
+  onBack: () => void;
 }
 
 function NewsAndInsightsModal(props: NewsAndInsightsModalProps) {
@@ -36,16 +37,20 @@ function NewsAndInsightsModal(props: NewsAndInsightsModalProps) {
           <Button
             variant="default"
             size="icon"
-            className="h-6 w-6 p-3 rounded-full shadow-none bg-light-grey hover:bg-stroke-grey"
+            className="bg-light-grey rounded-full p-2.5 hover:bg-light-grey-100 transition-colors"
             onClick={props.onCloseModal}
           >
-            <X className="h-3 w-3" />
+            <CrossIcon width={12} height={12} />
           </Button>
         </div>
       }
       dialogBodyContent={
         <>
-          <AddTopicContent {...props} handleNext={openTextFormattingCard} />
+          <AddTopicContent
+            {...props}
+            handleNext={openTextFormattingCard}
+            onBack={props.onBack}
+          />
         </>
       }
     />

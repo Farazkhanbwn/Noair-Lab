@@ -2,11 +2,12 @@
 import { useCallback, useState } from 'react';
 import { insightsCategories, insightsData } from '@/utils/constants/insights';
 import InsightsCatgories from '../news-section/InsightsCatgories';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { InsightsDatatem } from '../news-section/news.types';
 import { NewsCard } from '../news-section/NewsCard';
 import RelatedNews from './RelatedNews';
 import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 
 const validSections = ['news', 'insights', 'academic-publication', 'patent'];
 export function getSectionTitleFromSlug(
@@ -36,7 +37,7 @@ function NewsGridPage() {
   // useMaxWidth('main-container');
   const pathname = usePathname();
   const slug = pathname.split('/').pop(); // Get "engineer-news"
-
+  const router = useRouter();
   const { sectionTitle, foundedSection } = getSectionTitleFromSlug(
     insightsData,
     slug || ''
@@ -60,7 +61,7 @@ function NewsGridPage() {
         sectionItem.id.toLowerCase().includes(matchedSection as string)
       );
       setActiveTab(tab);
-      sessionStorage.setItem('activeTab', tab);
+      sessionStorage?.setItem('activeTab', tab);
       setSelectedNewsItemList(section as InsightsDatatem);
       return section || null;
     },
@@ -69,6 +70,13 @@ function NewsGridPage() {
 
   return (
     <div className="w-full flex flex-col min-h-0 p-3 md:p-7">
+      <button
+        onClick={() => router.back()}
+        className="flex w-fit my-4 lg:my-0 items-center px-3 py-2 text-sm font-medium rounded-md bg-gray-200 hover:bg-gray-300 transition"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Back
+      </button>
       <div className="w-full justify-between md:justify-around flex row">
         <InsightsCatgories
           categories={insightsCategories}
