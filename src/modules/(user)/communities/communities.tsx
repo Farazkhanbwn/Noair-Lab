@@ -15,9 +15,17 @@ import {
   SAMPLE_DISCUSSIONS,
 } from './communities.contants';
 import DiscussionCard from './components/discussion-card';
+import CreateDiscussion from './components/create-discussion';
+import { CommunityModalType } from './communities.types';
+import CommunityMediaModal from '@/modals/communities/community-media/community-media';
+import TopicSelectionModal from '@/modals/communities/topic-selection/topic-selection';
+import CommunityAccessModal from '@/modals/communities/community-access/community-access';
+import CommunitySuccessModal from '@/modals/communities/community-success/community-success';
 
 const CommunitiesPage = () => {
-  const [isCreateCommunity, setIsCreateCommunity] = useState(false);
+  const [isCreateDiscussion, setIsCreateDiscussion] = useState(false);
+  const [isCommunityModal, setCommunityModal] =
+    useState<CommunityModalType>(null);
 
   return (
     <div className="flex flex-col md:flex-row gap-4 p-4 w-full">
@@ -27,8 +35,9 @@ const CommunitiesPage = () => {
           communities={MY_COMMUNITIES_ITEMS}
           classNames="rounded-md w-full"
           selectedCommunity={''}
-          onCreateCommunity={() => setIsCreateCommunity(true)}
+          onCreateCommunity={() => setCommunityModal('create')}
         />
+
         <CommunityMessages
           isChatOpen={false}
           onhandleCommunitySelect={() => console.log('Is Chat Closed')}
@@ -42,7 +51,9 @@ const CommunitiesPage = () => {
           <h2 className="heading-secondary font-semibold">
             Pinned Discussions (2)
           </h2>
+
           <CustomButton
+            onClick={() => setIsCreateDiscussion(true)}
             className="font-semibold max-w-[12rem] w-full px-2 py-1.5 rounded-full"
             styleType={CustomButtonTypes.SECONDARY}
           >
@@ -84,10 +95,45 @@ const CommunitiesPage = () => {
         />
       </aside>
 
+      <CreateDiscussion
+        onCloseModal={() => setIsCreateDiscussion(false)}
+        open={isCreateDiscussion}
+        onSubmit={(title, body, image) => {
+          console.log({ title, body, image });
+        }}
+      />
+
       <CreateCommunityModal
-        isOpen={isCreateCommunity}
-        onClose={() => setIsCreateCommunity(false)}
-        onNextButton={() => console.log('Next button Click')}
+        isOpen={isCommunityModal === 'create'}
+        onClose={() => setCommunityModal(null)}
+        onNextButton={() => setCommunityModal('media')}
+      />
+
+      <CommunityMediaModal
+        isOpen={isCommunityModal === 'media'}
+        onClose={() => setCommunityModal(null)}
+        onNextButton={() => setCommunityModal('topic')}
+        onBackButton={() => setCommunityModal('create')}
+      />
+
+      <TopicSelectionModal
+        isOpen={isCommunityModal === 'topic'}
+        onClose={() => setCommunityModal(null)}
+        onNextButton={() => setCommunityModal('access')}
+        onBackButton={() => setCommunityModal('media')}
+      />
+
+      <CommunityAccessModal
+        isOpen={isCommunityModal === 'access'}
+        onClose={() => setCommunityModal(null)}
+        onNextButton={() => setCommunityModal('success')}
+        onBackButton={() => setCommunityModal('topic')}
+      />
+
+      <CommunitySuccessModal
+        isOpen={isCommunityModal === 'success'}
+        onClose={() => setCommunityModal(null)}
+        onViewCommunity={() => setCommunityModal(null)}
       />
     </div>
   );

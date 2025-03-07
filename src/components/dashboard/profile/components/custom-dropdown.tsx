@@ -1,18 +1,30 @@
 'use client';
 
+import { useState, useRef, useEffect, ReactNode } from 'react';
 import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import ThreeDots from '@/components/icons/user/feed/three-dots';
-import DeleteIcon from '@/components/icons/user/profile/delete-icon';
-import EditIcon from '@/components/icons/user/profile/edit-icon';
-import PinIcon from '@/components/icons/user/profile/pin-icon';
-import { useState, useRef, useEffect } from 'react';
-import EditPost from '../../../../../app/(user)/profile/_components/edit-post';
 
-export default function CustomDropdown() {
+interface DropdownItem {
+  label: string;
+  icon?: ReactNode;
+  onClick: () => void;
+  className?: string;
+}
+
+interface CustomDropdownProps {
+  items: DropdownItem[];
+  buttonClassName?: string;
+  dropdownClassName?: string;
+}
+
+export default function CustomDropdown({
+  items,
+  buttonClassName = '',
+  dropdownClassName = '',
+}: CustomDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const [isEditPostModal, setIsEditPostModal] = useState(false);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -30,58 +42,36 @@ export default function CustomDropdown() {
   }, []);
 
   return (
-    <>
-      <div className="relative" ref={dropdownRef}>
-        {/* Three dots button */}
-        <CustomButton
-          styleType={CustomButtonTypes.TERTIARY}
-          onClick={() => setIsOpen(!isOpen)}
-          className="p-1 hover:bg-gray-100 rounded-full"
-        >
-          <ThreeDots color="#9a9a9a" />
-        </CustomButton>
+    <div className="relative" ref={dropdownRef}>
+      {/* Three dots button */}
+      <CustomButton
+        styleType={CustomButtonTypes.TERTIARY}
+        onClick={() => setIsOpen(!isOpen)}
+        className={`p-1 hover:bg-gray-100 rounded-full ${buttonClassName}`}
+      >
+        <ThreeDots color="#9a9a9a" />
+      </CustomButton>
 
-        {/* Dropdown menu */}
-        {isOpen && (
-          <div className="absolute text-description font-medium right-0 w-36 bg-white rounded-[5px] shadow-lg border border-gray-200">
+      {/* Dropdown menu */}
+      {isOpen && (
+        <div
+          className={`absolute text-description font-medium right-0 w-auto bg-white rounded-[5px] shadow-lg border border-gray-200 ${dropdownClassName}`}
+        >
+          {items.map((item, index) => (
             <button
-              className="flex items-center gap-2 w-full px-3 py-2 text-left text-gray-700 hover:bg-gray-100"
+              key={index}
+              className={`flex items-center whitespace-nowrap gap-2 w-full px-3 py-2 text-left text-gray-700 hover:bg-gray-100 ${item.className}`}
               onClick={() => {
-                console.log('Pin post');
+                item.onClick();
                 setIsOpen(false);
               }}
             >
-              <PinIcon />
-              Pin Post
+              {item.icon}
+              {item.label}
             </button>
-            <button
-              className="flex items-center gap-2 w-full px-3 py-2 text-left text-gray-700 hover:bg-gray-100"
-              onClick={() => {
-                console.log('Edit post');
-                // setIsOpen(false);
-                setIsEditPostModal(true);
-              }}
-            >
-              <EditIcon />
-              Edit Post
-            </button>
-            <button
-              className="flex items-center gap-2 w-full px-3 py-2 text-left text-gray-700 hover:bg-gray-100"
-              onClick={() => {
-                console.log('Delete post');
-                setIsOpen(false);
-              }}
-            >
-              <DeleteIcon />
-              Delete Post
-            </button>
-          </div>
-        )}
-      </div>
-      <EditPost
-        open={isEditPostModal}
-        onCloseModal={() => setIsEditPostModal(false)}
-      />
-    </>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

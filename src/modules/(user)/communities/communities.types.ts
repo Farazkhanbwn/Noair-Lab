@@ -4,3 +4,11 @@ export interface CommunityItem {
   imageUrl?: string;
   members: string;
 }
+
+export type CommunityModalType =
+  | 'create'
+  | 'media'
+  | 'topic'
+  | 'access'
+  | 'success'
+  | null;

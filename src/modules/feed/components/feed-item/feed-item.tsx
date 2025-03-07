@@ -48,6 +48,11 @@ const FeedItem: FC = () => {
     searchParams.get('page') === 'add-post' ||
     false;
 
+  const isOpenScientificDocument =
+    (postType && postType === 'scientific-document') ||
+    searchParams.get('page') === 'scientific-document' ||
+    false;
+
   return (
     <div className="w-full text-black flex flex-col gap-5">
       {/* New Post */}
@@ -348,7 +353,12 @@ const FeedItem: FC = () => {
       />
 
       <NewsAndInsightsModal
-        open={!isOpenPostModal && isOpenTopicsModal && !isOpenCategoryModal}
+        open={
+          !isOpenPostModal &&
+          isOpenTopicsModal &&
+          !isOpenCategoryModal &&
+          !isOpenScientificDocument
+        }
         onCloseModal={() => {
           setPostType(null);
           router.replace(`/feed`, { scroll: false });
@@ -362,8 +372,11 @@ const FeedItem: FC = () => {
 
       {/* Scientific Document Modal */}
       <ScientificDocumentModal
-        isOpen={postType === 'scientific-document'}
-        onClose={() => setPostType(null)}
+        isOpen={isOpenScientificDocument}
+        onClose={() => {
+          setPostType(null);
+          router.replace(`/feed`, { scroll: false });
+        }}
       />
 
       <LikesModal

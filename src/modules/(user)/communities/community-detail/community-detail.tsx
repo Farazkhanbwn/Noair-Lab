@@ -32,14 +32,7 @@ import CommunityMediaModal from '@/modals/communities/community-media/community-
 import TopicSelectionModal from '@/modals/communities/topic-selection/topic-selection';
 import CommunityAccessModal from '@/modals/communities/community-access/community-access';
 import CommunitySuccessModal from '@/modals/communities/community-success/community-success';
-
-type CommunityModalType =
-  | 'create'
-  | 'media'
-  | 'topic'
-  | 'access'
-  | 'success'
-  | null;
+import { CommunityModalType } from '../communities.types';
 
 const CommunityDetailPage = () => {
   const searchParams = useSearchParams();
@@ -74,6 +67,7 @@ const CommunityDetailPage = () => {
             selectedCommunity={communityName}
             onCreateCommunity={() => setCommunityModal('create')}
           />
+
           <CommunityMessages
             classNames=" w-full"
             isChatOpen={false}
@@ -89,7 +83,6 @@ const CommunityDetailPage = () => {
         <div className="w-full flex flex-col gap-4">
           {/* Climate Information */}
           <div className="bg-pure-white pb-4 h-fit rounded-lg shadow-sm">
-            {/* <div className="relative"> */}
             {/* Hero Image */}
             <div className="h-48 relative w-full overflow-hidden rounded-t-lg">
               <PrimaryImage
@@ -154,7 +147,6 @@ const CommunityDetailPage = () => {
                 </div>
               </div>
             </div>
-            {/* </div> */}
 
             {/* Content Section */}
             <div className="px-8 space-y-4 ml-[1rem] lg:ml-[8.5rem] mt-[0] lg:mt-[-2.5rem]">
@@ -371,7 +363,7 @@ const CommunityDetailPage = () => {
       <CommunitySuccessModal
         isOpen={isCommunityModal === 'success'}
         onClose={() => setCommunityModal(null)}
-        onViewCommunity={() => console.log('View Community')}
+        onViewCommunity={() => setCommunityModal(null)}
       />
     </>
   );

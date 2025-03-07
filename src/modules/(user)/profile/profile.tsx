@@ -26,6 +26,7 @@ import AddPortfolioLink from '../../../../app/(user)/profile/_components/add-por
 import EditProfile from '../../../../app/(user)/profile/_components/edit-profile';
 import AddExperience from '../../../../app/(user)/profile/_components/add-experience';
 import AddEducation from '../../../../app/(user)/profile/_components/add-education';
+import FollowerModal from '@/modals/follower-modal/follower-modal';
 
 const buttonClasses =
   'w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-center bg-primary-color text-pure-white';
@@ -37,6 +38,7 @@ const ProfilePage = () => {
   const [isPortfolioModal, setIsPortoflioModal] = useState(false);
   const [isExperienceModal, setIsExperienceModal] = useState(false);
   const [isEducationModal, setisEducationModal] = useState(false);
+  const [isFollowerModal, setIsFollowerModal] = useState(false);
 
   const [isEditProfileModal, setIsEditProfileModal] = useState(false);
 
@@ -128,7 +130,16 @@ const ProfilePage = () => {
         </ProfileBanner>
         <div className="grid !grid-cols-2 xs:!grid-cols-4 border-y border-gray-200 mt-6 text-pure-black py-4">
           {profileData.info.stats.map((stat, index) => (
-            <StatCard key={index} {...stat} index={index} />
+            <StatCard
+              onClick={
+                stat.label === 'Followers'
+                  ? () => setIsFollowerModal(true)
+                  : undefined
+              }
+              key={index}
+              {...stat}
+              index={index}
+            />
           ))}
         </div>
 
@@ -231,6 +242,12 @@ const ProfilePage = () => {
       <AddEducation
         open={isEducationModal}
         onCloseModal={() => setisEducationModal(false)}
+      />
+
+      <FollowerModal
+        title="Followers"
+        open={isFollowerModal}
+        onCloseModal={() => setIsFollowerModal(false)}
       />
     </>
   );

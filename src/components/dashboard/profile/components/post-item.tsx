@@ -3,7 +3,7 @@ import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import UserCard from '@/components/dashboard/components/user-card/user-card';
 import { ProfilePostProps } from '../../../../modules/(user)/profile/profile.types';
-import CustomDropdown from './custom-dropdown';
+import PostOptions from './post-options';
 
 const ProfilePost: FC<ProfilePostProps> = ({
   isPinned,
@@ -40,7 +40,7 @@ const ProfilePost: FC<ProfilePostProps> = ({
             Follow
           </CustomButton>
         ) : (
-          <CustomDropdown />
+          <PostOptions />
         )}
       </div>
       <p className="heading-tertiary">{content}</p>

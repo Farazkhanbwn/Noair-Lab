@@ -17,7 +17,10 @@ function NewsAndInsightsModal(props: NewsAndInsightsModalProps) {
   const router = useRouter();
 
   const openTextFormattingCard = useCallback(() => {
-    if (props.postType?.includes('documents')) {
+    if (props.postType?.includes('scientific-documents')) {
+      console.log('document is printed');
+      router.push(`/feed?page=scientific-document`, { scroll: false });
+    } else if (props.postType?.includes('documents')) {
       router.push(`/feed?page=add-post`, { scroll: false });
     } else {
       router.push(`/feed?page=text-formatting`, { scroll: false });

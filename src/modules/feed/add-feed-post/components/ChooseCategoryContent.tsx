@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import CustomButton from '@/components/common/custom-button/custom-button';
+import CustomSelect from '@/components/common/custom-select/custom-select';
 import PrimaryImage from '@/components/common/primary-image/primary-image';
 import { Button } from '@/components/ui/button';
 import {
@@ -8,9 +10,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Label } from '@/components/ui/label';
+import { defaultSelectTheme } from '@/constants';
 import { feedCategoryTypes } from '@/utils/constants/feed';
 import { DialogProps } from '@radix-ui/react-dialog';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -39,11 +42,20 @@ function ChooseCategoryContent(props: ChooseCategoryContentProps) {
           </span>
         </Link>
         <div className="flex px-3 md:px-8 flex-col w-full mt-7 gap-3">
-          <label className="text-sm font-medium">
-            What Would You Like to Share?
-          </label>
+          <div className="flex flex-col gap-2">
+            <Label className="text-sm font-medium" htmlFor="organization">
+              {' '}
+              What Would You Like to Share?
+            </Label>
 
-          <DropdownMenu>
+            <CustomSelect
+              theme={defaultSelectTheme}
+              options={feedCategoryTypes}
+              onChange={value => setSelectedCategory(value)}
+              placeholder="Select a Category"
+            />
+          </div>
+          {/* <DropdownMenu>
             <DropdownMenuTrigger
               className="cursor-pointer w-full rounded-[10px]"
               asChild
@@ -90,7 +102,7 @@ function ChooseCategoryContent(props: ChooseCategoryContentProps) {
                 );
               })}
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
         </div>
       </div>
       <hr className="border-t border-stroke-grey mt-10" />

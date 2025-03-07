@@ -4,6 +4,7 @@ export interface ProfileStats {
   borderRight?: boolean;
   index: number;
   classNames?: string;
+  onClick?: () => void;
 }
 
 export interface UserProfileInfo {
