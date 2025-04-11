@@ -49,7 +49,7 @@ const UserCommentItem: FC<UserCommentProps> = ({
         time={moment.utc(comment.createdAt).fromNow()}
         followers={1200}
         mutual={2}
-        totalLikes={comment.totalCommentLikes}
+        totalLikes={comment.totalLikes}
         className="!px-0"
       />
       <CommentOptions

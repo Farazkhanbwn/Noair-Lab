@@ -266,7 +266,7 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
                         className="px-0 py-2"
                         followers={1200}
                         mutual={2}
-                        totalLikes={comment.totalCommentLikes || 0}
+                        totalLikes={comment.totalLikes || 0}
                       />
                     ))}
 
