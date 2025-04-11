@@ -18,6 +18,7 @@ function DetailedView() {
   const [likeModal, setLikeModal] = useState(false);
   const [shareModal, setShareModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   return (
     <>
       <div className="w-full flex flex-col min-h-0 p-1 xs:p-3 md:p-7">
@@ -74,7 +75,13 @@ function DetailedView() {
                   btnClassName="flex-grow-0"
                   actionBtnBoxClassName="px-5 py-1"
                 />
-                <SearchBar inputClassName="bg-white" className="px-5 !py-5" />
+                <SearchBar
+                  value={searchValue}
+                  onChange={e => setSearchValue(e.target.value)}
+                  inputClassName="bg-white"
+                  onSend={() => console.log('Sending Value')}
+                  className="px-5 !py-5"
+                />
               </div>
             </div>
 
@@ -99,6 +106,7 @@ function DetailedView() {
         isOpen={likeModal}
         onClose={() => setLikeModal(false)}
         title="Likes"
+        postId={42}
       />
 
       <ShareModal

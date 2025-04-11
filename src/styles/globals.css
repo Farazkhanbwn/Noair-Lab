@@ -160,17 +160,6 @@ textarea:focus {
   border-color: white;
 }
 
-.toast {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 1rem;
-  border-radius: 4px;
-  transition: opacity 0.5s ease;
-}
-
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -210,7 +199,7 @@ input[type='number'] {
   font-size: 0.5rem;
   transform: scale(0.3);
   font-weight: 900;
-  color: black;
+  color: #fefefe;
   background-color: #686464;
   border-radius: 50%;
   padding: 20px 40px !important;

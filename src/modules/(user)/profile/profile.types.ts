@@ -9,10 +9,12 @@ export interface ProfileStats {
 
 export interface UserProfileInfo {
   name: string;
-  profession: string;
+  profession?: string;
   specialization: string;
   currentEmployment: string;
   stats: ProfileStats[];
+  title?: string
+  profileImageUrl?: string
 }
 
 export interface ProfileProps {

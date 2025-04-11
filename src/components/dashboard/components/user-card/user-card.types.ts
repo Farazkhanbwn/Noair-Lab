@@ -5,5 +5,5 @@ export interface UserCardProps {
   mutual: number;
   followers: string;
   classNames?: string;
-  timeStamp?: string;
+  timeStamp?: Date;
 }

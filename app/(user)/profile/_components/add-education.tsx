@@ -64,6 +64,7 @@ function AddEducation({
               theme={defaultSelectTheme}
               options={DISCIPLINE_CATEGORIES}
               placeholder="Select your University"
+              onChange={value => console.log('value is : ', value)}
             />
           </div>
 

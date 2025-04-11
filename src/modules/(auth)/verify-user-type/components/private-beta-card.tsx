@@ -46,6 +46,7 @@ const PrivateBetaCard: FC<VerifyUserCardProps> = ({ isSelected, onSelect }) => {
         options={UNIVERSITIES}
         placeholder="Select your university"
         className="mb-4 max-w-[21rem]"
+        onChange={value => console.log('value are : ', value)}
       />
 
       <Link

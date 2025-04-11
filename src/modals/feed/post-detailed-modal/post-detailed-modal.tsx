@@ -2,8 +2,6 @@
 import React, { FC, useState } from 'react';
 import Modal from '@/components/common/modal';
 import { DialogProps } from '@/types';
-import { Check, CheckCircle, CheckCircle2 } from 'lucide-react';
-import Image from 'next/image';
 import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import UserCard from '@/components/dashboard/components/user-card/user-card';
@@ -12,32 +10,50 @@ import Comment from '@/components/dashboard/components/comment/comment';
 import CrossIcon from '@/components/icons/cross-icon';
 import CheckIcon from '@/components/icons/user/feed/check-icon';
 import PostImageDisplay from './components/post-image-display';
-import SwiperSlider from '@/components/common/swiper-slider/swiper-slider';
 import useWindowDimensions from '@/hooks/use-window-dimenstion';
+import { FeedPostItem, UserComment } from '@/types/feed-user';
+import { useFeedPostActions } from '@/modules/feed/hooks/use-feed-post-actions';
+import PostActionButtons from '@/components/common/post-action-button/post-action-button';
+import UserCommentItem from '@/modules/feed/components/feed-item/user-comments';
+import { handleRequestError } from '@/utils/toast-utils';
+import {
+  useAddComment,
+  useDeleteComment,
+  useUpdateComment,
+} from '@/service/feed-service/feed-service';
+import { useAppDispatch } from '@/store/hooks';
+import { updateCommentCount } from '@/store/slices/feed-slice/feed-slice';
 
 interface PostDetailedModalProps extends DialogProps {
   classNames?: string;
-  initialLikes?: number;
-  initialComments?: number;
-  initialShares?: number;
   images?: string[];
+  post: FeedPostItem;
 }
 
 const PostDetailedModal: FC<PostDetailedModalProps> = ({
   open,
   onCloseModal,
   classNames,
-  initialLikes = 100,
-  initialComments = 50,
-  initialShares = 25,
+  post,
   images = ['/images/post-background.png', '/images/post-background.png'],
 }) => {
+  const { getMorePostComments, handleLikePost, handleUnlikePost } =
+    useFeedPostActions(post.id);
+  const { mutateAsync, isPending } = useAddComment();
+  // const { mutateAsync: getPostComments } = useGetPostComments();
+  const { mutateAsync: deleteComment } = useDeleteComment();
+  const { mutateAsync: updateComment } = useUpdateComment();
+
+  const dispatch = useAppDispatch();
+
   const { width, height } = useWindowDimensions();
-  const [likes, setLikes] = useState(initialLikes);
-  const [comments, setComments] = useState(initialComments);
-  const [shares, setShares] = useState(initialShares);
   const dynamicHeight = height ? height - 150 : 500;
-  const sideBarHeight = dynamicHeight - 100;
+  const [inputValue, setInputValue] = useState('');
+  const [newComments, setNewComments] = useState<UserComment[]>([]);
+  const [isEditable, setIsEditable] = useState(false);
+
+  const actionButtonStyles =
+    'flex-center gap-x-3 py-3 w-full font-medium transition-all hover:bg-gray-100';
 
   const modalStyles = {
     modal: {
@@ -50,6 +66,49 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
     closeIcon: {
       fill: '#fff',
     },
+  };
+
+  const handleSend = async () => {
+    try {
+      const newComment = await mutateAsync({
+        postId: post.id,
+        content: inputValue,
+      });
+      setNewComments(prevComments => [newComment, ...prevComments]);
+      dispatch(updateCommentCount({ postId: post.id, value: +1 }));
+      setInputValue('');
+    } catch (error) {
+      handleRequestError(error);
+    }
+  };
+
+  const handleDeleteComment = async (commentId: number) => {
+    try {
+      await deleteComment({ postId: post.id, commentId });
+      setNewComments(prevComments =>
+        prevComments.filter(comment => comment.id !== commentId)
+      );
+      dispatch(updateCommentCount({ postId: post.id, value: -1 }));
+    } catch (error) {
+      handleRequestError(error);
+    }
+  };
+
+  const handleSaveEditingText = async (content: string, commentId: number) => {
+    try {
+      // Send the updated content to the server
+      await updateComment({ commentId, postId: post.id, content });
+
+      // Update the local state by mapping over the existing comments
+      setNewComments(prevComments =>
+        prevComments.map(comment =>
+          comment.id === commentId ? { ...comment, content } : comment
+        )
+      );
+      setIsEditable(false);
+    } catch (error) {
+      handleRequestError(error);
+    }
   };
 
   return (
@@ -74,11 +133,13 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
             <div className="flex justify-between items-start p-3">
               <div className="flex justify-between items-start">
                 <UserCard
-                  userImage={'/images/feed-profile.png'}
-                  name={'Wilma Ullrich, PhD'}
-                  role={'Research Assistant at Princeton University'}
-                  mutual={2}
-                  followers={`${1.2}k`}
+                  userImage={
+                    post.user.profileImageUrl || '/images/feed-profile.png'
+                  }
+                  name={post.user.name}
+                  role={post.user.specialization}
+                  mutual={post.user.mutualFollowersCount}
+                  followers={`${post.user.totalFollowersCount}k`}
                 />
               </div>
 
@@ -102,9 +163,9 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
             <div
               className={`flex-1 bg-pure-white md:max-h-[${dynamicHeight}px] h-full overflow-y-scroll`}
             >
-              <div className="space-y-2 heading-tertiary">
+              <div className="heading-tertiary">
                 {/* Post content */}
-                <div className="px-4">
+                {/* <div className="px-4">
                   <p>
                     Lorem ipsum dolor sit amet consectetur. Non nisi in id
                     pharelius. Ac eros justo elementum tincidunt congue risus
@@ -116,7 +177,6 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
                     sagittis eros diam vulputate. Aliquet vestibule porta nunc.
                   </p>
 
-                  {/* Checklist */}
                   <div className="space-y-2 mt-2">
                     <div className="flex items-center gap-2">
                       <CheckIcon />
@@ -131,86 +191,94 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
                       <span>Nibh ac ultricies et vulputate nunc.</span>
                     </div>
                   </div>
-                </div>
+                </div> */}
+                {post.content && <p className="mt-2">{post.content}</p>}
 
-                <div className="flex items-center justify-between heading-tertiary font-normal text-dark-grey py-2 px-4 border-b border-stroke-grey">
+                <div className="flex items-center justify-between heading-tertiary font-normal text-dark-grey py-2 px-4 border-b border-stroke-grey mt-4">
                   <CustomButton
                     styleType={CustomButtonTypes.TERTIARY}
                     // onClick={onOpenLikesModal}
                   >
-                    {likes} likes
+                    {post.totalLikeCount || 0} likes
                   </CustomButton>
                   <div className="flex items-center gap-x-4">
                     <CustomButton
                       styleType={CustomButtonTypes.TERTIARY}
                       //   onClick={onOpenCommentsModal}
                     >
-                      {comments} Comments
+                      {post.totalCommentCount || 0} Comments
                     </CustomButton>
                     <CustomButton
                       styleType={CustomButtonTypes.TERTIARY}
                       //   onClick={onOpenSharesModal}
                     >
-                      {shares} Shares
+                      {post.totalShareCount || 0} Shares
                     </CustomButton>
                   </div>
                 </div>
-                <div className="px-3">
-                  <div className="flex justify-between text-description px-6">
-                    <CustomButton
-                      styleType={CustomButtonTypes.TERTIARY}
-                      className="flex items-end gap-x-2"
-                    >
-                      <img src="/like.svg" alt="like icon" /> Like
-                    </CustomButton>
-                    <CustomButton
-                      styleType={CustomButtonTypes.TERTIARY}
-                      className="flex items-center gap-x-2"
-                    >
-                      <img src="/comment.svg" alt="comment icon" /> Comment
-                    </CustomButton>
-                    <CustomButton
-                      styleType={CustomButtonTypes.TERTIARY}
-                      className="flex items-center gap-x-2"
-                    >
-                      <img src="/share.svg" alt="share icon" /> Share
-                    </CustomButton>
-                  </div>
-
-                  <SearchBar className="px-0 py-3" />
-
-                  {/* Comments */}
-                  <Comment
-                    name="Elmer Erdman"
-                    role="Medical Researcher"
-                    comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-                    time="1h"
-                    className="px-0 py-2"
-                    followers={1200}
-                    mutual={2}
+                <div className="px-5">
+                  <PostActionButtons
+                    classNames="text-sm"
+                    userLike={post.userLike}
+                    onLikeClick={
+                      post.userLike ? handleUnlikePost : handleLikePost
+                    }
+                    onCommentClick={() => console.log('comment is clicked')}
+                    onShareClick={() => console.log('share button is clicked')}
+                    actionButtonStyles={actionButtonStyles}
                   />
 
-                  {/* Comments */}
-                  <Comment
-                    name="Elmer Erdman"
-                    role="Medical Researcher"
-                    comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-                    time="1h"
-                    className="px-0 py-2"
-                    followers={1200}
-                    mutual={2}
+                  <SearchBar
+                    value={inputValue}
+                    onChange={e => setInputValue(e.target.value)}
+                    onSend={handleSend}
+                    isSending={isPending}
+                    className="!px-0 mt-2"
                   />
+                  {newComments.length > 0 && (
+                    <div className="flex flex-col gap-2 mb-2">
+                      {newComments.map(comment => (
+                        <div key={comment.id}>
+                          <UserCommentItem
+                            isEditable={isEditable}
+                            onSave={content =>
+                              handleSaveEditingText(content, comment.id)
+                            }
+                            onCancal={() => setIsEditable(false)}
+                            comment={comment}
+                            handleDeleteComment={handleDeleteComment}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Comments */}
-                  <Comment
-                    name="Elmer Erdman"
-                    role="Medical Researcher"
-                    comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-                    time="1h"
-                    className="px-0 py-2"
-                    followers={1200}
-                    mutual={2}
-                  />
+
+                  {post.comments.length > 0 &&
+                    post.comments.map(comment => (
+                      <Comment
+                        key={comment.id}
+                        name={comment.user.name}
+                        role={comment.specialization ?? ''}
+                        comment={comment.content}
+                        time="1h"
+                        className="px-0 py-2"
+                        followers={1200}
+                        mutual={2}
+                        totalLikes={comment.totalCommentLikes || 0}
+                      />
+                    ))}
+
+                  {post.hasMoreComments && (
+                    <CustomButton
+                      onClick={() => getMorePostComments(post.nextCursor)}
+                      styleType={CustomButtonTypes.TERTIARY}
+                      className="text-description font-medium text-primary-color underline m-4"
+                    >
+                      View more comments
+                    </CustomButton>
+                  )}
                 </div>
               </div>
             </div>

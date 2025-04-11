@@ -11,6 +11,11 @@ import Link from '@/components/common/custom-link/custom-link';
 
 import { useState } from 'react';
 import ConfirmationModal from '@/components/common/signup-login-success-modal';
+import { handleRequestError } from '@/utils/toast-utils';
+import { useLogin } from '@/service/auth-service/auth-service';
+import FullScreenLoader from '@/components/common/full-screen-loader/full-screen-loader';
+import { useDispatch } from 'react-redux';
+import { signupSuccess } from '@/store/userSlice';
 
 type LoginForm = {
   email: string;
@@ -19,16 +24,29 @@ type LoginForm = {
 
 const LoginPage = () => {
   const router = useRouter();
+  const { isPending, mutateAsync } = useLogin();
   const [isLoginSuccessModal, setIsLoginSuccessModal] = useState(false);
+  const dispatch = useDispatch()
 
-  const methods = useForm<LoginForm>();
+  const methods = useForm<LoginForm>({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+  });
 
-  const onSubmit = (data: LoginForm) => {
-    console.log(data);
+  const onSubmit = async (data: LoginForm) => {
+    try {
+      const response = await mutateAsync(data);
+      dispatch(signupSuccess(response?.data?.user))
+      localStorage.setItem('token', response.data.accessToken);
+      setIsLoginSuccessModal(true);
+    } catch (error) {
+      handleRequestError(error);
+    }
   };
 
   return (
     <>
+      {isPending && <FullScreenLoader />}
       <AuthLayout>
         <AuthForm
           title="WELCOME BACK!"
@@ -48,12 +66,26 @@ const LoginPage = () => {
                 name="email"
                 placeholder="user@gmail.com"
                 // className='md:px-0 md:py-0 px-1 py-2'
+                rules={{
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: 'Invalid email address',
+                  },
+                }}
               />
               <div>
                 <FormInput
                   type="password"
                   name="password"
                   placeholder="Password"
+                  rules={{
+                    required: 'Password is required',
+                    minLength: {
+                      value: 6,
+                      message: 'Password must be at least 6 characters',
+                    },
+                  }}
                 />
 
                 <div className="text-end mt-2">
@@ -62,13 +94,7 @@ const LoginPage = () => {
                   </Link>
                 </div>
               </div>
-              <CustomButton
-                onClick={() => {
-                  setIsLoginSuccessModal(true);
-                }}
-                type="submit"
-                className="self-start"
-              >
+              <CustomButton type="submit" className="self-start">
                 Log In
               </CustomButton>
             </form>

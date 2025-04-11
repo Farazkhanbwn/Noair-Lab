@@ -4,6 +4,7 @@ import { PropsWithChildren } from 'react';
 import { Metadata } from 'next';
 import { Work_Sans } from 'next/font/google';
 import '../src/styles/globals.css';
+import ClientProvider from '@/providers/ClientProvider';
 
 export const metadata: Metadata = {
   title: 'Noair Lab - Social Media for Researchers',
@@ -19,7 +20,9 @@ const WorkSans = Work_Sans({
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className={WorkSans.className}>{children}</body>
+      <body suppressHydrationWarning={true} className={WorkSans.className}>
+        <ClientProvider>{children}</ClientProvider>
+      </body>
     </html>
   );
 }

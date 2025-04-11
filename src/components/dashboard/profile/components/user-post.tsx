@@ -16,6 +16,7 @@ interface UserPostProps {
 const UserPost: FC<UserPostProps> = ({ isPinned }) => {
   const [isLikeModal, setIsLikeModal] = useState(false);
   const [isCommentModal, setIsCommentModal] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
   return (
     <div className="bg-pure-white rounded-[20px]">
@@ -37,7 +38,11 @@ const UserPost: FC<UserPostProps> = ({ isPinned }) => {
         onOpenSharesModal={() => ''}
       />
 
-      <SearchBar />
+      <SearchBar
+        value={searchValue}
+        onChange={e => setSearchValue(e.target.value)}
+        onSend={() => console.log('Search Value are')}
+      />
 
       {/* Comments */}
       <Comment
@@ -45,6 +50,7 @@ const UserPost: FC<UserPostProps> = ({ isPinned }) => {
         role="Research Faculty at Harvard University"
         comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
         time="1h"
+        totalLikes={0}
         followers={1200}
         mutual={2}
       />
@@ -55,6 +61,7 @@ const UserPost: FC<UserPostProps> = ({ isPinned }) => {
         comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
         time="1h"
         followers={1200}
+        totalLikes={0}
         mutual={2}
       />
 
@@ -69,6 +76,7 @@ const UserPost: FC<UserPostProps> = ({ isPinned }) => {
         isOpen={isLikeModal}
         onClose={() => setIsLikeModal(false)}
         title="Likes"
+        postId={0}
       />
 
       <CommentModal

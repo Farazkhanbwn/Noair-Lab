@@ -48,13 +48,11 @@ const PostImageDisplay: React.FC<PostImageDisplayProps> = ({
         />
       ) : (
         <div className="relative flex-center h-full">
-          {/* <PostImageSlider images={sampleImages} className="max-w-[40rem]" /> */}
           <SwiperSlider
             slides={slides}
             swiperOptions={swiperOptions}
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             onSlideChange={(currentIndex, swiper) => {
-              console.log('current index are : ', currentIndex);
               setCurrentSlide(currentIndex + 1);
             }}
             className={`flex-1 w-[100%] max-h-[${dynamicHeight}px] h-full`}

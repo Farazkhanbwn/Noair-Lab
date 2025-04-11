@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ImageEditor from '../../components/image-editor/image-editor';
+import { RootState } from '@/store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFiles } from '@/store/posts/postSlice';
 
 const AddImageDocument = () => {
-  const [images, setImages] = useState<{ url: string; alt: string }[]>([]);
+  const dispatch = useDispatch()
+  const { files } = useSelector((state: RootState) => state.post.addPost)
+
+  const [images, setImages] = useState<{ url: string; alt: string }[]>(files);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleAddImage = (files: FileList | File[]) => {
@@ -24,6 +30,12 @@ const AddImageDocument = () => {
   ) => {
     setImages(reorderedImages);
   };
+
+  useEffect(() => {
+    if (images.length > 0) {
+      dispatch(setFiles(images))
+    }
+  }, [images])
 
   return (
     <ImageEditor

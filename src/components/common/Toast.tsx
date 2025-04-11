@@ -1,25 +1,10 @@
-import React from 'react';
+// src/utils/toast.ts
+import { enqueueSnackbar, OptionsObject } from 'notistack';
 
-interface ToastProps {
-  message: string;
-  type: 'success' | 'error';
-  duration?: number;
-}
-
-const Toast: React.FC<ToastProps> = ({ message, type, duration = 3000 }) => {
-  const [visible, setVisible] = React.useState(true);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisible(false);
-    }, duration);
-
-    return () => clearTimeout(timer);
-  }, [duration]);
-
-  if (!visible) return null;
-
-  return <div className={`toast ${type}`}>{message}</div>;
+export const ShowToast = (message: string, options?: OptionsObject) => {
+  enqueueSnackbar(message, {
+    variant: 'default', // default variant
+    preventDuplicate: true,
+    ...options, // Spread to allow custom options
+  });
 };
-
-export default Toast;

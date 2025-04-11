@@ -124,6 +124,7 @@ export function PostCard({
         isOpen={likeModal}
         onClose={() => setLikeModal(false)}
         title="Likes"
+        postId={42}
       />
 
       <ShareModal

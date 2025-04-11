@@ -26,6 +26,7 @@ function DeleteModal({
     <CustomModal
       isOpen={open}
       onClose={onCloseModal}
+      className='z-[1000]'
       dialogHeaderContent={
         <div className="w-full flex items-center justify-between">
           <DialogTitle className="text-xl font-bold">{headerTitle}</DialogTitle>

@@ -17,6 +17,7 @@ export default function CustomCheckbox() {
         className="relative flex h-4 w-4 items-center justify-center border border-secondary-grey bg-primary-grey"
         aria-checked={isChecked}
         role="checkbox"
+        type='button'
       >
         {isChecked && (
           <Check className="h-4 w-4 text-secondary-grey" strokeWidth={4} />

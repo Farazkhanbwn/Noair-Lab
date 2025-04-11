@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import { useState } from 'react';
@@ -15,7 +16,7 @@ import LinkedinIcon from '@/components/icons/user/profile/linkedin-icon';
 import { PlusIcon, X } from 'lucide-react';
 import ExperienceSection from '../../../components/dashboard/profile/components/experience-section';
 import { EducationSection } from '../../../components/dashboard/profile/components/education-section';
-import { education, experiences, profileData } from './profile.constants';
+import { education, experiences, notificationMessages, profileData } from './profile.constants';
 import UserPosts from '../../../components/dashboard/profile/components/user-posts';
 import SocialButton from '@/components/dashboard/profile/social-button/social-button';
 import { CustomModal } from '@/components/common/custom-modal';
@@ -27,6 +28,11 @@ import EditProfile from '../../../../app/(user)/profile/_components/edit-profile
 import AddExperience from '../../../../app/(user)/profile/_components/add-experience';
 import AddEducation from '../../../../app/(user)/profile/_components/add-education';
 import FollowerModal from '@/modals/follower-modal/follower-modal';
+import { useGetUserProfile, useUpdateProfileImage } from '@/service/userProfile';
+import { UserProfileInfo } from './profile.types';
+import { convertBlobUrlToBlob } from '@/utils/fileUtils';
+import { handleRequestError } from '@/utils/toast-utils';
+import { ShowToast } from '@/components/common/Toast';
 
 const buttonClasses =
   'w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-center bg-primary-color text-pure-white';
@@ -49,6 +55,40 @@ const ProfilePage = () => {
     null
   );
 
+  const {
+    data: profileDataa
+  } = useGetUserProfile();
+
+  const { mutateAsync } = useUpdateProfileImage();
+
+
+  const profileDataForm = () => {
+    const data: UserProfileInfo = {
+      ...profileDataa,
+      stats: [
+        { count: profileDataa?.totalFollowerCount, label: 'Followers', index: 0 },
+        { count: 12, label: 'Publications', index: 0 },
+        { count: '02', label: 'Citations', index: 0 },
+        { count: '02', label: 'Patents', index: 0 },
+      ],
+    }
+
+    console.log(data)
+    return data
+  }
+
+  const handleImageUpload = async (file: string) => {
+    try {
+      // Use the utility function to convert the file to Base64
+      const fileBlob = await convertBlobUrlToBlob(file);
+      await mutateAsync({file: fileBlob, type})
+      ShowToast(notificationMessages['SUCCESS_UPLOADING_IMAGE'], { variant: 'success' })
+      setIsModalOpen(false);
+    } catch (error) {
+      handleRequestError(error)
+    }
+  }
+
   return (
     <>
       <section className="max-w-4xl px-0 sm:px-4 mx-auto bg-light-grey overflow-hidden mt-[1rem] md:mt-[1.2rem]">
@@ -61,14 +101,15 @@ const ProfilePage = () => {
           onDeleteCover={() => {
             setIsDeleteModalOpen(true);
           }}
-          bannerUrl={'/images/profile-background.png'}
+          bannerUrl={ profileData?.bannerUrl || '/images/profile-background.png'}
         >
           <div className="flex flex-col px-4">
             {/* profile with buttons */}
             <div className="flex justify-between items-start flex-col sm:flex-row mt-4">
               <div className="mt-[-6rem]">
                 <PrimaryImage
-                  src={'/profile-person.png'}
+                  key={profileDataa?.profileImageUrl}
+                  src={ profileDataa?.profileImageUrl || '/profile-person.png' }
                   alt="Porfile"
                   width={150}
                   height={150}
@@ -80,7 +121,7 @@ const ProfilePage = () => {
                     setType('profile');
                   }}
                 />
-                <ProfileInfo info={profileData.info} classNames="mt-4" />
+                <ProfileInfo info={profileDataForm()} classNames="mt-4" />
               </div>
 
               <div className="flex flex-col gap-4 mt-4 sm:mt-0">
@@ -129,7 +170,7 @@ const ProfilePage = () => {
           </div>
         </ProfileBanner>
         <div className="grid !grid-cols-2 xs:!grid-cols-4 border-y border-gray-200 mt-6 text-pure-black py-4">
-          {profileData.info.stats.map((stat, index) => (
+          {profileDataForm()?.stats?.map((stat, index) => (
             <StatCard
               onClick={
                 stat.label === 'Followers'
@@ -177,6 +218,7 @@ const ProfilePage = () => {
         type={type === 'profile' ? 'profile' : 'cover'}
         onSubmit={image => {
           console.log(image, 'image');
+          handleImageUpload(image)
         }}
       />
 

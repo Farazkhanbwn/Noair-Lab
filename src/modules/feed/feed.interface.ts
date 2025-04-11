@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 
 export interface FeedCardProps {
@@ -30,10 +31,20 @@ export interface FeedPostProps {
   followers: number;
   mutual: number;
   mediaPost?: ReactNode;
+  userId: number | string;
+  userLike: boolean;
+  userFollow: boolean;
   // media?: MediaType;
   onOpenLikesModal: () => void;
   onOpenCommentsModal: () => void;
   onOpenSharesModal: () => void;
+  onCommentClick: () => void;
+  onLikeClick: () => void;
+  onShareClick: () => void;
+  followUnfollowHandler: (data: {
+    action: string;
+    userId: string | number;
+  }) => void;
 }
 
 interface BaseMedia {
@@ -51,6 +62,13 @@ interface VideoMedia extends BaseMedia {
 interface PdfMedia extends BaseMedia {
   url: string; // PDF URL
 }
+
+export type TextEditorNode = {
+  type: string;
+  src?: string;
+  children?: TextEditorNode[];
+  [key: string]: any;
+};
 
 export type MediaType = ImageMedia | VideoMedia | PdfMedia;
 

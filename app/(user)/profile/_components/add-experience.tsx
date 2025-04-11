@@ -71,6 +71,7 @@ function AddExperience({
               placeholder="Select your Title"
               buttonText="Add User Type"
               onAddClick={() => console.log('Add User Type')}
+              onChange={value => console.log('value are : ', value)}
             />
           </div>
 
@@ -100,6 +101,7 @@ function AddExperience({
               placeholder="Select your Specialization"
               buttonText="Add Disciplines"
               onAddClick={() => console.log('Add Disciplines')}
+              onChange={value => console.log('value are : ', value)}
             />
           </div>
 
@@ -110,6 +112,7 @@ function AddExperience({
               theme={defaultSelectTheme}
               options={DISCIPLINE_CATEGORIES}
               placeholder="Select your University"
+              onChange={value => console.log('value are : ', value)}
             />
           </div>
 

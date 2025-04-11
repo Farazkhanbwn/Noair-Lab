@@ -49,3 +49,8 @@ export const education = [
     description: 'Research focus on climate change',
   },
 ];
+
+
+export const notificationMessages = {
+  SUCCESS_UPLOADING_IMAGE: 'Profile Image Uploaded Successfully'
+}

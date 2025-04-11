@@ -1,10 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import FlexContainer from '@/components/common/flex-container/flex-container';
 import PrimaryImage from '@/components/common/primary-image/primary-image';
 import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import { useDropzone } from 'react-dropzone';
 import UploadFileItem from './upload-file-item';
+import { useDispatch } from 'react-redux';
+import { setFiles } from '@/store/posts/postSlice';
 
 interface AddFileDocumentProps {
   onUpload?: (file: FileList) => void;
@@ -12,9 +14,14 @@ interface AddFileDocumentProps {
 }
 
 const AddFileDocument: FC<AddFileDocumentProps> = ({ className }) => {
+  // const { files } = useSelector((state: RootState) => state.post.addPost)
+  const dispatch = useDispatch()
+
   const [isDragging, setIsDragging] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [file, setFile] = useState<File | null>(null);
+  const [docs, setDocs] = useState<{ url: string; alt: string }[]>([]);
+
   const [error, setError] = useState<string | null>(null);
   const [fileSize, setFileSize] = useState<string>('');
   const [fileName, setFileName] = useState('');
@@ -45,6 +52,13 @@ const AddFileDocument: FC<AddFileDocumentProps> = ({ className }) => {
         setFileName(file.name);
         setFileSize((file.size / 1024).toFixed(2) + ' KB'); // Convert size to KB
         setFileType(file.type);
+
+        const newFile = [{
+          url: URL.createObjectURL(file),
+          alt: file.name,
+        }];
+
+        setDocs(prevDocs => [...prevDocs, ...newFile]);
       }
     },
 
@@ -57,6 +71,12 @@ const AddFileDocument: FC<AddFileDocumentProps> = ({ className }) => {
       });
     },
   });
+
+  useEffect(() => {
+      if (docs.length > 0) {
+        dispatch(setFiles(docs))
+      }
+    }, [docs])
 
   return (
     <div className={`mx-auto ${className}`}>
@@ -80,7 +100,7 @@ const AddFileDocument: FC<AddFileDocumentProps> = ({ className }) => {
           flex flex-col items-center justify-center
           min-h-[220px] max-w-[30rem] mx-auto
         `}
-        // onDrop={handleDrop}
+      // onDrop={handleDrop}
       >
         <input {...getInputProps()} />
         <PrimaryImage

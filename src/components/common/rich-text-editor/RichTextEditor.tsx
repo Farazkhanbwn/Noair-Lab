@@ -40,6 +40,7 @@ import { InlineImageNode } from './nodes/InlineImageNode';
 import InlineImagePlugin from './plugins/InlineImagePlugin';
 import { ToolbarOptions } from './types/toolbar.type';
 import PopulatePreviewContent from './plugins/PopulatePreviewContent';
+import { LoadEditorContent } from './LoadEditorContent';
 
 /* Lexical Texts */
 interface EditorProps {
@@ -117,7 +118,7 @@ export default function RichTextEditor({
       HorizontalRuleNode,
       InlineImageNode,
     ],
-    editable: !readOnly,
+    editable: !readOnly
   };
 
   return (
@@ -126,6 +127,7 @@ export default function RichTextEditor({
         ...editorConfig,
       }}
     >
+      {editorContent && <LoadEditorContent contentJson={editorContent} />}
       <div className={`editor-shell ${editorContainer?.classNames}`}>
         {!readOnly ? <ToolbarPlugin {...(toolbar as ToolbarOptions)} /> : null}
         <div

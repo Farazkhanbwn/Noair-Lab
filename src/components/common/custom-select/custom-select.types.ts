@@ -1,3 +1,5 @@
+import { RegisterOptions } from 'react-hook-form';
+
 interface Option {
   value: string;
   label: string;
@@ -29,8 +31,9 @@ export interface CustomSelectProps {
   options: Option[];
   placeholder?: string;
   value?: string;
-  onChange?: (value: string) => void;
+  onChange: (value: string) => void;
   className?: string;
+  rules?: RegisterOptions;
   onAddClick?: () => void;
   buttonText?: string;
   theme?: SelectTheme;

@@ -4,9 +4,11 @@ import { Button } from '@/components/ui/button';
 import { COMMUNITY_SELECTION_TOPICS } from '@/modals/communities/communities.constants';
 import SelectedTopic from '@/modals/communities/components/selected-item';
 import { TopicSection } from '@/modals/communities/components/topic-section';
+import { setTopic } from '@/store/posts/postSlice';
 import { DialogProps } from '@/types';
 import { Search } from 'lucide-react';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 export interface AddTopicContentProps extends DialogProps {
   handleNext: () => void;
@@ -19,6 +21,7 @@ function AddTopicContent({
 }: AddTopicContentProps) {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const dispatch = useDispatch()
 
   const handleTopicSelect = (topic: string) => {
     setSelectedTopics(prev => {
@@ -35,6 +38,12 @@ function AddTopicContent({
   const handleRemoveTopic = (topic: string) => {
     setSelectedTopics(prev => prev.filter(t => t !== topic));
   };
+
+  const saveTopics = () => {
+    dispatch(setTopic(selectedTopics))
+    handleNext()
+  }
+
   return (
     <div>
       <SearchInput
@@ -92,7 +101,7 @@ function AddTopicContent({
         </Button>
         <Button
           onClick={() => {
-            handleNext();
+            saveTopics();
           }}
           className="bg-primary text-base font-semibold text-white hover:bg-primary py-5 px-7"
         >

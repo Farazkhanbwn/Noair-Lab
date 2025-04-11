@@ -27,10 +27,6 @@ const UserCard: FC<UserCardProps> = ({
       <div>
         <h4 className="heading-secondary font-semibold text-black">{name}</h4>
         <p className="text-description mb-0.5">{role}</p>
-        <p className="text-description text-secondary-grey">
-          {/* {moment(timeStamp).format('YYYY-MM-DD HH:mm:ss')} */}
-          {'12 minutes ago'}
-        </p>
         <div className="flex gap-1.5">
           <p className="text-description border-r border-stroke-grey pr-1 text-secondary-grey mt-1 flex items-center gap-1">
             <UsersIcon /> {mutual} Mutual

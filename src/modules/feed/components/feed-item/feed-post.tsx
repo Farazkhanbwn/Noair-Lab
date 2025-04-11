@@ -3,6 +3,7 @@ import { FeedPostProps } from '../../feed.interface';
 import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import UserCard from '@/components/dashboard/components/user-card/user-card';
+import PostActionButtons from '@/components/common/post-action-button/post-action-button';
 
 const FeedPost: FC<FeedPostProps> = ({
   name,
@@ -15,87 +16,78 @@ const FeedPost: FC<FeedPostProps> = ({
   userImage,
   followers,
   mutual,
-  time,
+  userLike,
+  userFollow,
   onOpenLikesModal,
   onOpenCommentsModal,
   onOpenSharesModal,
-}) => (
-  <div>
-    <div className="p-4 pb-3">
-      <div className="flex justify-between items-start">
-        <UserCard
-          userImage={userImage}
-          name={name}
-          role={role}
-          mutual={mutual}
-          followers={`${followers}k`}
-          classNames="mb-4"
-          timeStamp={time}
-        />
-        <CustomButton
-          styleType={CustomButtonTypes.SECONDARY}
-          className="heading-tertiary font-semibold rounded-[20px] px-3.5 py-1"
-        >
-          Follow
-        </CustomButton>
+  onCommentClick,
+  onLikeClick,
+  onShareClick,
+}) => {
+  const actionButtonStyles =
+    'flex-center gap-x-3 py-3 w-full font-medium transition-all hover:bg-gray-100';
+  return (
+    <div>
+      <div className="p-4 pb-3">
+        <div className="flex justify-between items-start">
+          <UserCard
+            userImage={userImage}
+            name={name}
+            role={role}
+            mutual={mutual}
+            followers={`${followers}k`}
+            classNames="mb-4"
+          />
+          <CustomButton
+            styleType={
+              userFollow
+                ? CustomButtonTypes.PRIMARY
+                : CustomButtonTypes.SECONDARY
+            }
+            className="heading-tertiary font-semibold rounded-[20px] !px-3.5 !py-1"
+          >
+            {userFollow ? 'Following' : 'Follow'}
+          </CustomButton>
+        </div>
+        <p className="heading-tertiary">{content}</p>
       </div>
-      <p className="heading-tertiary">{content}</p>
-    </div>
 
-    {mediaPost}
-    {/* {image && (
-      <PrimaryImage
-        width={600}
-        height={200}
-        src={image}
-        alt="Post visual"
-        onClick={onImageClick}
-        className="w-full h-full min-h-[200px] cursor-pointer"
-      />
-    )} */}
-    <div className="flex items-center justify-between heading-tertiary font-normal text-dark-grey py-2 px-5 border-b border-stroke-grey">
-      <CustomButton
-        styleType={CustomButtonTypes.TERTIARY}
-        onClick={onOpenLikesModal}
-      >
-        {likes} likes
-      </CustomButton>
-      <div className="flex items-center gap-x-4">
+      {mediaPost}
+
+      <div className="flex items-center justify-between heading-tertiary font-normal text-dark-grey py-2 px-5 border-b border-stroke-grey">
         <CustomButton
           styleType={CustomButtonTypes.TERTIARY}
-          onClick={onOpenCommentsModal}
+          onClick={Number(likes) > 0 ? onOpenLikesModal : undefined}
         >
-          {comments} Comments
+          {likes} likes
         </CustomButton>
-        <CustomButton
-          styleType={CustomButtonTypes.TERTIARY}
-          onClick={onOpenSharesModal}
-        >
-          {shares} Shares
-        </CustomButton>
+        <div className="flex items-center gap-x-4">
+          <CustomButton
+            styleType={CustomButtonTypes.TERTIARY}
+            onClick={Number(comments) > 0 ? onOpenCommentsModal : undefined}
+          >
+            {comments} Comments
+          </CustomButton>
+          <CustomButton
+            styleType={CustomButtonTypes.TERTIARY}
+            onClick={Number(shares) > 0 ? onOpenSharesModal : undefined}
+          >
+            {shares} Shares
+          </CustomButton>
+        </div>
       </div>
+
+      <PostActionButtons
+        classNames="text-sm px-2"
+        userLike={userLike}
+        onLikeClick={onLikeClick}
+        onCommentClick={onCommentClick}
+        onShareClick={onShareClick}
+        actionButtonStyles={actionButtonStyles}
+      />
     </div>
-    <div className="flex justify-between text-sm">
-      <CustomButton
-        styleType={CustomButtonTypes.TERTIARY}
-        className="flex-center gap-x-3 py-3 flex-1"
-      >
-        <img src="/like.svg" alt="like icon" /> Like
-      </CustomButton>
-      <CustomButton
-        styleType={CustomButtonTypes.TERTIARY}
-        className="flex-center gap-x-3 py-3 flex-1"
-      >
-        <img src="/comment.svg" alt="comment icon" /> Comment
-      </CustomButton>
-      <CustomButton
-        styleType={CustomButtonTypes.TERTIARY}
-        className="flex-center gap-x-3 py-3 flex-1"
-      >
-        <img src="/share.svg" alt="share icon" /> Share
-      </CustomButton>
-    </div>
-  </div>
-);
+  );
+};
 
 export default FeedPost;

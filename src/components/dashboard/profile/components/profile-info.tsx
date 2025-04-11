@@ -18,7 +18,7 @@ const ProfileInfo: FC<ProfileInfoProps> = ({
   return (
     <div className={`text-pure-black ${classNames}`}>
       <h1 className="heading-secondary sm:text-[20px] mb-2 font-bold">
-        {info.name}
+        {info?.name}
       </h1>
 
       {onBetaUserClick && (
@@ -37,20 +37,20 @@ const ProfileInfo: FC<ProfileInfoProps> = ({
           <span>
             <img src="/briefcase.svg" alt="briefcase icon" />
           </span>
-          {info.profession}
+          {info?.title}
         </div>
         <div className="flex items-center gap-x-3">
           <span>
             <img src="/arrows.svg" alt="briefcase icon" />
           </span>
-          {info.specialization}
+          {info?.specialization}
         </div>
 
         <div className="flex items-center gap-x-3">
           <span>
             <img src="/employment.svg" alt="briefcase icon" />
           </span>
-          {info.currentEmployment}
+          {info?.currentEmployment}
         </div>
       </div>
     </div>

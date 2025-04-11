@@ -1,10 +1,12 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AddVideoPost from './add-video-post';
 import VideoPlayer from '@/components/common/video-player/video-player';
+import { useDispatch } from 'react-redux';
+import { setFiles } from '@/store/posts/postSlice';
 
 interface VideoEditorProps {
   initialVideos?: { url: string; alt: string }[];
@@ -13,6 +15,7 @@ interface VideoEditorProps {
 const VideoEditor: FC<VideoEditorProps> = ({ initialVideos = [] }) => {
   const [videos, setVideos] = useState(initialVideos);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const dispatch = useDispatch()
 
   const handleUploadImages = (files: FileList | File[]) => {
     const newImages = Array.from(files).map(file => ({
@@ -27,6 +30,12 @@ const VideoEditor: FC<VideoEditorProps> = ({ initialVideos = [] }) => {
     setVideos(newVideos);
     setCurrentVideoIndex(0);
   };
+
+  useEffect(() => {
+    if (videos.length > 0) {
+      dispatch(setFiles(videos))
+    }
+  }, [videos])
 
   return (
     <div className="bg-white w-full">

@@ -3,6 +3,8 @@ import { FC } from 'react';
 import { ContentTypeDropdown } from './content-type-dropdown';
 import { Button } from '@/components/ui/button';
 import { contentTypes } from '@/utils/constants/feed';
+import { useDispatch } from 'react-redux';
+import { setPostType } from '@/store/posts/postSlice';
 
 interface AddPostProps {
   onSelectItem: (value: string) => void;
@@ -10,9 +12,12 @@ interface AddPostProps {
 }
 
 const AddPost: FC<AddPostProps> = ({ onSelectItem, classNames }) => {
+  const dispatch = useDispatch()
+
   const handleSelect = (value: string) => {
     onSelectItem(value);
     console.log(`Selected: ${value}`);
+    dispatch(setPostType(value))
   };
 
   return (

@@ -5,6 +5,7 @@ import ScientificDocumentModalLayout from './scientific-document.layout';
 import AddTextDocument from './add-text-document/add-text-document';
 import AddImageDocument from './add-image-document/add-image-document';
 import AddFileDocument from './add-file-document/add-file-document';
+import { useCreatePost } from '@/modules/feed/feed.hooks';
 
 const ALL_PAGES: { [key: string]: JSX.Element } = {
   text: <AddTextDocument />,
@@ -22,6 +23,8 @@ const ScientificDocumentModal: FC<ScientificDocumentModal> = ({
   onClose,
 }) => {
   const [selectedType, setSelectedType] = useState<PostType>(PostType.Text);
+  const { createPost } = useCreatePost()
+  
   return (
     <ScientificDocumentModalLayout
       isOpen={isOpen}
@@ -32,7 +35,7 @@ const ScientificDocumentModal: FC<ScientificDocumentModal> = ({
       title={HeadingText[selectedType]}
       selectedType={selectedType}
       handleSelectType={setSelectedType}
-      onUpload={() => console.log('Upload Button Clicked')}
+      onUpload={() => {createPost(); onClose()}}
     >
       <div className="w-full">{ALL_PAGES?.[selectedType]}</div>
     </ScientificDocumentModalLayout>

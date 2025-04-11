@@ -1,9 +1,13 @@
 import { SVGProps } from 'react';
 import { Swiper } from 'swiper/react';
 export interface User {
-  id: string;
+  id: string | number;
   email: string;
   name: string;
+  username?: string;
+  title?: string;
+  specialization?: string;
+  password?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -84,3 +88,13 @@ export type SwiperSliderBreakPoints = {
   [width: number]: Parameters<typeof Swiper>[0];
   [ratio: string]: Parameters<typeof Swiper>[0];
 };
+
+export interface ErrorResponse {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+  message?: string;
+  detail?: string;
+  verification_code?: string;
+  email?: string | undefined;
+  username?: string | undefined;
+}

@@ -77,6 +77,7 @@ const CreatePostModalLayout: FC<CreatePostModalLayoutProps> = ({
               <PostTypeButton
                 icon={Video}
                 label="Add Video"
+                
                 isActive={selectedType === PostType.Video}
                 onClick={() => handleSelectType(PostType.Video)}
               />

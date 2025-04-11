@@ -11,7 +11,7 @@ interface CoverPhotoModalProps {
   isOpen: boolean;
   onClose: () => void;
   type: 'cover' | 'profile'; // Determines layout
-  onSubmit: (image: string | null) => void;
+  onSubmit: (image: string) => void;
   headerTitle: string;
   image: string | null;
   setImage: (image: string | null) => void;
@@ -90,7 +90,7 @@ export default function CoverPhotoModal({
           </Button>
           <Button
             variant={'secondary'}
-            onClick={() => onSubmit(image)}
+            onClick={() => onSubmit(image ?? "")}
             className="text-white rounded-[10px] px-7 py-3 bg-primary flex items-center justify-center hover:bg-primary"
           >
             <EditIcon />

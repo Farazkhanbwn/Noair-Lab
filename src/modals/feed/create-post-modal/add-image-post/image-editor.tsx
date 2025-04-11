@@ -85,7 +85,6 @@ const ImageEditor: FC<ImageEditorProps> = ({ initialImages = [] }) => {
   };
 
   const handleUploadImages = (files: FileList | File[]) => {
-    console.log('files are ', files);
     const newImages = Array.from(files).map(file => ({
       url: `${URL.createObjectURL(file)}`,
       alt: file.name,

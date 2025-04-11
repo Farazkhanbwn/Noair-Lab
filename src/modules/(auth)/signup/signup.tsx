@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider, Controller } from 'react-hook-form';
 import AuthForm from '@/components/AuthForm';
 import AuthLayout from '@/components/AuthLayout';
 import FormInput from '@/components/common/form-input';
@@ -11,25 +12,47 @@ import { DISCIPLINE_CATEGORIES, USER_TYPES } from '@/constants/signup/signup';
 import CustomCheckbox from '@/components/common/custom-checkbox/custom-checkbox';
 import { useState } from 'react';
 import ConfirmationModal from '@/components/common/signup-login-success-modal';
+import { useSignup } from '@/service/auth-service/auth-service';
+import { AxiosError } from 'axios';
+import { ErrorResponse } from '@/types';
+import FullScreenLoader from '@/components/common/full-screen-loader/full-screen-loader';
+import { ShowToast } from '@/components/common/Toast';
+import { handleRequestError } from '@/utils/toast-utils';
 
 type CreateAccountForm = {
   email: string;
   username: string;
   password: string;
-  confirmPassword: string;
+  confirm_password: string;
+  title: string;
+  specialization: string;
 };
 
 const CreateAccount = () => {
   const router = useRouter();
-  const methods = useForm<CreateAccountForm>();
+  const { mutateAsync, isPending } = useSignup();
+  const methods = useForm<CreateAccountForm>({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+  });
   const [isSignupSuccessModal, setIsSignupSuccessModal] = useState(false);
 
-  const onSubmit = (data: CreateAccountForm) => {
-    console.log(data);
+  const onSubmit = async (data: CreateAccountForm) => {
+    try {
+      const { confirm_password, ...requestData } = data;
+      await mutateAsync({
+        ...requestData,
+        name: data.username,
+      });
+      setIsSignupSuccessModal(true);
+    } catch (error) {
+      handleRequestError(error);
+    }
   };
 
   return (
     <>
+      {isPending && <FullScreenLoader color="#0029FA" />}
       <AuthLayout>
         <AuthForm classNames="max-w-[330px]">
           <FormProvider {...methods}>
@@ -38,54 +61,106 @@ const CreateAccount = () => {
               className="space-y-5"
             >
               <FormInput
+                type="text"
+                name="username"
+                placeholder="User Name"
+                rules={{
+                  required: 'Username is required',
+                }}
+              />
+
+              <FormInput
                 type="email"
                 name="email"
                 placeholder="user@gmail.com"
-              />
-              <FormInput type="text" name="username" placeholder="User Name" />
-
-              <CustomSelect
-                options={USER_TYPES}
-                placeholder="Title"
-                className="mb-4 max-w-[21rem]"
-                buttonText="Add User Type"
-                onAddClick={() => console.log('Add User Type')}
+                rules={{
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: 'Invalid email address',
+                  },
+                }}
               />
 
-              <CustomSelect
-                options={DISCIPLINE_CATEGORIES}
-                placeholder="Specialization"
-                className="mb-4 max-w-[21rem]"
-                buttonText="Add Disciplines"
-                onAddClick={() => console.log('Add Disciplines')}
+              <Controller
+                name="title"
+                control={methods.control}
+                rules={{ required: 'Title is required' }}
+                render={({ field, fieldState }) => (
+                  <>
+                    <CustomSelect
+                      {...field}
+                      options={USER_TYPES}
+                      placeholder="Title"
+                      className="mb-4 max-w-[21rem]"
+                      buttonText="Add User Type"
+                      onAddClick={() => console.log('Add User Type')}
+                      onChange={value => field.onChange(value)} // Trigger validation
+                    />
+                    {fieldState.error && (
+                      <p className="text-red-500 text-sm !m-0 !mt-1">
+                        {fieldState.error.message}
+                      </p>
+                    )}
+                  </>
+                )}
+              />
+
+              <Controller
+                name="specialization"
+                control={methods.control}
+                rules={{ required: 'Specialization is required' }}
+                render={({ field, fieldState }) => (
+                  <>
+                    <CustomSelect
+                      {...field}
+                      options={DISCIPLINE_CATEGORIES}
+                      placeholder="Specialization"
+                      className="mb-4 max-w-[21rem]"
+                      buttonText="Add User Type"
+                      onAddClick={() => console.log('Add User Type')}
+                      onChange={value => field.onChange(value)} // Trigger validation
+                    />
+                    {fieldState.error && (
+                      <p className="text-red-500 text-sm !m-0 !mt-1">
+                        {fieldState.error.message}
+                      </p>
+                    )}
+                  </>
+                )}
               />
 
               <FormInput
                 type="password"
                 name="password"
                 placeholder="Password"
+                rules={{
+                  required: 'Password is required',
+                  minLength: {
+                    value: 6,
+                    message: 'Password must be at least 6 characters',
+                  },
+                }}
               />
 
               <FormInput
                 type="password"
                 name="confirm_password"
                 placeholder="Confirm Password"
+                rules={{
+                  required: 'Please confirm your password',
+                  validate: value =>
+                    value === methods.getValues('password') ||
+                    'Passwords do not match',
+                }}
               />
 
               <div className="flex items-center ml-1">
                 <CustomCheckbox />
-                {/* <p className="w-full text-description text-pure-white ml-4">
-                  I agree to the Terms and conditions.
-                </p> */}
               </div>
 
-              <CustomButton
-                onClick={() => {
-                  setIsSignupSuccessModal(true);
-                }}
-                type="submit"
-              >
-                Sign Up
+              <CustomButton type="submit" disable={isPending}>
+                {'Sign Up'}
               </CustomButton>
             </form>
           </FormProvider>

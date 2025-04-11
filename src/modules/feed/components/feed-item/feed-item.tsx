@@ -1,47 +1,78 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import AddPost from './add-post';
-import FeedPost from './feed-post';
 import CommentModal from '@/modals/comment-modal/comments';
 import LikesModal from '@/modals/like-modal/user-likes';
 import ShareModal from '@/modals/share-modal/share-modal';
-import CustomButton from '@/components/common/custom-button/custom-button';
-import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
-import SearchBar from './search-bar';
-import Comment from '@/components/dashboard/components/comment/comment';
 import CreatePostModal from '@/modals/feed/create-post-modal/create-post-modal';
-import PostDetailedModal from '@/modals/feed/post-detailed-modal/post-detailed-modal';
 import VideoPreviewModal from '@/modals/feed/video-preview-modal/video-preview-modal';
-import ArticlePostItem from './components/article-post-item/article-post-item';
-import PostMedia from './components/post-media/post-media';
 import ScientificDocumentModal from '@/modals/feed/scientific-document/scientific-document';
 import NewsAndInsightsModal from '../../add-feed-post/NewsAndInsightsModal';
 import { useRouter, useSearchParams } from 'next/navigation';
 import ChooseCategoryModal from '../../add-feed-post/ChooseCategoryModal';
+import { setCategory } from '@/store/posts/postSlice';
+import { fetchFeed } from '@/store/slices/feed-slice/feed-thunks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import PostSkeletonLoader from '@/components/skelton-loader/feed/post-skeleton-loader';
+import SpinnerLoader from '@/components/common/spinner-loader/spinner-loader';
+import FeedUserPost from './feed-user-post';
+import { FeedPostItem } from '@/types/feed-user';
+// import { FeedPostMedia } from '../../feed.interface';
+import { useCreatePost } from '../../feed.hooks';
 
-const images = [
-  '/images/post-background.png',
-  '/images/post-background.png',
-  '/images/suggested-card-bg.png',
-  '/images/profile-background.png',
-  '/images/profile-background.png',
-  '/images/profile-background.png',
-];
 const FeedItem: FC = () => {
-  const [isImagePreviewModal, setIsImagePreview] = useState(false);
-  const [postType, setPostType] = useState<string | null>(null);
+  const { category } = useCreatePost();
+  const [postType, setPostType] = useState<string | null>(category);
   const [likeModal, setLikeModal] = useState(false);
   const [shareModal, setShareModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
-  const [isPostDetailModal, setIsPostDetailModal] = useState(false);
   const [isOpenCategoryModal, setIsOpenCategoryModal] = useState(false);
   const [isVideoPreview, setIsVideoPreview] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
+  const dispatch = useAppDispatch();
+  const feed = useAppSelector(state => state.feed.feed);
+  const cursor = useAppSelector(state => state.feed.cursor);
+  const hasMore = useAppSelector(state => state.feed.hasMore);
+  const isLoading = useAppSelector(state => state.feed.loading);
+
+  const observer = useRef<IntersectionObserver | null>(null);
+
+  const lastItemRef = useCallback(
+    (node: HTMLDivElement) => {
+      if (isLoading || !hasMore) return;
+
+      if (observer.current) observer.current.disconnect();
+
+      observer.current = new IntersectionObserver(
+        entries => {
+          if (entries[0].isIntersecting && hasMore && !isLoading) {
+            console.log('Fetching more data...');
+            setTimeout(() => {
+              dispatch(fetchFeed(cursor)).catch(error => {
+                console.error('Failed to fetch feed:', error);
+              });
+            }, 100); // ✅ Slight delay to avoid race conditions
+          }
+        },
+        { threshold: 1.0 }
+      );
+
+      if (node) observer.current.observe(node);
+    },
+    [cursor, hasMore, isLoading, dispatch]
+  );
+
+  useEffect(() => {
+    if (!feed.length) {
+      dispatch(fetchFeed(cursor)).catch(error =>
+        console.error('Failed to fetch feed:', error)
+      );
+    }
+  }, [dispatch, cursor, feed.length]); // ✅ Added feed.length to dependency array
 
   const isOpenTopicsModal =
     (postType && postType !== 'post') ||
-    searchParams.get('page') === 'add-topics' ||
-    false;
+    searchParams.get('page') === 'add-topics';
 
   const isOpenPostModal =
     (postType && postType === 'post') ||
@@ -62,10 +93,28 @@ const FeedItem: FC = () => {
         }}
       />
 
+      {isLoading && !feed.length && <PostSkeletonLoader />}
+      {feed.length > 0 &&
+        feed.map((item: FeedPostItem) => (
+          <FeedUserPost item={item} key={item.id} />
+        ))}
+
+      <div ref={lastItemRef} className="flex justify-center mt-4">
+        {isLoading && hasMore && <SpinnerLoader />}
+
+        {!hasMore && !isLoading && feed.length > 0 && (
+          <p className="text-gray-500">No more feed items!</p>
+        )}
+
+        {!feed.length && !isLoading && (
+          <p className="text-gray-500 mt-4">No feed available yet!</p>
+        )}
+      </div>
       {/* Feed Post Without Image*/}
-      <div className="bg-pure-white rounded-[20px]">
+      {/* <div className="bg-pure-white rounded-[20px]">
         <FeedPost
           name="Wilma Ullrich"
+          userId={2}
           role="Research Assistant at University of Chicago"
           time={'2025-02-18T05:30:00Z'}
           content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus. Ac cras justo elementum tincidunt congue vitae massa volutpat lorem 😊😊. "
@@ -78,11 +127,11 @@ const FeedItem: FC = () => {
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
           onOpenSharesModal={() => console.log('share button clicked')}
+          followUnfollowHandler={followUnfollowHandler}
         />
 
         <SearchBar />
 
-        {/* Comments */}
         <Comment
           name="Elmer Erdman, PhD"
           role="Research Faculty at Harvard University"
@@ -108,16 +157,17 @@ const FeedItem: FC = () => {
         >
           View more comments
         </CustomButton>
-      </div>
+      </div> */}
 
       {/* Feed Post with Image */}
-      <div className="bg-pure-white rounded-[20px]">
+      {/* <div className="bg-pure-white rounded-[20px]">
         <FeedPost
           name="Wilma Ullrich"
           role="Research Assistant at University of Chicago"
           time={'2025-02-18T05:30:00Z'}
           content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
           likes={6}
+          userId={3}
           mediaPost={
             <PostMedia
               mediaType={'image'}
@@ -133,11 +183,11 @@ const FeedItem: FC = () => {
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
           onOpenSharesModal={() => console.log('share button clicked')}
+          followUnfollowHandler={followUnfollowHandler}
         />
 
         <SearchBar />
 
-        {/* Comments */}
         <Comment
           name="Elmer Erdman, PhD"
           role="Research Faculty at Harvard University"
@@ -163,16 +213,17 @@ const FeedItem: FC = () => {
         >
           View more comments
         </CustomButton>
-      </div>
+      </div> */}
 
       {/* Image Gallery */}
-      <div className="bg-pure-white rounded-[20px]">
+      {/* <div className="bg-pure-white rounded-[20px]">
         <FeedPost
           name="Wilma Ullrich"
           role="Research Assistant at University of Chicago"
           time={'2025-02-18T05:30:00Z'}
           content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
           likes={6}
+          userId={4}
           mediaPost={
             <PostMedia
               mediaType={'image'}
@@ -188,11 +239,11 @@ const FeedItem: FC = () => {
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
           onOpenSharesModal={() => console.log('share button clicked')}
+          followUnfollowHandler={followUnfollowHandler}
         />
 
         <SearchBar />
 
-        {/* Comments */}
         <Comment
           name="Elmer Erdman, PhD"
           role="Research Faculty at Harvard University"
@@ -218,16 +269,17 @@ const FeedItem: FC = () => {
         >
           View more comments
         </CustomButton>
-      </div>
+      </div> */}
 
       {/* Video Post */}
-      <div className="bg-pure-white rounded-[20px]">
+      {/* <div className="bg-pure-white rounded-[20px]">
         <FeedPost
           name="Wilma Ullrich"
           role="Research Assistant at University of Chicago"
           time={'2025-02-18T05:30:00Z'}
           content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
           likes={6}
+          userId={5}
           mediaPost={
             <PostMedia
               onImageClick={() => console.log('video is clicked')}
@@ -243,11 +295,11 @@ const FeedItem: FC = () => {
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
           onOpenSharesModal={() => console.log('share button clicked')}
+          followUnfollowHandler={followUnfollowHandler}
         />
 
         <SearchBar />
 
-        {/* Comments */}
         <Comment
           name="Elmer Erdman, PhD"
           role="Research Faculty at Harvard University"
@@ -273,20 +325,26 @@ const FeedItem: FC = () => {
         >
           View more comments
         </CustomButton>
-      </div>
+      </div> */}
 
       {/* Pdf Post */}
-      <div className="bg-pure-white rounded-[20px]">
+      {/* <div className="bg-pure-white rounded-[20px]">
         <FeedPost
           name="Wilma Ullrich"
           role="Research Assistant at University of Chicago"
           time={'2025-02-18T05:30:00Z'}
           content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
           likes={6}
+          userId={8}
           mediaPost={
             <PostMedia
-              mediaType={'pdf'}
-              media={'/docs/software-engineering.pdf'}
+              files={[
+                {
+                  id: 1,
+                  url: 'https://d2u26eegcjw767.cloudfront.net/users/11/posts/39/pdf/1742983592894-MuhammadHamza.pdf',
+                  fileType: 'pdf',
+                },
+              ]}
               onImageClick={() => console.log('more comments clicked')}
             />
           }
@@ -298,13 +356,14 @@ const FeedItem: FC = () => {
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => setCommentModal(true)}
           onOpenSharesModal={() => console.log('share button clicked')}
+          followUnfollowHandler={followUnfollowHandler}
         />
 
         <SearchBar />
-      </div>
+      </div> */}
 
       {/* Article Post */}
-      <div className="bg-[#f2f2f2] rounded-[20px]">
+      {/* <div className="bg-[#f2f2f2] rounded-[20px]">
         <ArticlePostItem
           date="INDYNEWS - 03 Jan 2025"
           imageSrc={'/images/research-image.png'}
@@ -318,7 +377,7 @@ const FeedItem: FC = () => {
           onOpenSharesModal={() => console.log('share button clicked')}
         />
         <SearchBar inputStyles={'bg-[#f9f9f9]'} />
-      </div>
+      </div> */}
 
       <ChooseCategoryModal
         open={isOpenCategoryModal}
@@ -326,6 +385,7 @@ const FeedItem: FC = () => {
         postType={postType}
         onNext={(post: string | null) => {
           setPostType(post);
+          dispatch(setCategory(post as string));
           setIsOpenCategoryModal(false);
           if (post !== 'post') {
             const currentParams = new URLSearchParams(window.location.search);
@@ -383,6 +443,7 @@ const FeedItem: FC = () => {
         isOpen={likeModal}
         onClose={() => setLikeModal(false)}
         title="Likes"
+        postId={42}
       />
 
       <ShareModal
@@ -397,34 +458,12 @@ const FeedItem: FC = () => {
         onClose={() => setCommentModal(false)}
       />
 
-      <PostDetailedModal
-        open={isPostDetailModal}
-        images={images}
-        onCloseModal={() => setIsPostDetailModal(false)}
-      />
-
-      <PostDetailedModal
-        open={isImagePreviewModal}
-        images={['/images/post-background.png']}
-        onCloseModal={() => setIsImagePreview(false)}
-      />
-
       <VideoPreviewModal
         open={isVideoPreview}
         onCloseModal={() => setIsVideoPreview(false)}
         videoSrc="/videos/natural-beauty.mp4"
         className="w-full h-full"
       />
-
-      {/* <NewsInsightModal
-        open={commentModal}
-        onCloseModal={() => setCommentModal(false)}
-      /> */}
-
-      {/* <PdfPreviewModal
-        open={isPdfPreview}
-        onCloseModal={() => setIsPdfPreview(false)}
-      /> */}
     </div>
   );
 };

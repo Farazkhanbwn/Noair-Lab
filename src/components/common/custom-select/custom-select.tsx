@@ -73,6 +73,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   options,
   placeholder = 'Select an option',
   value,
+  rules,
   onChange,
   className,
   onAddClick,
@@ -83,7 +84,15 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   const mergedTheme: SelectTheme = { ...defaultTheme, ...theme };
 
   return (
-    <Select value={value} onValueChange={onChange}>
+    <Select
+      value={value}
+      onValueChange={value => {
+        if (rules?.required && !value) {
+          console.log('Field is required');
+        }
+        onChange(value);
+      }}
+    >
       <SelectTrigger
         className={cn(
           `flex items-center justify-between w-full px-4 py-5 rounded-full text-sm sm:text-base transition-colors`,

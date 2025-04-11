@@ -5,6 +5,7 @@ import { PostType } from '@/types';
 import VideoEditor from './add-video-post/video-editor';
 import { HeadingText } from '../feed.types';
 import AddImagePost from './add-image-post/add-image-post';
+import { useCreatePost } from '@/modules/feed/feed.hooks';
 
 const ALL_PAGES: { [key: string]: JSX.Element } = {
   text: <AddTextPost />,
@@ -18,7 +19,9 @@ interface CreatePostModalProps {
 }
 
 const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
-  const [selectedType, setSelectedType] = useState<PostType>(PostType.Text);
+  const [selectedType, setSelectedType] = useState<PostType>(PostType.Text);  
+  const { createPost } = useCreatePost()
+
   return (
     <CreatePostModalLayout
       isOpen={isOpen}
@@ -29,7 +32,7 @@ const CreatePostModal: FC<CreatePostModalProps> = ({ isOpen, onClose }) => {
       title={HeadingText[selectedType]}
       selectedType={selectedType}
       handleSelectType={setSelectedType}
-      onPost={() => console.log('Next button clicked')}
+      onPost={() => {createPost(); onClose()}}
     >
       <div className="w-full">{ALL_PAGES?.[selectedType]}</div>
     </CreatePostModalLayout>

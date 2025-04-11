@@ -71,6 +71,7 @@ function CreateDiscussion({
             className="w-full sm:w-3/4 md:w-2/3 xl:w-1/2"
             placeholder="Select your Community"
             buttonText="hello"
+            onChange={value => console.log('value are : ', value)}
           />
           <Tabs defaultValue="text" className="bg-transparent shadow-none">
             <TabsList className="w-1/2 flex gap-4 justify-start items-start">
