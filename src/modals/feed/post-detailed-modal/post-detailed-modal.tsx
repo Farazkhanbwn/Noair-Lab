@@ -192,7 +192,7 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
                     </div>
                   </div>
                 </div> */}
-                {post.content && <p className="mt-2">{post.content}</p>}
+                {post.content && <p className="mt-2 ml-2">{post.content}</p>}
 
                 <div className="flex items-center justify-between heading-tertiary font-normal text-dark-grey py-2 px-4 border-b border-stroke-grey mt-4">
                   <CustomButton

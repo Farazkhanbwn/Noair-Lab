@@ -30,7 +30,7 @@ const ALL_PAGES: { [key: string]: JSX.Element } = {
 };
 export default function SearchLayoutPage() {
   const searchParams = useSearchParams();
-
+  
   const validFilters: FilterType[] = [
     'all',
     'people',
@@ -38,12 +38,12 @@ export default function SearchLayoutPage() {
     'community',
     'insights',
   ]; // Define valid options
-
+  
   const filter = searchParams.get('filter');
   const activeFilter = validFilters.includes(filter as FilterType)
     ? (filter as FilterType)
     : 'all';
-
+  
   return (
     <div className="flex flex-col w-full lg:flex lg:flex-row items-start justify-start bg-red py-4 gap-3">
       <SearchSidebar activeFilter={activeFilter} />

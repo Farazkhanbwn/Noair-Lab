@@ -133,7 +133,7 @@ const FeedUserPost: FC<FeedUserPostProps> = ({ item }) => {
           followers={item.user.totalFollowersCount}
           mutual={item.user.mutualFollowersCount}
           onOpenLikesModal={() => setLikeModal(true)}
-          onOpenCommentsModal={() => setCommentModal(true)}
+          onOpenCommentsModal={() => console.log('comment modal open')}
           onOpenSharesModal={() => console.log('share button clicked')}
           onCommentClick={() => console.log('Comment Click')}
           onLikeClick={item.userLike ? handleUnlikePost : handleLikePost}

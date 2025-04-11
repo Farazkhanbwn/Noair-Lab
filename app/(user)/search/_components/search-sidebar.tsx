@@ -7,12 +7,16 @@ import PostIcon from '@/assets/svgs/PostIcon';
 import CommunityIcon from '@/assets/svgs/CommunityIcon';
 import InsightsIcon from '@/assets/svgs/InsightsIcon';
 import PageActiveIcon from '@/assets/svgs/PageActiveIcon';
+import { useSearchParams } from 'next/navigation';
 
 interface SearchSidebarProps {
   activeFilter: FilterType;
 }
 
 export function SearchSidebar({ activeFilter }: SearchSidebarProps) {
+  const searchParams = useSearchParams();
+  const keyword = searchParams.get('keyword') || '';
+
   const filters: {
     label: string;
     value: FilterType;
@@ -54,7 +58,7 @@ export function SearchSidebar({ activeFilter }: SearchSidebarProps) {
         {filters.map(({ label, value, Icon }) => (
           <Link
             key={value}
-            href={`?filter=${value}`}
+            href={`/search?keyword=${encodeURIComponent(keyword)}&filter=${value}`}
             className={cn(
               'flex items-center gap-3 text-black px-3 py-2 rounded-[0.625rem] text-sm transition-colors no-underline',
               activeFilter === value
@@ -63,7 +67,7 @@ export function SearchSidebar({ activeFilter }: SearchSidebarProps) {
             )}
           >
             <div
-              className={`rounded-full ${activeFilter === value ? 'bg-primary' : 'bg-light-grey'} text-secondary-grey  w-9 h-9 flex items-center justify-center`}
+              className={`rounded-full ${activeFilter === value ? 'bg-primary' : 'bg-light-grey'} text-secondary-grey w-9 h-9 flex items-center justify-center`}
             >
               <Icon
                 className={`${activeFilter === value ? 'fill-white text-white stroke-white' : 'fill-secondary-grey stroke-secondary-grey'}`}

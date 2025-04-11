@@ -35,7 +35,7 @@ const AddImageDocument = () => {
     if (images.length > 0) {
       dispatch(setFiles(images))
     }
-  }, [images])
+  }, [images, dispatch])
 
   return (
     <ImageEditor

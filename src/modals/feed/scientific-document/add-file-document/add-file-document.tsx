@@ -73,10 +73,10 @@ const AddFileDocument: FC<AddFileDocumentProps> = ({ className }) => {
   });
 
   useEffect(() => {
-      if (docs.length > 0) {
-        dispatch(setFiles(docs))
-      }
-    }, [docs])
+    if (docs.length > 0) {
+      dispatch(setFiles(docs))
+    }
+  }, [docs, dispatch])
 
   return (
     <div className={`mx-auto ${className}`}>

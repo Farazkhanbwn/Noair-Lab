@@ -19,8 +19,13 @@ const FeedPage = () => {
   const { isLoading, success, resetState, error } = useCreatePost()
   
   useEffect(() => {
-    error == '' && success && setTimeout(() => router.replace('/feed'), 200)  && resetState();
-  }, [error, success])
+    if (error === '' && success) {
+      setTimeout(() => {
+        router.replace('/feed');
+        resetState();
+      }, 200);
+    }
+  }, [error, success, router, resetState]);
 
   return (
     <>

@@ -35,7 +35,7 @@ const VideoEditor: FC<VideoEditorProps> = ({ initialVideos = [] }) => {
     if (videos.length > 0) {
       dispatch(setFiles(videos))
     }
-  }, [videos])
+  }, [videos, dispatch])
 
   return (
     <div className="bg-white w-full">

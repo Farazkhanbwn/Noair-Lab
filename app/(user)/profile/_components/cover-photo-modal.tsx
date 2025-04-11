@@ -26,13 +26,13 @@ export default function CoverPhotoModal({
   setImage,
   image,
 }: CoverPhotoModalProps) {
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
     }
-  };
+  }, [setImage]);
 
   const handleRemove = useCallback(() => {
     if (image) {
@@ -99,7 +99,7 @@ export default function CoverPhotoModal({
         </div>
       </div>
     );
-  }, [type, image, handleRemove, onSubmit]);
+  }, [type, image, handleRemove, onSubmit, handleFileChange]);
 
   return (
     <CustomModal

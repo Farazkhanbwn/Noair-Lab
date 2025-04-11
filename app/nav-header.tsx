@@ -9,6 +9,7 @@ import MessageIcon from '@/assets/svgs/MessageIcon';
 import GroupIcon from '@/assets/svgs/GroupIcon';
 import NotificationBellIcon from '@/assets/svgs/NotificationBellIcon';
 import NavLogo from '@/components/common/logo/NavLogo';
+import { useState } from 'react';
 
 function Header() {
   const router = useRouter();
@@ -66,6 +67,24 @@ function Header() {
     },
   ];
 
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchValue.trim()) {
+      router.push(`/search?keyword=${encodeURIComponent(searchValue.trim())}`);
+    }
+  };
+
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleSearchIconClick = () => {
+    if (searchValue.trim()) {
+      router.push(`/search?keyword=${encodeURIComponent(searchValue.trim())}`);
+    }
+  };
+
   return (
     <header className="w-[100vw] fixed top-0 left-0 right-0 z-[50]  bg-pure-white p-2 md:p-4 pb-2 shadow-md h-[74px]">
       <div className="row flex items-center md:items-start justify-between gap-2">
@@ -74,16 +93,21 @@ function Header() {
         </Link>
         <nav className="flex items-center lg:items-start gap-2 sm:gap-4 md:gap-2 lg:gap-6">
           <div
-            onClick={() => {
-              router.push('/search');
-            }}
             className="flex items-center bg-transparent lg:bg-light-grey  rounded-[20px] px-0 py-0.5 lg:px-4 text-black"
           >
-            <img className="w-5 h-5" src="/search.svg" alt="search icon" />
+            <img 
+              className="w-5 h-5 cursor-pointer" 
+              src="/search.svg" 
+              alt="search icon" 
+              onClick={handleSearchIconClick}
+            />
             <input
               type="text"
               className="m-0 border-none bg-transparent outline-none text-sm pl-4 hidden lg:block"
               placeholder="Search"
+              value={searchValue}
+              onChange={handleSearchInput}
+              onKeyDown={handleSearch}
             />
           </div>
           {navigationItems.map(item => (
