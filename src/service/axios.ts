@@ -1,9 +1,13 @@
 // src/api/axiosInstance.ts
 import axios from 'axios';
+import https from 'https';
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_ENDPOINT, // Base URL for your API
   withCredentials: true,
+  httpsAgent: new https.Agent({  
+    rejectUnauthorized: false // WARNING: Only for development!
+  }),
   headers: {
     'Content-Type': 'application/json',
     // Add any other global headers like Authorization, etc.

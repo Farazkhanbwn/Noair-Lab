@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { useMutation } from '@tanstack/react-query';
 import { SearchParams, SearchResponse } from './search-service.types';
+import axiosInstance from '../axios';
 
 const url = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
@@ -17,7 +17,7 @@ export const useSearch = () => {
   const search = async (params: SearchParams): Promise<SearchResponse> => {
     const token = getToken();
 
-    const response = await axios.get(`${url}/api/v1/search?keyword=${params.query}`, {
+    const response = await axiosInstance.get(`${url}/api/v1/search?keyword=${params.query}`, {
       withCredentials: true,
       headers: {
         ...(token ? { Authorization: `Bearer ${token}` } : {}),

@@ -35,29 +35,41 @@ const FeedItem: FC = () => {
   const hasMore = useAppSelector(state => state.feed.hasMore);
   const isLoading = useAppSelector(state => state.feed.loading);
 
+  console.log('feed items are : ', feed);
+
   const observer = useRef<IntersectionObserver | null>(null);
 
   const lastItemRef = useCallback(
-    (node: HTMLDivElement) => {
+    (node: HTMLDivElement | null) => {
       if (isLoading || !hasMore) return;
 
+      // Disconnect the previous observer if it exists
       if (observer.current) observer.current.disconnect();
 
-      observer.current = new IntersectionObserver(
-        entries => {
-          if (entries[0].isIntersecting && hasMore && !isLoading) {
-            console.log('Fetching more data...');
-            setTimeout(() => {
-              dispatch(fetchFeed(cursor)).catch(error => {
-                console.error('Failed to fetch feed:', error);
-              });
-            }, 100); // ✅ Slight delay to avoid race conditions
-          }
-        },
-        { threshold: 1.0 }
-      );
+      if (node) {
+        observer.current = new IntersectionObserver(
+          entries => {
+            if (entries[0].isIntersecting && hasMore && !isLoading) {
+              console.log('Fetching more data...');
+              setTimeout(() => {
+                dispatch(fetchFeed(cursor)).catch(error => {
+                  console.error('Failed to fetch feed:', error);
+                });
+              }, 100);
+            }
+          },
+          { threshold: 1.0 }
+        );
 
-      if (node) observer.current.observe(node);
+        observer.current.observe(node);
+      }
+
+      // 🔥 Cleanup when node unmounts or ref gets reassigned
+      return () => {
+        if (observer.current) {
+          observer.current.disconnect();
+        }
+      };
     },
     [cursor, hasMore, isLoading, dispatch]
   );
@@ -110,274 +122,6 @@ const FeedItem: FC = () => {
           <p className="text-gray-500 mt-4">No feed available yet!</p>
         )}
       </div>
-      {/* Feed Post Without Image*/}
-      {/* <div className="bg-pure-white rounded-[20px]">
-        <FeedPost
-          name="Wilma Ullrich"
-          userId={2}
-          role="Research Assistant at University of Chicago"
-          time={'2025-02-18T05:30:00Z'}
-          content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus. Ac cras justo elementum tincidunt congue vitae massa volutpat lorem 😊😊. "
-          likes={6}
-          comments={4}
-          shares={2}
-          userImage="/images/feed-profile.png"
-          followers={1.2}
-          mutual={2}
-          onOpenLikesModal={() => setLikeModal(true)}
-          onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => console.log('share button clicked')}
-          followUnfollowHandler={followUnfollowHandler}
-        />
-
-        <SearchBar />
-
-        <Comment
-          name="Elmer Erdman, PhD"
-          role="Research Faculty at Harvard University"
-          comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-          time="1h"
-          followers={1200}
-          mutual={2}
-        />
-
-        <Comment
-          name="Elmer Erdman, PhD"
-          role="Research Faculty at Harvard University"
-          comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-          time="1h"
-          followers={1200}
-          mutual={2}
-        />
-
-        <CustomButton
-          onClick={() => console.log('More comments clicked')}
-          styleType={CustomButtonTypes.TERTIARY}
-          className="text-description font-medium text-primary-color underline p-6"
-        >
-          View more comments
-        </CustomButton>
-      </div> */}
-
-      {/* Feed Post with Image */}
-      {/* <div className="bg-pure-white rounded-[20px]">
-        <FeedPost
-          name="Wilma Ullrich"
-          role="Research Assistant at University of Chicago"
-          time={'2025-02-18T05:30:00Z'}
-          content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
-          likes={6}
-          userId={3}
-          mediaPost={
-            <PostMedia
-              mediaType={'image'}
-              media={['/images/post-background.png']}
-              onImageClick={() => setIsImagePreview(true)}
-            />
-          }
-          comments={4}
-          shares={2}
-          userImage="/images/feed-profile.png"
-          followers={1.2}
-          mutual={2}
-          onOpenLikesModal={() => setLikeModal(true)}
-          onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => console.log('share button clicked')}
-          followUnfollowHandler={followUnfollowHandler}
-        />
-
-        <SearchBar />
-
-        <Comment
-          name="Elmer Erdman, PhD"
-          role="Research Faculty at Harvard University"
-          comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-          time="1h"
-          followers={1200}
-          mutual={2}
-        />
-
-        <Comment
-          name="Elmer Erdman, PhD"
-          role="Research Faculty at Harvard University"
-          comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-          time="1h"
-          followers={1200}
-          mutual={2}
-        />
-
-        <CustomButton
-          onClick={() => console.log('more comments clicked')}
-          styleType={CustomButtonTypes.TERTIARY}
-          className="text-description font-medium text-primary-color underline p-6"
-        >
-          View more comments
-        </CustomButton>
-      </div> */}
-
-      {/* Image Gallery */}
-      {/* <div className="bg-pure-white rounded-[20px]">
-        <FeedPost
-          name="Wilma Ullrich"
-          role="Research Assistant at University of Chicago"
-          time={'2025-02-18T05:30:00Z'}
-          content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
-          likes={6}
-          userId={4}
-          mediaPost={
-            <PostMedia
-              mediaType={'image'}
-              media={images}
-              onImageClick={() => setIsPostDetailModal(true)}
-            />
-          }
-          comments={4}
-          shares={2}
-          userImage="/images/feed-profile.png"
-          followers={1.2}
-          mutual={2}
-          onOpenLikesModal={() => setLikeModal(true)}
-          onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => console.log('share button clicked')}
-          followUnfollowHandler={followUnfollowHandler}
-        />
-
-        <SearchBar />
-
-        <Comment
-          name="Elmer Erdman, PhD"
-          role="Research Faculty at Harvard University"
-          comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-          time="1h"
-          followers={1200}
-          mutual={2}
-        />
-
-        <Comment
-          name="Elmer Erdman, PhD"
-          role="Research Faculty at Harvard University"
-          comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-          time="1h"
-          followers={1200}
-          mutual={2}
-        />
-
-        <CustomButton
-          onClick={() => console.log('more comments clicked')}
-          styleType={CustomButtonTypes.TERTIARY}
-          className="text-description font-medium text-primary-color underline p-6"
-        >
-          View more comments
-        </CustomButton>
-      </div> */}
-
-      {/* Video Post */}
-      {/* <div className="bg-pure-white rounded-[20px]">
-        <FeedPost
-          name="Wilma Ullrich"
-          role="Research Assistant at University of Chicago"
-          time={'2025-02-18T05:30:00Z'}
-          content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
-          likes={6}
-          userId={5}
-          mediaPost={
-            <PostMedia
-              onImageClick={() => console.log('video is clicked')}
-              mediaType={'video'}
-              media={'/videos/natural-beauty.mp4'}
-            />
-          }
-          comments={4}
-          shares={2}
-          userImage="/images/feed-profile.png"
-          followers={1.2}
-          mutual={2}
-          onOpenLikesModal={() => setLikeModal(true)}
-          onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => console.log('share button clicked')}
-          followUnfollowHandler={followUnfollowHandler}
-        />
-
-        <SearchBar />
-
-        <Comment
-          name="Elmer Erdman, PhD"
-          role="Research Faculty at Harvard University"
-          comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-          time="1h"
-          followers={1200}
-          mutual={2}
-        />
-
-        <Comment
-          name="Elmer Erdman, PhD"
-          role="Research Faculty at Harvard University"
-          comment="Lorem ipsum dolor sit amet consectetur. Id et vulputate nulla phasellus risus."
-          time="1h"
-          followers={1200}
-          mutual={2}
-        />
-
-        <CustomButton
-          onClick={() => console.log('more comments clicked')}
-          styleType={CustomButtonTypes.TERTIARY}
-          className="text-description font-medium text-primary-color underline p-6"
-        >
-          View more comments
-        </CustomButton>
-      </div> */}
-
-      {/* Pdf Post */}
-      {/* <div className="bg-pure-white rounded-[20px]">
-        <FeedPost
-          name="Wilma Ullrich"
-          role="Research Assistant at University of Chicago"
-          time={'2025-02-18T05:30:00Z'}
-          content="Lorem ipsum dolor sit amet consectetur. Non nisl in id phasellus."
-          likes={6}
-          userId={8}
-          mediaPost={
-            <PostMedia
-              files={[
-                {
-                  id: 1,
-                  url: 'https://d2u26eegcjw767.cloudfront.net/users/11/posts/39/pdf/1742983592894-MuhammadHamza.pdf',
-                  fileType: 'pdf',
-                },
-              ]}
-              onImageClick={() => console.log('more comments clicked')}
-            />
-          }
-          comments={4}
-          shares={2}
-          userImage="/images/feed-profile.png"
-          followers={1.2}
-          mutual={2}
-          onOpenLikesModal={() => setLikeModal(true)}
-          onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => console.log('share button clicked')}
-          followUnfollowHandler={followUnfollowHandler}
-        />
-
-        <SearchBar />
-      </div> */}
-
-      {/* Article Post */}
-      {/* <div className="bg-[#f2f2f2] rounded-[20px]">
-        <ArticlePostItem
-          date="INDYNEWS - 03 Jan 2025"
-          imageSrc={'/images/research-image.png'}
-          title="IndyNEWS Detroit: Dixon quickest in second practice"
-          likes={2}
-          comments={4}
-          shares={2}
-          onImageClick={() => setIsPostDetailModal(true)}
-          onOpenLikesModal={() => setLikeModal(true)}
-          onOpenCommentsModal={() => setCommentModal(true)}
-          onOpenSharesModal={() => console.log('share button clicked')}
-        />
-        <SearchBar inputStyles={'bg-[#f9f9f9]'} />
-      </div> */}
 
       <ChooseCategoryModal
         open={isOpenCategoryModal}

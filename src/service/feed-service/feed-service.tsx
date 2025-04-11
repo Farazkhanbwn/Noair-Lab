@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import {
   AddCommentVariables,
@@ -6,6 +5,7 @@ import {
   UnLikeParams,
   UpdateDeleteCommentParams,
 } from './feed-service.types';
+import axiosInstance from '../axios';
 
 const url = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
@@ -18,7 +18,7 @@ const getToken = () => {
 export const useAddComment = () => {
   const token = getToken();
   const addComment = async (commentData: AddCommentVariables) => {
-    const response = await axios.post(
+    const response = await axiosInstance.post(
       `${url}/api/v1/post/comments`,
       commentData,
       {
@@ -46,7 +46,7 @@ export const useDeleteComment = () => {
     postId,
     commentId,
   }: UpdateDeleteCommentParams) => {
-    const response = await axios.delete(
+    const response = await axiosInstance.delete(
       `${url}/api/v1/post/comments/${postId}/${commentId}`,
       {
         headers: {
@@ -74,7 +74,7 @@ export const useUpdateComment = () => {
     commentId,
     content,
   }: UpdateDeleteCommentParams) => {
-    const response = await axios.put(
+    const response = await axiosInstance.put(
       `${url}/api/v1/post/comments/${postId}/${commentId}`,
       { content }, // Sending 'content' in the request body
       {
@@ -105,7 +105,7 @@ export const useLikePost = () => {
     reaction = 'like',
     replyId,
   }: Partial<PostLikeParams>) => {
-    const response = await axios.post(
+    const response = await axiosInstance.post(
       `${url}/api/v1/post/likes`,
       { commentId, postId, reaction, replyId },
       {
@@ -131,7 +131,7 @@ export const useUnLikePost = () => {
   const token = getToken();
 
   const unLikePost = async ({ id, type = 'post' }: UnLikeParams) => {
-    const response = await axios.delete(
+    const response = await axiosInstance.delete(
       `${url}/api/v1/post/likes/${type}/${id}`,
       {
         headers: {
@@ -160,7 +160,7 @@ export const useGetPostLikes = (
   const fetchLikes = async () => {
     const token = getToken();
     const type = postType ?? 'post';
-    const response = await axios.get(
+    const response = await axiosInstance.get(
       `${url}/api/v1/post/likes/likesBy/${type}/${postId}`,
       {
         withCredentials: true,
