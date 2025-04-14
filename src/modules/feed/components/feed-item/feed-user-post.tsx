@@ -132,7 +132,7 @@ const FeedUserPost: FC<FeedUserPostProps> = ({ item }) => {
               onImageClick={() => setIsImagePreview(true)}
             />
           }
-          followers={item.user.totalFollowersCount}
+          followers={item.user.totalFollowersCount || 0}
           mutual={item.user.mutualCount || 0}
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => console.log('comment modal open')}
@@ -169,8 +169,8 @@ const FeedUserPost: FC<FeedUserPostProps> = ({ item }) => {
                   }
                   isLiked={comment.user.userLiked}
                   handleDeleteComment={handleDeleteComment}
-                  mutualCount={comment.user.mutualCount}
-                  totalFollowers={comment.user.totalFollowersCount}
+                  mutualCount={comment.user.mutualCount || 0}
+                  totalFollowers={comment.user.totalFollowersCount || 0}
                 />
               </div>
             ))}
@@ -191,8 +191,8 @@ const FeedUserPost: FC<FeedUserPostProps> = ({ item }) => {
                 }
                 totalLikes={comment.totalLikes}
                 time={moment.utc(comment.createdAt).fromNow()}
-                followers={comment.user.totalFollowersCount}
-                mutual={comment.user.mutualCount}
+                followers={comment.user.totalFollowersCount || 0}
+                mutual={comment.user.mutualCount || 0}
                 isLoading={isCommentClickDisabled}
               />
             ))}
