@@ -1,4 +1,4 @@
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import { Search } from 'lucide-react';
 import SearchInput from '@/components/common/search-input/search-input';
 import { COMMUNITY_SELECTION_TOPICS } from '@/modals/communities/communities.constants';

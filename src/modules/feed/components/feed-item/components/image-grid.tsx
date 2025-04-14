@@ -23,7 +23,7 @@ export default function ImageGrid({ images, onImageClick }: ImageGridProps) {
               width={500}
               height={600}
               onClick={onImageClick}
-              className={`object-cover cursor-pointer w-full h-full transition-transform duration-300`}
+              className={`object-cover cursor-pointer w-full max-h-[650px] h-full transition-transform duration-300`}
             />
           </div>
         )}

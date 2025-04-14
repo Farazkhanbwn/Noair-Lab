@@ -16,4 +16,5 @@ export interface CommentProps {
   isLiked?: boolean;
   onLikeClick?: () => void;
   onReplyClick?: () => void;
+  isLoading?: boolean;
 }

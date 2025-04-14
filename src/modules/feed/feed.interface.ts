@@ -45,6 +45,7 @@ export interface FeedPostProps {
     action: string;
     userId: string | number;
   }) => void;
+  isLoading?: boolean;
 }
 
 interface BaseMedia {

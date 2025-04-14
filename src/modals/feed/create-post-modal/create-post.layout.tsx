@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FC, PropsWithChildren } from 'react';
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import CustomButton from '@/components/common/custom-button/custom-button';
 import ModalHeader from '@/modals/modal-header';
 import { ImageIcon, Type, Video } from 'lucide-react';

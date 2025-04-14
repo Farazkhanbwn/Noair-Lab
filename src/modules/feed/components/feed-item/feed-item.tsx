@@ -4,7 +4,6 @@ import CommentModal from '@/modals/comment-modal/comments';
 import LikesModal from '@/modals/like-modal/user-likes';
 import ShareModal from '@/modals/share-modal/share-modal';
 import CreatePostModal from '@/modals/feed/create-post-modal/create-post-modal';
-import VideoPreviewModal from '@/modals/feed/video-preview-modal/video-preview-modal';
 import ScientificDocumentModal from '@/modals/feed/scientific-document/scientific-document';
 import NewsAndInsightsModal from '../../add-feed-post/NewsAndInsightsModal';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -26,7 +25,6 @@ const FeedItem: FC = () => {
   const [shareModal, setShareModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
   const [isOpenCategoryModal, setIsOpenCategoryModal] = useState(false);
-  const [isVideoPreview, setIsVideoPreview] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -34,8 +32,6 @@ const FeedItem: FC = () => {
   const cursor = useAppSelector(state => state.feed.cursor);
   const hasMore = useAppSelector(state => state.feed.hasMore);
   const isLoading = useAppSelector(state => state.feed.loading);
-
-  console.log('feed items are : ', feed);
 
   const observer = useRef<IntersectionObserver | null>(null);
 
@@ -202,12 +198,6 @@ const FeedItem: FC = () => {
         onClose={() => setCommentModal(false)}
       />
 
-      <VideoPreviewModal
-        open={isVideoPreview}
-        onCloseModal={() => setIsVideoPreview(false)}
-        videoSrc="/videos/natural-beauty.mp4"
-        className="w-full h-full"
-      />
     </div>
   );
 };

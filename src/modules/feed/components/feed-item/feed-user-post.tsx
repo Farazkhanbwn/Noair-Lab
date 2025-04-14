@@ -32,6 +32,8 @@ const FeedUserPost: FC<FeedUserPostProps> = ({ item }) => {
     handleLikePost,
     handleUnlikePost,
     handleCommentLike,
+    isLoading,
+    isCommentClickDisabled,
   } = useFeedPostActions(item.id);
   const { mutateAsync, isPending } = useAddComment();
   // const { mutateAsync: getPostComments } = useGetPostComments();
@@ -131,7 +133,7 @@ const FeedUserPost: FC<FeedUserPostProps> = ({ item }) => {
             />
           }
           followers={item.user.totalFollowersCount}
-          mutual={item.user.mutualFollowersCount}
+          mutual={item.user.mutualCount || 0}
           onOpenLikesModal={() => setLikeModal(true)}
           onOpenCommentsModal={() => console.log('comment modal open')}
           onOpenSharesModal={() => console.log('share button clicked')}
@@ -140,6 +142,7 @@ const FeedUserPost: FC<FeedUserPostProps> = ({ item }) => {
           onShareClick={() => console.log('Share Click')}
           followUnfollowHandler={followUnfollowHandler}
           userId={item.user.id}
+          isLoading={isLoading}
         />
 
         <SearchBar
@@ -157,7 +160,17 @@ const FeedUserPost: FC<FeedUserPostProps> = ({ item }) => {
                   onSave={content => handleSaveEditingText(content, comment.id)}
                   onCancal={() => setIsEditable(false)}
                   comment={comment}
+                  onLikeClick={() =>
+                    handleCommentLike(
+                      comment.user.userLiked,
+                      item.id,
+                      comment.id
+                    )
+                  }
+                  isLiked={comment.user.userLiked}
                   handleDeleteComment={handleDeleteComment}
+                  mutualCount={comment.user.mutualCount}
+                  totalFollowers={comment.user.totalFollowersCount}
                 />
               </div>
             ))}
@@ -178,8 +191,9 @@ const FeedUserPost: FC<FeedUserPostProps> = ({ item }) => {
                 }
                 totalLikes={comment.totalLikes}
                 time={moment.utc(comment.createdAt).fromNow()}
-                followers={1200}
-                mutual={2}
+                followers={comment.user.totalFollowersCount}
+                mutual={comment.user.mutualCount}
+                isLoading={isCommentClickDisabled}
               />
             ))}
           </div>

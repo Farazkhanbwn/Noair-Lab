@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, useCallback, useRef, useState } from 'react';
 import { DialogProps } from '@/types';
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import { pdfjs, Document, Page } from 'react-pdf';

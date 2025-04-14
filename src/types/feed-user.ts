@@ -9,7 +9,7 @@ interface FeedUserType {
   name: string;
   title: string;
   specialization: string;
-  mutualFollowersCount: number;
+  mutualCount: number;
   totalFollowersCount: number;
   userFollow: boolean;
   profileImageUrl: null | string;

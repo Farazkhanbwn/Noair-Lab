@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import ModalHeader from '../modal-header';
 import UserCard from '@/components/dashboard/components/user-card/user-card';
 import CustomButton from '@/components/common/custom-button/custom-button';
@@ -41,9 +41,11 @@ const LikesModal: FC<LikeModalProps> = ({ title, isOpen, onClose, postId }) => {
         {isLoading && <UserLikes />}
 
         <div className="flex flex-col gap-3 my-4 px-2">
-          <p className="mb-4 text-primary border-b-2 border-primary w-fit">
-            All {likesData && likesData.likes.length}
-          </p>
+          {!isLoading && (
+            <p className="mb-4 text-primary border-b-2 border-primary w-fit">
+              All {likesData && likesData.likes.length}
+            </p>
+          )}
 
           {likesData &&
             likesData.likes.map((item: UserPostLike) => (
@@ -54,7 +56,7 @@ const LikesModal: FC<LikeModalProps> = ({ title, isOpen, onClose, postId }) => {
                   }
                   name={item.user.name}
                   role={item.user.specialization}
-                  mutual={item.user.mutualFollowersCount || 0}
+                  mutual={item.user.mutualCount || 0}
                   followers={`${item.user.totalFollowersCount || 0}k`}
                   timeStamp={item.createdAt}
                 />

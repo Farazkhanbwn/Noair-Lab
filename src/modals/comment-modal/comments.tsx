@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import ModalHeader from '../modal-header';
 import { CommentModalProps } from './comments.types';
 import CommentItem from './components/comment-item';

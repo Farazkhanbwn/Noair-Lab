@@ -10,28 +10,39 @@ import {
   updateCommentLikeStatus,
 } from '@/store/slices/feed-slice/feed-slice';
 import { fetchMoreComments } from '@/store/slices/feed-slice/feed-thunks';
+import { useState } from 'react';
 
 export const useFeedPostActions = (postId: number) => {
   const dispatch = useAppDispatch();
   useAddComment();
   const { mutateAsync: likePost } = useLikePost();
   const { mutateAsync: unLikePost } = useUnLikePost();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isCommentClickDisabled, setIsCommentClickDisabled] = useState(false);
 
   const handleLikePost = async () => {
+    setIsLoading(true);
+    dispatch(toggleLike({ postId }));
     try {
       await likePost({ postId });
-      dispatch(toggleLike({ postId }));
     } catch (err) {
+      dispatch(toggleLike({ postId }));
       handleRequestError(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleUnlikePost = async () => {
+    setIsLoading(true);
+    dispatch(toggleLike({ postId }));
     try {
       await unLikePost({ id: postId, type: 'post' });
-      dispatch(toggleLike({ postId }));
     } catch (err) {
+      dispatch(toggleLike({ postId }));
       handleRequestError(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -64,6 +75,8 @@ export const useFeedPostActions = (postId: number) => {
     postId: number,
     commentId: number
   ) => {
+    setIsCommentClickDisabled(true);
+    dispatch(updateCommentLikeStatus({ postId, commentId, isLiked: !isLike }));
     try {
       if (isLike) {
         await unLikePost({ id: commentId, type: 'comment' });
@@ -75,11 +88,16 @@ export const useFeedPostActions = (postId: number) => {
         dispatch(updateCommentLikeStatus({ postId, commentId, isLiked: true }));
       }
     } catch (error) {
+      dispatch(updateCommentLikeStatus({ postId, commentId, isLiked: isLike }));
       handleRequestError(error);
+    } finally {
+      setIsCommentClickDisabled(false);
     }
   };
 
   return {
+    isLoading,
+    isCommentClickDisabled,
     handleCommentLike,
     handleLikePost,
     handleUnlikePost,

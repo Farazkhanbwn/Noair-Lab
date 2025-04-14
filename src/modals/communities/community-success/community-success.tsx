@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 import CustomButton from '@/components/common/custom-button/custom-button';
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import ProgressSteps from '@/components/common/progress-steps/progress-steps';
 import { CommunitySuccessModalProps } from '../communities.types';
 import CommunityModalHeader from '../components/community-header';

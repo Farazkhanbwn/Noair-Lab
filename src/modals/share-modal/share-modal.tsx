@@ -1,4 +1,4 @@
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import React, { FC } from 'react';
 
 interface ShareModalProps {

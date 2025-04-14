@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import VideoPlayer from '@/components/common/video-player/video-player';
 import { DialogProps } from '@/types';
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 
 interface VideoPreviewModalPros extends DialogProps {
   videoSrc: string;

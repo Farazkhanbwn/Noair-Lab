@@ -19,10 +19,11 @@ const Comment: FC<CommentProps> = ({
   onEditClick,
   onContentChange,
   onSaveClick,
-  totalLikes = 0,
+  // totalLikes = 0,
   isLiked,
   onLikeClick,
   onReplyClick,
+  isLoading,
 }) => {
   return (
     <div className={`flex items-start gap-x-3 ${className}`}>
@@ -80,11 +81,13 @@ const Comment: FC<CommentProps> = ({
           {time}
           <div className="flex items-center gap-x-1">
             <CustomButton
+              disable={isLoading}
               onClick={onLikeClick}
-              className={`${isLiked ? 'text-primary' : ''}`}
+              className={`${isLiked ? 'text-primary' : ''} disabled:cursor-pointer`}
               styleType={CustomButtonTypes.TERTIARY}
             >
-              Like {totalLikes ? `(${totalLikes})` : ''}
+              Like
+              {/* Like {totalLikes ? `(${totalLikes})` : ''} */}
             </CustomButton>
             <hr className="w-[1px] h-[10px] bg-secondary-grey" />
             <CustomButton

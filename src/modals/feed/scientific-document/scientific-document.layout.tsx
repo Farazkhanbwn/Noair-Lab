@@ -1,5 +1,5 @@
 import CustomButton from '@/components/common/custom-button/custom-button';
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import ModalHeader from '@/modals/modal-header';
 import { PostType } from '@/types';
 import { ImageIcon, Type, Files } from 'lucide-react';

@@ -10,6 +10,7 @@ interface PostActionButtonsProps {
   onShareClick: () => void;
   actionButtonStyles: string;
   classNames?: string;
+  isLoading?: boolean;
 }
 
 const PostActionButtons: FC<PostActionButtonsProps> = ({
@@ -19,12 +20,14 @@ const PostActionButtons: FC<PostActionButtonsProps> = ({
   onShareClick,
   actionButtonStyles,
   classNames,
+  isLoading,
 }) => {
   return (
     <div className={`flex justify-between ${classNames}`}>
       <CustomButton
+        disable={isLoading}
         styleType={CustomButtonTypes.TERTIARY}
-        className={`${actionButtonStyles}`}
+        className={`disabled:cursor-pointer ${actionButtonStyles}`}
         onClick={onLikeClick}
       >
         <LikeIcon

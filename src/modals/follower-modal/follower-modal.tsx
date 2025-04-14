@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import ModalHeader from '../modal-header';
 import { DialogProps } from '@/types';
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import UserCard from '@/components/dashboard/components/user-card/user-card';
 import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';

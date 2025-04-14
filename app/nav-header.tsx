@@ -9,7 +9,7 @@ import MessageIcon from '@/assets/svgs/MessageIcon';
 import GroupIcon from '@/assets/svgs/GroupIcon';
 import NotificationBellIcon from '@/assets/svgs/NotificationBellIcon';
 import NavLogo from '@/components/common/logo/NavLogo';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Header() {
   const router = useRouter();
@@ -69,9 +69,20 @@ function Header() {
 
   const [searchValue, setSearchValue] = useState('');
 
+  // Initialize search value from URL
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const keyword = searchParams.get('keyword');
+    if (keyword) {
+      setSearchValue(decodeURIComponent(keyword));
+    }
+  }, []);
+
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && searchValue.trim()) {
-      router.push(`/search?keyword=${encodeURIComponent(searchValue.trim())}`);
+      const searchParams = new URLSearchParams(window.location.search);
+      const currentFilter = searchParams.get('filter') || 'all';
+      router.push(`/search?keyword=${encodeURIComponent(searchValue.trim())}&filter=${currentFilter}`);
     }
   };
 
@@ -81,7 +92,9 @@ function Header() {
 
   const handleSearchIconClick = () => {
     if (searchValue.trim()) {
-      router.push(`/search?keyword=${encodeURIComponent(searchValue.trim())}`);
+      const searchParams = new URLSearchParams(window.location.search);
+      const currentFilter = searchParams.get('filter') || 'all';
+      router.push(`/search?keyword=${encodeURIComponent(searchValue.trim())}&filter=${currentFilter}`);
     }
   };
 

@@ -24,6 +24,7 @@ const FeedPost: FC<FeedPostProps> = ({
   onCommentClick,
   onLikeClick,
   onShareClick,
+  isLoading,
 }) => {
   const actionButtonStyles =
     'flex-center gap-x-3 py-3 w-full font-medium transition-all hover:bg-gray-100';
@@ -84,6 +85,7 @@ const FeedPost: FC<FeedPostProps> = ({
         onLikeClick={onLikeClick}
         onCommentClick={onCommentClick}
         onShareClick={onShareClick}
+        isLoading={isLoading}
         actionButtonStyles={actionButtonStyles}
       />
     </div>

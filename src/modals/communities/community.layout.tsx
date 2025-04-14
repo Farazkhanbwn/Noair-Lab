@@ -1,7 +1,7 @@
 'use client';
 
 import { FC, ReactNode } from 'react';
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
 import CommunityModalHeader from './components/community-header';

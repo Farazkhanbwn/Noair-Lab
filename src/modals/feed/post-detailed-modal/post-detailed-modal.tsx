@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC, useState } from 'react';
-import Modal from '@/components/common/modal';
+import Modal from '@/components/common/Modal';
 import { DialogProps } from '@/types';
 import CustomButton from '@/components/common/custom-button/custom-button';
 import { CustomButtonTypes } from '@/components/common/custom-button/custom-button.types';
@@ -138,7 +138,7 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
                   }
                   name={post.user.name}
                   role={post.user.specialization}
-                  mutual={post.user.mutualFollowersCount}
+                  mutual={post.user.mutualCount}
                   followers={`${post.user.totalFollowersCount}k`}
                 />
               </div>
@@ -164,34 +164,6 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
               className={`flex-1 bg-pure-white md:max-h-[${dynamicHeight}px] h-full overflow-y-scroll`}
             >
               <div className="heading-tertiary">
-                {/* Post content */}
-                {/* <div className="px-4">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur. Non nisi in id
-                    pharelius. Ac eros justo elementum tincidunt congue risus
-                    massa vulputat lorem.
-                  </p>
-                  <p>Lorem ipsum dolor sit amet consectetur.</p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur. Avelien accumsan
-                    sagittis eros diam vulputate. Aliquet vestibule porta nunc.
-                  </p>
-
-                  <div className="space-y-2 mt-2">
-                    <div className="flex items-center gap-2">
-                      <CheckIcon />
-                      <span>Fermentum aliquet odio eleifendu.</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckIcon />
-                      <span>Eu nullam nunc eget facilisi fereleifend.</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckIcon />
-                      <span>Nibh ac ultricies et vulputate nunc.</span>
-                    </div>
-                  </div>
-                </div> */}
                 {post.content && <p className="mt-2 ml-2">{post.content}</p>}
 
                 <div className="flex items-center justify-between heading-tertiary font-normal text-dark-grey py-2 px-4 border-b border-stroke-grey mt-4">
@@ -244,8 +216,12 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
                             onSave={content =>
                               handleSaveEditingText(content, comment.id)
                             }
+                            totalFollowers={comment.user.totalFollowersCount}
+                            mutualCount={comment.user.mutualCount}
                             onCancal={() => setIsEditable(false)}
                             comment={comment}
+                            isLiked={false}
+                            onLikeClick={() => console.log('like is clicked')}
                             handleDeleteComment={handleDeleteComment}
                           />
                         </div>
