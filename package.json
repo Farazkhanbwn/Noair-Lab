@@ -8,9 +8,9 @@
   "scripts": {
     "copy-pdf-worker": "node public/copyPdfWorker.js",
     "prebuild": "npm run copy-pdf-worker",
-    "dev": "npm run copy-pdf-worker && next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node api.js && npm run copy-pdf-worker && next dev",
+    "build": "node api.js && next build",
+    "start": "node api.js && next start",
     "lint": "next lint",
     "format": "prettier --write ."
   },
