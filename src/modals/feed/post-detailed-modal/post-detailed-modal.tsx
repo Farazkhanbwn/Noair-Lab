@@ -23,6 +23,7 @@ import {
 } from '@/service/feed-service/feed-service';
 import { useAppDispatch } from '@/store/hooks';
 import { updateCommentCount } from '@/store/slices/feed-slice/feed-slice';
+import moment from 'moment';
 
 interface PostDetailedModalProps extends DialogProps {
   classNames?: string;
@@ -216,8 +217,10 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
                             onSave={content =>
                               handleSaveEditingText(content, comment.id)
                             }
-                            totalFollowers={comment.user.totalFollowersCount}
-                            mutualCount={comment.user.mutualCount}
+                            totalFollowers={
+                              comment.user.totalFollowersCount || 0
+                            }
+                            mutualCount={comment.user.mutualCount || 0}
                             onCancal={() => setIsEditable(false)}
                             comment={comment}
                             isLiked={false}
@@ -238,10 +241,10 @@ const PostDetailedModal: FC<PostDetailedModalProps> = ({
                         name={comment.user.name}
                         role={comment.specialization ?? ''}
                         comment={comment.content}
-                        time="1h"
+                        time={moment.utc(comment.createdAt).fromNow()}
                         className="px-0 py-2"
-                        followers={1200}
-                        mutual={2}
+                        followers={comment.user.totalFollowersCount || 0}
+                        mutual={comment.user.mutualCount || 0}
                         totalLikes={comment.totalLikes || 0}
                       />
                     ))}
